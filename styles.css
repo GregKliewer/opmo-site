@@ -1,0 +1,523 @@
+/* ---------------------------------------------------------
+   OpMo Advisory — base
+--------------------------------------------------------- */
+
+:root {
+  --ink-navy: #1B2A3A;
+  --signal-teal: #1F8A82;
+  --cool-white: #F7F9FA;
+  --graphite: #2B2E31;
+  --slate: #5B6B79;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --max-width: 1080px;
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cool-white);
+  color: var(--graphite);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ink-navy);
+  margin: 0 0 0.5em;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: 1.9rem;
+}
+
+p {
+  margin: 0 0 1em;
+  letter-spacing: -0.018em;
+}
+
+.role-card p,
+.record-item p,
+.engagement-list li,
+.hero-sub,
+.contact-inner p {
+  letter-spacing: -0.018em;
+}
+
+a {
+  color: var(--signal-teal);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.wrap-narrow {
+  max-width: 720px;
+}
+
+.section {
+  padding: 72px 0;
+  scroll-margin-top: 88px;
+}
+
+.section-alt {
+  background: #EEF2F3;
+}
+
+/* ---------------------------------------------------------
+   Header / nav
+--------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(247, 249, 250, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #E1E7E9;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.brand-logo {
+  height: 44px;
+  width: auto;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--ink-navy);
+  white-space: nowrap;
+}
+
+.site-nav a:hover {
+  color: var(--signal-teal);
+}
+
+.nav-cta {
+  color: #fff !important;
+  background: var(--signal-teal);
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  font-size: 1rem !important;
+  transition: background 0.15s ease;
+}
+
+.nav-cta:hover {
+  background: #196f68;
+  color: #fff !important;
+}
+
+/* ---------------------------------------------------------
+   Buttons
+--------------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 30px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--signal-teal);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #196f68;
+}
+
+/* ---------------------------------------------------------
+   Hero
+--------------------------------------------------------- */
+
+.hero {
+  background: var(--ink-navy);
+  padding: 38px 0 88px;
+}
+
+.hero-inner {
+  max-width: 780px;
+}
+
+.hero-logo {
+  height: 121px;
+  width: auto;
+  margin-bottom: 26px;
+}
+
+.hero .btn-primary {
+  font-size: 1.15rem;
+  padding: 18px 40px;
+}
+
+.hero h1 {
+  color: #fff;
+  font-size: 2.4rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+.hero-sub {
+  color: #C9D3D9;
+  font-size: 1.125rem;
+  max-width: 620px;
+  margin-bottom: 40px;
+}
+
+/* ---------------------------------------------------------
+   What I do
+--------------------------------------------------------- */
+
+.section-lead {
+  font-size: 1.15rem;
+  max-width: 620px;
+  color: var(--slate);
+  margin-bottom: 40px;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+.role-card {
+  background: #fff;
+  border: 1px solid #E1E7E9;
+  border-top: 3px solid var(--signal-teal);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: 0 1px 3px rgba(27, 42, 58, 0.05);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.role-card:hover {
+  box-shadow: 0 6px 16px rgba(27, 42, 58, 0.08);
+  transform: translateY(-2px);
+}
+
+.role-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.role-sub {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.role-card p {
+  color: var(--graphite);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------
+   How it works
+--------------------------------------------------------- */
+
+.engagement-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+  max-width: 760px;
+}
+
+.engagement-list li {
+  position: relative;
+  padding-left: 28px;
+}
+
+.engagement-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  background: var(--signal-teal);
+  border-radius: 50%;
+}
+
+/* ---------------------------------------------------------
+   Fit test
+--------------------------------------------------------- */
+
+#fit-test p {
+  font-size: 1.05rem;
+}
+
+.fit-test-card {
+  background: #fff;
+  border-left: 4px solid var(--signal-teal);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(27, 42, 58, 0.05);
+  padding: 32px 36px;
+}
+
+.fit-test-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   Track record
+--------------------------------------------------------- */
+
+.record-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.record-item h3 {
+  font-size: 1.15rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 0.5em;
+}
+
+.record-dates {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--slate);
+}
+
+.record-item p {
+  margin: 0;
+}
+
+/* ---------------------------------------------------------
+   Pull quote
+--------------------------------------------------------- */
+
+.pull-quote {
+  background: var(--ink-navy);
+  padding: 80px 0;
+}
+
+.pull-quote blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: #fff;
+  border-left: 4px solid var(--signal-teal);
+  padding-left: 28px;
+}
+
+/* ---------------------------------------------------------
+   About
+--------------------------------------------------------- */
+
+.about-inner {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.about-photo {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+  box-shadow: 0 6px 20px rgba(27, 42, 58, 0.14);
+}
+
+.about-copy {
+  min-width: 0;
+}
+
+.about-heading-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.about-mark {
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.about-heading-row h2 {
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .about-inner {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .about-photo {
+    width: 275px;
+    height: 344px;
+  }
+}
+
+/* ---------------------------------------------------------
+   Contact
+--------------------------------------------------------- */
+
+.section-contact {
+  text-align: center;
+  padding-bottom: 96px;
+}
+
+.contact-inner {
+  max-width: 500px;
+}
+
+.contact-link {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--ink-navy);
+  margin-bottom: 12px;
+}
+
+.contact-link:hover {
+  color: var(--signal-teal);
+}
+
+.contact-inner .btn {
+  margin-top: 24px;
+}
+
+/* ---------------------------------------------------------
+   Footer
+--------------------------------------------------------- */
+
+.site-footer {
+  background: var(--ink-navy);
+  padding: 32px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  height: 20px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+.footer-inner p {
+  margin: 0;
+  color: #9FB0BB;
+  font-size: 0.85rem;
+}
+
+/* ---------------------------------------------------------
+   Responsive
+--------------------------------------------------------- */
+
+@media (min-width: 640px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 760px) {
+  .role-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .record-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 639px) {
+  .site-nav {
+    gap: 14px;
+  }
+
+  .site-nav a {
+    font-size: 0.85rem;
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .hero {
+    padding: 51px 0 56px;
+  }
+
+  .hero-logo {
+    height: 86px;
+    margin-bottom: 14px;
+  }
+
+  .pull-quote blockquote {
+    font-size: 1.3rem;
+  }
+}

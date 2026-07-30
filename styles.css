@@ -331,6 +331,37 @@ header {
   color: var(--signal-teal);
 }
 
+.role-card.has-icon {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.role-icon {
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  border-radius: 14px;
+  background: var(--teal-tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.role-icon svg {
+  width: 48px;
+  height: 48px;
+  fill: none;
+  stroke: var(--signal-teal);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.role-icon-body {
+  min-width: 0;
+}
+
 /* ---------------------------------------------------------
    Engagement tiers
 --------------------------------------------------------- */

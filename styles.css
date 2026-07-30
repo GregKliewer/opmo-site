@@ -1,19 +1,25 @@
 /* ---------------------------------------------------------
-   OpMo Advisory — base
+   OpMo Advisory — Editorial system (see DESIGN_SYSTEM.md)
 --------------------------------------------------------- */
 
 :root {
   --ink-navy: #1B2A3A;
-  --signal-teal: #1F8A82;
-  --cool-white: #F7F9FA;
+  /* Brand teal is #1F8A82 (matches the logo mark), but that value is only
+     4.19:1 against white — under WCAG AA's 4.5:1 for text. Every use of
+     this token here is text or a text-adjacent hover state, so it's set
+     4% darker (5.16:1) instead. Purely decorative/non-text brand assets
+     (the logo SVGs) still use the original #1F8A82. */
+  --signal-teal: #187a73;
   --graphite: #2B2E31;
   --slate: #5B6B79;
+  --line: #E1E5E7;
 
-  --font-display: 'Space Grotesk', sans-serif;
+  --font-display: 'IBM Plex Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
+  --font-quote: 'Newsreader', serif;
 
-  --max-width: 1080px;
-  --radius: 6px;
+  --max: 900px;
+  --max-wide: 1160px;
 }
 
 * {
@@ -26,42 +32,20 @@ html {
 
 body {
   margin: 0;
-  background: var(--cool-white);
+  background: #fff;
   color: var(--graphite);
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.7;
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--ink-navy);
-  margin: 0 0 0.5em;
-  line-height: 1.15;
-}
-
-h2 {
-  font-size: 1.9rem;
-}
-
-p {
-  margin: 0 0 1em;
-  letter-spacing: -0.018em;
-}
-
-.role-card p,
-.record-item p,
-.engagement-list li,
-.hero-sub,
-.contact-inner p {
-  letter-spacing: -0.018em;
-}
-
-a {
-  color: var(--signal-teal);
-  text-decoration: none;
-  transition: color 0.15s ease;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 img {
@@ -69,65 +53,56 @@ img {
   display: block;
 }
 
+a {
+  color: var(--signal-teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .wrap {
-  max-width: var(--max-width);
+  max-width: var(--max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
 }
 
-.wrap-narrow {
-  max-width: 720px;
-}
-
-.section {
-  padding: 72px 0;
-  scroll-margin-top: 88px;
-}
-
-.section-alt {
-  background: #EEF2F3;
+.wrap-wide {
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  padding: 0 32px;
 }
 
 /* ---------------------------------------------------------
    Header / nav
 --------------------------------------------------------- */
 
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgba(247, 249, 250, 0.92);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid #E1E7E9;
+header {
+  border-bottom: 1px solid var(--line);
+  position: relative;
 }
 
 .header-inner {
+  padding: 24px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  flex-wrap: wrap;
 }
 
 .brand-logo {
-  height: 44px;
-  width: auto;
+  height: 30px;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  gap: 28px;
 }
 
 .site-nav a {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 500;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: var(--ink-navy);
+  text-decoration: none;
   white-space: nowrap;
 }
 
@@ -136,41 +111,52 @@ img {
 }
 
 .nav-cta {
-  color: #fff !important;
-  background: var(--signal-teal);
-  padding: 10px 20px;
-  border-radius: var(--radius);
-  font-size: 1rem !important;
-  transition: background 0.15s ease;
+  color: var(--ink-navy) !important;
+  border-bottom: 1px solid var(--ink-navy);
+  padding-bottom: 2px;
 }
 
 .nav-cta:hover {
-  background: #196f68;
-  color: #fff !important;
+  border-color: var(--signal-teal);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink-navy);
+  margin: 4px 0;
 }
 
 /* ---------------------------------------------------------
-   Buttons
+   Buttons / links
 --------------------------------------------------------- */
 
 .btn {
   display: inline-block;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 14px 30px;
-  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 13px 26px;
+  border-radius: 2px;
   text-decoration: none;
-  transition: background 0.15s ease;
 }
 
 .btn-primary {
-  background: var(--signal-teal);
+  background: var(--ink-navy);
   color: #fff;
 }
 
 .btn-primary:hover {
-  background: #196f68;
+  background: var(--signal-teal);
 }
 
 /* ---------------------------------------------------------
@@ -178,174 +164,255 @@ img {
 --------------------------------------------------------- */
 
 .hero {
-  background: var(--ink-navy);
-  padding: 38px 0 88px;
+  padding: 100px 0 90px;
+  border-bottom: 1px solid var(--line);
 }
 
-.hero-inner {
-  max-width: 780px;
-}
-
-.hero-logo {
-  height: 121px;
-  width: auto;
-  margin-bottom: 26px;
-}
-
-.hero .btn-primary {
-  font-size: 1.15rem;
-  padding: 18px 40px;
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+  margin-bottom: 24px;
+  display: block;
 }
 
 .hero h1 {
-  color: #fff;
-  font-size: 2.4rem;
-  letter-spacing: -0.01em;
-  margin-bottom: 28px;
+  font-size: 2.6rem;
+  letter-spacing: -0.015em;
+  margin-bottom: 30px;
+  max-width: 780px;
 }
 
 .hero-sub {
-  color: #C9D3D9;
-  font-size: 1.125rem;
-  max-width: 620px;
-  margin-bottom: 40px;
+  font-size: 1.15rem;
+  color: var(--graphite);
+  max-width: 640px;
+  margin-bottom: 36px;
 }
 
 /* ---------------------------------------------------------
-   What I do
+   Section rhythm
 --------------------------------------------------------- */
+
+.section {
+  padding: 88px 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 88px;
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+  margin-bottom: 18px;
+  display: block;
+}
+
+.section h2 {
+  font-size: 1.9rem;
+  max-width: 600px;
+}
 
 .section-lead {
-  font-size: 1.15rem;
-  max-width: 620px;
+  font-size: 1.08rem;
   color: var(--slate);
-  margin-bottom: 40px;
+  max-width: 600px;
+  margin-top: 16px;
 }
 
-.role-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-}
+/* ---------------------------------------------------------
+   Editorial list (What I do / Where it leads)
+--------------------------------------------------------- */
 
-.role-card {
-  background: #fff;
-  border: 1px solid #E1E7E9;
-  border-top: 3px solid var(--signal-teal);
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: 0 1px 3px rgba(27, 42, 58, 0.05);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.role-card:hover {
-  box-shadow: 0 6px 16px rgba(27, 42, 58, 0.08);
-  transform: translateY(-2px);
-}
-
-.role-card h3 {
-  font-size: 1.15rem;
-  margin-bottom: 0.6em;
+.item-list {
+  margin-top: 48px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
 }
 
-.role-sub {
+.item-row {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+
+.item-list .item-row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.item-row h3 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.item-tag {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--slate);
+  font-size: 0.76rem;
+  color: var(--signal-teal);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
 
-.role-card p {
-  color: var(--graphite);
+.item-row p {
   margin: 0;
+  color: var(--graphite);
 }
 
-.role-grid + .fit-test-card {
-  margin-top: 28px;
+.item-row p a {
+  color: var(--signal-teal);
 }
 
 /* ---------------------------------------------------------
-   How it works
+   Engagement table
 --------------------------------------------------------- */
 
-.engagement-list {
-  list-style: none;
-  margin: 0 0 1em;
-  padding: 0;
+.tier-table {
+  margin-top: 48px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tier-table th {
+  text-align: left;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--slate);
+  padding: 0 20px 14px 0;
+  border-bottom: 1px solid var(--ink-navy);
+}
+
+.tier-table td {
+  padding: 22px 20px 22px 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  font-size: 0.96rem;
+}
+
+.tier-table td:first-child {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--ink-navy);
+  white-space: nowrap;
+}
+
+.tier-table td:nth-child(2) {
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.terms-note {
+  margin-top: 32px;
+  color: var(--slate);
+  font-size: 0.96rem;
+  max-width: 680px;
+}
+
+/* ---------------------------------------------------------
+   Bordered content block (fit test, diagnostic intro quote)
+--------------------------------------------------------- */
+
+.rule-block {
+  border-left: 2px solid var(--ink-navy);
+  padding-left: 32px;
+}
+
+.rule-block p {
+  font-size: 1.08rem;
+  max-width: 680px;
+}
+
+.rule-block em {
+  font-family: var(--font-quote);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink-navy);
+  display: block;
+  margin-top: 20px;
+  max-width: 680px;
+}
+
+/* numbered deliverables list (diagnostic "what you receive") */
+
+.numbered-list {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.numbered-item {
   display: grid;
-  gap: 20px;
-  max-width: 760px;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
 }
 
-.engagement-list li {
-  position: relative;
-  padding-left: 28px;
+.numbered-list .numbered-item:last-child {
+  border-bottom: 1px solid var(--line);
 }
 
-.engagement-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 10px;
-  height: 10px;
-  background: var(--signal-teal);
-  border-radius: 50%;
+.numbered-item .num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--signal-teal);
+  font-size: 1.1rem;
 }
 
-/* ---------------------------------------------------------
-   Fit test
---------------------------------------------------------- */
-
-#fit-test p {
-  font-size: 1.05rem;
-}
-
-.fit-test-card {
-  background: #fff;
-  border-left: 4px solid var(--signal-teal);
-  border-radius: var(--radius);
-  box-shadow: 0 1px 3px rgba(27, 42, 58, 0.05);
-  padding: 32px 36px;
-}
-
-.fit-test-card p:last-child {
-  margin-bottom: 0;
+.numbered-item p {
+  margin: 0;
+  font-size: 1.02rem;
+  color: var(--graphite);
 }
 
 /* ---------------------------------------------------------
    Track record
 --------------------------------------------------------- */
 
-.record-grid {
+.record-list {
+  margin-top: 48px;
+}
+
+.record-item {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 200px 1fr;
   gap: 32px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+
+.record-list .record-item:last-child {
+  border-bottom: 1px solid var(--line);
 }
 
 .record-item h3 {
-  font-size: 1.15rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 10px;
-  margin-bottom: 0.5em;
+  font-size: 1.05rem;
 }
 
 .record-dates {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.85rem;
   color: var(--slate);
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 3px;
 }
 
 .record-item p {
   margin: 0;
+  color: var(--graphite);
+  font-size: 0.96rem;
 }
 
 /* ---------------------------------------------------------
@@ -353,108 +420,90 @@ img {
 --------------------------------------------------------- */
 
 .pull-quote {
-  background: var(--ink-navy);
-  padding: 80px 0;
+  padding: 96px 0;
 }
 
 .pull-quote blockquote {
   margin: 0;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 1.6rem;
-  line-height: 1.4;
-  color: #fff;
-  border-left: 4px solid var(--signal-teal);
-  padding-left: 28px;
+  font-family: var(--font-quote);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.5;
+  color: var(--ink-navy);
+  max-width: 720px;
+}
+
+.pull-quote blockquote::before {
+  content: '\201C';
+  color: var(--signal-teal);
+  font-size: 3rem;
+  line-height: 0;
+  display: block;
+  margin-bottom: 16px;
+  font-style: normal;
 }
 
 /* ---------------------------------------------------------
    About
 --------------------------------------------------------- */
 
-.about-inner {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+.about-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
 }
 
 .about-photo {
-  width: 160px;
-  height: 200px;
+  border-radius: 2px;
   object-fit: cover;
-  border-radius: var(--radius);
-  flex-shrink: 0;
-  box-shadow: 0 6px 20px rgba(27, 42, 58, 0.14);
+  aspect-ratio: 4 / 5;
+  filter: grayscale(1) contrast(1.05);
 }
 
-.about-copy {
-  min-width: 0;
-}
-
-.about-heading-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 24px;
-}
-
-.about-mark {
-  border-radius: var(--radius);
-  flex-shrink: 0;
-}
-
-.about-heading-row h2 {
-  margin: 0;
-}
-
-@media (min-width: 640px) {
-  .about-inner {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-
-  .about-photo {
-    width: 275px;
-    height: 344px;
-  }
+.about-copy p {
+  font-size: 1.05rem;
 }
 
 /* ---------------------------------------------------------
    Contact
 --------------------------------------------------------- */
 
-.section-contact {
-  text-align: center;
-  padding-bottom: 96px;
+.contact-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
-.contact-inner {
-  max-width: 500px;
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .contact-link {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 1.02rem;
   color: var(--ink-navy);
-  margin-bottom: 12px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  width: fit-content;
 }
 
 .contact-link:hover {
   color: var(--signal-teal);
-}
-
-.contact-inner .btn {
-  margin-top: 24px;
+  border-color: var(--signal-teal);
 }
 
 /* ---------------------------------------------------------
    Footer
 --------------------------------------------------------- */
 
-.site-footer {
-  background: var(--ink-navy);
+footer {
   padding: 32px 0;
 }
 
@@ -462,20 +511,18 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
   flex-wrap: wrap;
+  gap: 16px;
 }
 
 .footer-logo {
-  height: 20px;
-  width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.85;
+  height: 18px;
+  opacity: 0.6;
 }
 
 .footer-inner p {
   margin: 0;
-  color: #9FB0BB;
+  color: var(--slate);
   font-size: 0.85rem;
 }
 
@@ -483,45 +530,105 @@ img {
    Responsive
 --------------------------------------------------------- */
 
-@media (min-width: 640px) {
+@media (max-width: 860px) {
+  .hero {
+    padding: 64px 0 48px;
+  }
+
   .hero h1 {
-    font-size: 3rem;
-  }
-}
-
-@media (min-width: 760px) {
-  .role-grid {
-    grid-template-columns: repeat(3, 1fr);
+    font-size: 2rem;
   }
 
-  .record-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 639px) {
-  .site-nav {
-    gap: 14px;
+  .item-row,
+  .record-item,
+  .numbered-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
-  .site-nav a {
-    font-size: 0.85rem;
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    max-width: 220px;
   }
 
   .section {
     padding: 56px 0;
   }
 
-  .hero {
-    padding: 51px 0 56px;
-  }
-
-  .hero-logo {
-    height: 86px;
-    margin-bottom: 14px;
+  .pull-quote {
+    padding: 56px 0;
   }
 
   .pull-quote blockquote {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+  }
+
+  .tier-table,
+  .tier-table thead,
+  .tier-table tbody,
+  .tier-table tr,
+  .tier-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .tier-table thead {
+    display: none;
+  }
+
+  .tier-table tr {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .tier-table td {
+    border-bottom: none;
+    padding: 2px 0;
+  }
+
+  .tier-table td:nth-child(2) {
+    color: var(--slate);
+    margin-bottom: 8px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0 32px 8px;
+    z-index: 20;
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .site-nav a {
+    width: 100%;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-cta {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-inner {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

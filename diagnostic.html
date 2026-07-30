@@ -171,22 +171,42 @@
         readout. The diagnostic names which of these the findings call for.
       </p>
 
-      <div class="tier-grid">
-        <div class="tier-card">
-          <span class="tier-badge">Option A</span>
-          <h3>Team &amp; Capacity Alignment</h3>
-          <p>For the platform or delivery leader whose teams are absorbing new capability with no resourcing model behind it. Squad structures with capacity explicitly budgeted for the new work alongside the old, delivered as a pilot tranche and repeatable across the portfolio.</p>
+      <div class="tier-carousel" data-tier-carousel>
+        <button class="tier-arrow" type="button" data-tier-prev aria-label="Previous option">&#8249;</button>
+
+        <div class="tier-track">
+          <div class="tier-card tier-slide is-active" data-tier-slide>
+            <img class="tier-slide-img" src="assets/Diagnostic_Icon_Scalpel.png" alt="">
+            <div class="tier-slide-body">
+              <span class="tier-badge">Option A</span>
+              <h3>Team &amp; Capacity Alignment</h3>
+              <p>For the platform or delivery leader whose teams are absorbing new capability with no resourcing model behind it. Squad structures with capacity explicitly budgeted for the new work alongside the old, delivered as a pilot tranche and repeatable across the portfolio.</p>
+            </div>
+          </div>
+          <div class="tier-card tier-slide" data-tier-slide>
+            <img class="tier-slide-img" src="assets/Diagnostic_Icon_Anatomy.png" alt="">
+            <div class="tier-slide-body">
+              <span class="tier-badge">Option B</span>
+              <h3>Operating Model Redesign</h3>
+              <p>The full structural intervention when the diagnostic points above team level: decision rights, governance architecture, a product-model transition, or an integration operating model, delivered as a modular quarterly program with a go or no-go at each quarter boundary.</p>
+            </div>
+          </div>
+          <div class="tier-card tier-slide" data-tier-slide>
+            <img class="tier-slide-img" src="assets/Diagnostic_Icon_Doctor.png" alt="">
+            <div class="tier-slide-body">
+              <span class="tier-badge">Option C</span>
+              <h3>The Standing Seat</h3>
+              <p>When what's needed is judgment held in the room rather than a scoped program, the diagnostic can point instead to the fractional seat described under <a href="index.html#how-it-works">how the engagement works</a>.</p>
+            </div>
+          </div>
         </div>
-        <div class="tier-card">
-          <span class="tier-badge">Option B</span>
-          <h3>Operating Model Redesign</h3>
-          <p>The full structural intervention when the diagnostic points above team level: decision rights, governance architecture, a product-model transition, or an integration operating model, delivered as a modular quarterly program with a go or no-go at each quarter boundary.</p>
-        </div>
-        <div class="tier-card">
-          <span class="tier-badge">Option C</span>
-          <h3>The Standing Seat</h3>
-          <p>When what's needed is judgment held in the room rather than a scoped program, the diagnostic can point instead to the fractional seat described under <a href="index.html#how-it-works">how the engagement works</a>.</p>
-        </div>
+
+        <button class="tier-arrow" type="button" data-tier-next aria-label="Next option">&#8250;</button>
+      </div>
+      <div class="tier-dots" data-tier-dots>
+        <button class="tier-dot is-active" type="button" data-tier-dot="0" aria-label="Show option A"></button>
+        <button class="tier-dot" type="button" data-tier-dot="1" aria-label="Show option B"></button>
+        <button class="tier-dot" type="button" data-tier-dot="2" aria-label="Show option C"></button>
       </div>
 
       <div class="fit-card" style="margin-top:56px;">
@@ -205,5 +225,6 @@
 </footer>
 
 <script src="nav.js"></script>
+<script src="diagnostic-carousel.js"></script>
 </body>
 </html>

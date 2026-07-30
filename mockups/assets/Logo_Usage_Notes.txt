@@ -1,0 +1,14 @@
+OpMo Advisory logo package — generated 2026-07-06
+
+Lockup B-1: two-node connector glyph (filled navy -> open teal) + OpMo wordmark, Space Grotesk Bold (text converted to outlines; no font needed).
+
+Files:
+- OpMo_Logo_Primary.svg — full color, transparent background, for light backgrounds (Cool White #F7F9FA or white)
+- OpMo_Logo_Reverse.svg — for dark/navy backgrounds (transparent; see _OnNavy_PREVIEW for how it sits on Ink Navy)
+- OpMo_Logo_Mono_Navy.svg — single-color fallback (print, engraving, low-color contexts)
+- OpMo_Mark_Favicon.svg / OpMo_Mark_512.png / OpMo_Mark_64.png — glyph-only tile for favicon, LinkedIn avatar, app icons
+- OpMo_Logo_Primary_2400w.png — high-res raster for docs/slides
+
+Colors: Ink Navy #1B2A3A, Signal Teal #1F8A82, Slate #5B6B79 (ADVISORY), Cool White #F7F9FA.
+Clear space: keep at least one node-diameter of padding around the logo.
+SVGs scale to any size; prefer them over the PNGs wherever possible.

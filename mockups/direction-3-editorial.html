@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direction 3 — Editorial · OpMo Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,wght@0,400;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink-navy:#1B2A3A;
+  --signal-teal:#1F8A82;
+  --cool-white:#F7F9FA;
+  --graphite:#2B2E31;
+  --slate:#5B6B79;
+  --line:#E1E5E7;
+  --font-display:'IBM Plex Sans',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-quote:'Newsreader',serif;
+  --max:900px;
+  --max-wide:1160px;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:#fff;color:var(--graphite);font-family:var(--font-body);line-height:1.7;font-size:17px;}
+img{max-width:100%;display:block;}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+.wrap-wide{max-width:var(--max-wide);margin:0 auto;padding:0 32px;}
+a{color:var(--signal-teal);text-decoration:underline;text-underline-offset:3px;}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;color:var(--ink-navy);margin:0;line-height:1.2;letter-spacing:-0.01em;}
+
+header{border-bottom:1px solid var(--line);}
+.header-inner{max-width:var(--max-wide);margin:0 auto;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;}
+.brand-logo{height:30px;}
+nav{display:flex;align-items:center;gap:28px;}
+nav a{font-family:var(--font-body);font-weight:500;font-size:0.88rem;color:var(--ink-navy);text-decoration:none;}
+nav a:hover{color:var(--signal-teal);}
+.nav-cta{color:var(--ink-navy) !important;border-bottom:1px solid var(--ink-navy);padding-bottom:2px;}
+
+/* hero */
+.hero{padding:100px 0 90px;border-bottom:1px solid var(--line);}
+.eyebrow{font-family:var(--font-body);font-size:0.82rem;font-weight:600;letter-spacing:0.04em;color:var(--slate);margin-bottom:24px;display:block;}
+.hero h1{font-size:2.6rem;letter-spacing:-0.015em;margin-bottom:30px;max-width:780px;}
+.hero-sub{font-size:1.15rem;color:var(--graphite);max-width:640px;margin-bottom:36px;}
+.btn{display:inline-block;font-family:var(--font-body);font-weight:600;font-size:0.98rem;padding:13px 26px;text-decoration:none;border-radius:2px;}
+.btn-primary{background:var(--ink-navy);color:#fff;}
+.btn-primary:hover{background:var(--signal-teal);}
+
+/* section rhythm */
+.section{padding:88px 0;border-bottom:1px solid var(--line);}
+.section:last-of-type{border-bottom:none;}
+.section-label{font-family:var(--font-body);font-size:0.82rem;font-weight:600;letter-spacing:0.04em;color:var(--slate);margin-bottom:18px;display:block;}
+.section h2{font-size:1.9rem;max-width:600px;}
+.section-lead{font-size:1.08rem;color:var(--slate);max-width:600px;margin-top:16px;}
+
+/* what i do - editorial list, no cards */
+.role-list{margin-top:48px;display:flex;flex-direction:column;}
+.role-item{display:grid;grid-template-columns:260px 1fr;gap:32px;padding:28px 0;border-top:1px solid var(--line);}
+.role-list .role-item:last-child{border-bottom:1px solid var(--line);}
+.role-item h3{font-size:1.15rem;margin-bottom:6px;}
+.role-tag{font-family:var(--font-body);font-weight:600;font-size:0.76rem;color:var(--signal-teal);text-transform:uppercase;letter-spacing:0.05em;}
+.role-item p{margin:0;color:var(--graphite);}
+
+/* engagement table */
+.tier-table{margin-top:48px;width:100%;border-collapse:collapse;}
+.tier-table th{text-align:left;font-family:var(--font-body);font-weight:600;font-size:0.78rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--slate);padding:0 20px 14px 0;border-bottom:1px solid var(--ink-navy);}
+.tier-table td{padding:22px 20px 22px 0;border-bottom:1px solid var(--line);vertical-align:top;font-size:0.96rem;}
+.tier-table td:first-child{font-family:var(--font-display);font-weight:500;color:var(--ink-navy);white-space:nowrap;}
+.tier-table td:nth-child(2){color:var(--slate);white-space:nowrap;}
+.terms-note{margin-top:32px;color:var(--slate);font-size:0.96rem;max-width:680px;}
+
+/* fit test */
+.fit-block{border-left:2px solid var(--ink-navy);padding-left:32px;}
+.fit-block p{font-size:1.08rem;max-width:680px;}
+.fit-block em{font-family:var(--font-quote);font-style:italic;font-size:1.15rem;color:var(--ink-navy);display:block;margin-top:20px;max-width:680px;}
+
+/* record */
+.record-list{margin-top:48px;}
+.record-item2{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:24px 0;border-top:1px solid var(--line);}
+.record-list .record-item2:last-child{border-bottom:1px solid var(--line);}
+.record-item2 h3{font-size:1.05rem;}
+.record-dates{color:var(--slate);font-size:0.85rem;display:block;margin-top:3px;}
+.record-item2 p{margin:0;color:var(--graphite);font-size:0.96rem;}
+
+/* quote */
+.pull-quote{padding:96px 0;}
+.pull-quote blockquote{margin:0;font-family:var(--font-quote);font-style:italic;font-weight:400;font-size:2rem;line-height:1.5;color:var(--ink-navy);max-width:720px;}
+.pull-quote blockquote::before{content:'\201C';color:var(--signal-teal);font-size:3rem;line-height:0;display:block;margin-bottom:16px;font-style:normal;}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;}
+.about-photo{border-radius:2px;object-fit:cover;aspect-ratio:4/5;filter:grayscale(1) contrast(1.05);}
+.about-copy p{font-size:1.05rem;}
+
+/* contact */
+.section-contact{text-align:left;}
+.contact-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
+.contact-links{display:flex;flex-direction:column;gap:8px;}
+.contact-link{font-family:var(--font-body);font-size:1.02rem;color:var(--ink-navy);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;width:fit-content;}
+.contact-link:hover{color:var(--signal-teal);border-color:var(--signal-teal);}
+
+footer{padding:32px 0;}
+.footer-inner{max-width:var(--max-wide);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-logo{height:18px;opacity:0.6;}
+.footer-inner p{margin:0;color:var(--slate);font-size:0.85rem;}
+
+@media (max-width:860px){
+  .hero h1{font-size:2rem;}
+  .role-item,.record-item2{grid-template-columns:1fr;gap:8px;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-photo{max-width:220px;}
+  .section{padding:56px 0;}
+  .pull-quote{padding:56px 0;}
+  .pull-quote blockquote{font-size:1.5rem;}
+  .tier-table,.tier-table thead,.tier-table tbody,.tier-table tr,.tier-table td{display:block;width:100%;}
+  .tier-table thead{display:none;}
+  .tier-table tr{padding:18px 0;border-bottom:1px solid var(--line);}
+  .tier-table td{border-bottom:none;padding:2px 0;}
+  .tier-table td:nth-child(2){color:var(--slate);margin-bottom:8px;}
+  nav{display:none;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img src="assets/OpMo_Logo_Primary.svg" alt="OpMo Advisory" class="brand-logo">
+    <nav>
+      <a href="#diagnostic">the diagnostic</a>
+      <a href="#what-i-do">what i do</a>
+      <a href="#how-it-works">how it works</a>
+      <a href="#track-record">track record</a>
+      <a href="#about">about</a>
+      <a href="#contact" class="nav-cta">get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Fractional &amp; interim operating-model leadership</span>
+    <h1>Operating models that hold under the weight of transformation.</h1>
+    <p class="hero-sub">Senior operating leadership for platform, product, and AI transformation, on a fractional or interim basis, from someone who has been the accountable executive for the work, not just the advisor who diagrammed it.</p>
+    <a href="mailto:greg@opmoadvisory.com" class="btn btn-primary">Get in touch</a>
+  </div>
+</section>
+
+<section id="what-i-do" class="section">
+  <div class="wrap">
+    <span class="section-label">what i do</span>
+    <h2>I take one fractional engagement at a time. You get an executive's attention, not a bench.</h2>
+    <div class="role-list">
+      <div class="role-item">
+        <div><span class="role-tag">Platform Engineering</span></div>
+        <div><h3>Interim VP / Platform</h3><p>Own a platform organization through a transition, whether a leadership gap, a reorg, or a modernization push, and leave it running as a product.</p></div>
+      </div>
+      <div class="role-item">
+        <div><span class="role-tag">Product &amp; Platform Operating Model</span></div>
+        <div><h3>Transformation Lead</h3><p>Move delivery from project to product structures: squad design, value-stream alignment, decision rights, and the practice changes that make the model hold. Training the operators who inherit it is part of the mandate.</p></div>
+      </div>
+      <div class="role-item">
+        <div><span class="role-tag">AI-Native Operating Model</span></div>
+        <div><h3>Transformation Lead</h3><p>Stand up the team structures, decision cadences, and enablement architecture that turn enterprise AI spend into outcomes, including designs that budget agent capacity.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="section">
+  <div class="wrap">
+    <span class="section-label">how the engagement works</span>
+    <h2>A flat monthly access fee for a capped seat, not a day rate.</h2>
+    <p class="section-lead">No timesheets: you're buying a standing seat and availability, not metered hours.</p>
+    <table class="tier-table">
+      <thead><tr><th>Seat</th><th>Commitment</th><th>What it includes</th></tr></thead>
+      <tbody>
+        <tr><td>Advisory Seat</td><td>1 day / week</td><td>A seat at the governance table and judgment on call, without workstream ownership. For a board or exec team that needs counsel, not delivery.</td></tr>
+        <tr><td>Embedded Lead</td><td>2 days / week, most common</td><td>A standing seat in your governance forum, embedded with the leadership team, owning a named workstream.</td></tr>
+        <tr><td>Transformation Lead</td><td>2.5 days / week</td><td>The embedded seat plus accountability for the operating-model outcome, and for training the person who inherits it.</td></tr>
+      </tbody>
+    </table>
+    <p class="terms-note">Three-month initial term, then month to month on thirty days' notice, with a clear mandate and named outcomes agreed up front. Remote-first with a regular on-site rhythm, engaged as an incorporated independent contractor. Available to start within two weeks; terms finalized on a short scoping call.</p>
+  </div>
+</section>
+
+<section id="fit-test" class="section">
+  <div class="wrap">
+    <span class="section-label">the fit test</span>
+    <div class="fit-block">
+      <p>This works when a specific structural job needs senior judgment now: a platform org between leaders, a product-model transformation that has stalled, or an AI mandate with no owner for the operating-model layer. Whether you already have the operator or still need to hire one, the operating model is what they inherit.</p>
+      <p>If your problem is judgment applied surgically to organizational and ways-of-working transformation, building the operating model and training whoever inherits it, then we should talk.</p>
+      <em>I hold one fractional seat at a time. The 2.5-day ceiling is what guarantees the seat stays senior and the practice behind it stays current.</em>
+    </div>
+  </div>
+</section>
+
+<section id="track-record" class="section">
+  <div class="wrap">
+    <span class="section-label">track record</span>
+    <h2>Three technology waves in Canadian financial services.</h2>
+    <div class="record-list">
+      <div class="record-item2">
+        <div><h3>Interac</h3><span class="record-dates">2021&ndash;2026</span></div>
+        <p>Built Interac's first enterprise-architecture practice, then led a 50+ person Platform-as-Product organization through a full transformation to a product operating model, in a mission-critical, regulated payments environment.</p>
+      </div>
+      <div class="record-item2">
+        <div><h3>TD &amp; CIBC</h3><span class="record-dates">2016&ndash;2019</span></div>
+        <p>Set enterprise API strategy and governance through the API-native wave: bank-wide API standards, an early external developer platform, and modernization of core platform services.</p>
+      </div>
+      <div class="record-item2">
+        <div><h3>Independent practice</h3><span class="record-dates">now</span></div>
+        <p>AI-Native Transformation practice serving Canadian financial services. Doctrine and diagnostics for operating models designed to absorb AI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pull-quote">
+  <div class="wrap">
+    <blockquote>AI doesn't transform organizations. It amplifies the operating model it lands on.</blockquote>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="wrap">
+    <span class="section-label">about</span>
+    <div class="about-grid">
+      <img src="assets/OpMo_About_Headshot.jpg" alt="Greg Kliewer, principal of OpMo Advisory" class="about-photo">
+      <div class="about-copy">
+        <p>I'm Greg Kliewer, principal of OpMo Advisory. I've built and rebuilt operating models as the accountable executive through three technology waves in Canadian financial services: API-native architecture at TD and CIBC, the product operating model at Interac, and AI-native organizational design now. Clients get someone who has run the operating model under real constraints, not someone who has only diagrammed one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section section-contact">
+  <div class="wrap contact-inner">
+    <h2>Get in touch.</h2>
+    <div class="contact-links">
+      <a href="mailto:greg@opmoadvisory.com" class="contact-link">greg@opmoadvisory.com</a>
+      <a href="https://linkedin.com/in/gregkliewer" class="contact-link">linkedin.com/in/gregkliewer</a>
+    </div>
+    <a href="mailto:greg@opmoadvisory.com" class="btn btn-primary">Get in touch</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <img src="assets/OpMo_Logo_Primary.svg" alt="OpMo Advisory" class="footer-logo">
+    <p>&copy; 2026 OpMo Advisory</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -836,6 +836,49 @@ header {
   max-width: 560px;
 }
 
+.assoc-aside {
+  margin-top: 28px;
+  padding-left: 20px;
+  border-left: 2px solid var(--line);
+  max-width: 480px;
+}
+
+.assoc-aside .eyebrow {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+
+.assoc-aside p {
+  margin: 0 0 10px;
+  font-size: 0.98rem;
+}
+
+.assoc-aside a {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-decoration: none;
+  color: var(--ink-navy);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.assoc-aside a::after {
+  content: "\2192";
+  color: var(--signal-teal);
+  transition: transform 0.15s;
+}
+
+.assoc-aside a:hover::after {
+  transform: translateX(3px);
+}
+
 /* ---------------------------------------------------------
    Contact
 --------------------------------------------------------- */

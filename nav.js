@@ -15,3 +15,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+function openBattleCards() {
+  var section = document.getElementById('track-record');
+  if (!section) return;
+  section.querySelectorAll('.battle-card').forEach(function (card) {
+    card.open = true;
+  });
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function checkBattleCardHash() {
+  if (window.location.hash === '#battle-card') {
+    openBattleCards();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', checkBattleCardHash);
+window.addEventListener('hashchange', checkBattleCardHash);

@@ -667,6 +667,17 @@ header {
   margin-top: 56px;
 }
 
+.record-wave {
+  display: block;
+  color: var(--signal-teal);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
 .record-item {
   border-top: 2px solid var(--ink-navy);
   padding-top: 20px;

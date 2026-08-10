@@ -82,20 +82,20 @@ Headings: `font-weight: 500`, `color: var(--ink-navy)`, `line-height: 1.15`.
 
 **Pull-quote** — centered, italic Fraunces, no card, no border, no background — the one component that stays as spare as Direction 3's version.
 
-**About photo** — natural color (no grayscale filter — this is a deliberate difference from Direction 3), `border-radius: 6px`, `object-fit: cover`, 4:5 aspect ratio.
+**About photo**: grayscale (`filter: grayscale(1)`), per Brand Identity v3 (2026-08-10): photos of Greg are always grayscale. This supersedes the natural-color line that shipped with Direction 2's initial build. `border-radius: 6px`, `object-fit: cover`, 4:5 aspect ratio.
 
 **Hero visual** — a node/line SVG graphic (the motif Direction 3 explicitly dropped) sits in a navy rounded panel opposite the hero copy on desktop; hidden on mobile rather than stacked, since it's decorative.
 
 ## Imagery guidelines
 
 - No stock photography, anywhere, ever.
-- The only photograph on the site is Greg's headshot, natural color (see About photo above).
+- The only photographs on the site are of Greg (headshot) and the associate network. All photos of Greg render grayscale (see About photo above).
 - The node/line SVG motif is reused (hero visual only) — don't extend it into a repeating background pattern or add it elsewhere.
 - Logo: `OpMo_Logo_Primary.svg`, 36px tall in the header, 20px tall at 0.7 opacity in the footer.
 
-## Known gap to fix in Phase 4
+## Mobile nav
 
-Same gap as every direction's mockup: `nav{display:none}` below 900px with no replacement. Phase 4 must add a real mobile nav (hamburger + collapsed menu), styled to match this system (navy text, hairline dividers, no shadow).
+Fixed (was the "known gap" in every direction's mockup: `nav{display:none}` below 900px with no replacement). A real mobile nav now ships: `.nav-toggle` hamburger button plus a collapsible `.site-nav` panel (navy text, hairline dividers, no shadow), driven by `nav.js` toggling a `.open` class. Applies below 900px, matches this system.
 
 ## Constraints carried over from the brief
 

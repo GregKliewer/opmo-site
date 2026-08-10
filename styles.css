@@ -937,6 +937,653 @@ footer {
 }
 
 /* ---------------------------------------------------------
+   Publications index
+--------------------------------------------------------- */
+
+.publications-list {
+  display: grid;
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.publications-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s;
+}
+
+.publications-card:hover {
+  border-color: var(--signal-teal);
+}
+
+.publications-meta {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--signal-teal);
+  margin-bottom: 10px;
+}
+
+.publications-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.publications-card p {
+  margin: 0;
+  color: var(--graphite);
+  font-size: 0.98rem;
+}
+
+/* ---------------------------------------------------------
+   Article (Publications piece pages)
+--------------------------------------------------------- */
+
+.article-section {
+  padding: 96px 0 100px;
+}
+
+.article-wrap {
+  max-width: 720px;
+}
+
+.article-wrap h1 {
+  font-size: 2.4rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.article-meta {
+  color: var(--slate);
+  font-size: 0.9rem;
+  margin: 0 0 48px;
+}
+
+.article-body {
+  font-size: 1rem;
+}
+
+.article-body h2 {
+  font-size: 1.6rem;
+  margin: 48px 0 20px;
+}
+
+.article-body h3 {
+  font-size: 1.2rem;
+  margin: 36px 0 14px;
+}
+
+.article-body p {
+  margin: 0 0 22px;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0 0 22px;
+  padding-left: 22px;
+}
+
+.article-body li {
+  margin-bottom: 8px;
+}
+
+.article-pull-quote {
+  padding: 48px 0;
+  text-align: center;
+}
+
+.article-pull-quote blockquote {
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  color: var(--ink-navy);
+}
+
+.article-provenance {
+  margin: 56px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--slate);
+  font-size: 0.9rem;
+}
+
+.article-provenance a {
+  color: var(--signal-teal);
+}
+
+.article-nav {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.92rem;
+}
+
+.article-nav a {
+  color: var(--ink-navy);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.article-nav a:hover {
+  color: var(--signal-teal);
+}
+
+.article-nav-index {
+  color: var(--signal-teal) !important;
+}
+
+/* ---------------------------------------------------------
+   Visuals (Publications piece pages, native HTML/CSS/SVG)
+--------------------------------------------------------- */
+
+.viz {
+  margin: 48px 0;
+  padding: 28px 32px 24px;
+  background: var(--cool-white);
+  border: 1px solid var(--line);
+  border-top: 4px solid #1F8A82;
+  border-radius: 6px;
+}
+
+/* Slide chrome (matches the LinkedIn visual language: kicker, two-tone
+   Fraunces headline, slate sub). Headline text comes verbatim from the
+   original published graphics. */
+
+.viz-kicker {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 14px;
+}
+
+.viz-headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  color: var(--ink-navy);
+  margin: 0 0 8px;
+}
+
+.viz-headline .hl-teal {
+  color: var(--signal-teal);
+}
+
+.viz-sub {
+  font-size: 0.9rem;
+  color: var(--slate);
+  margin: 0 0 28px;
+}
+
+/* Slide-style bars: uppercase label above, value inside the fill */
+
+.viz-bar-toplabel {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-navy);
+  margin-bottom: 8px;
+}
+
+.viz-slidebar-track {
+  height: 36px;
+  background: #E2E8EB;
+  border-radius: 4px;
+}
+
+.viz-slidebar-fill {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  min-width: 0;
+}
+
+.viz-slidebar-fill.is-navy { background: var(--ink-navy); }
+.viz-slidebar-fill.is-teal { background: var(--signal-teal); }
+.viz-slidebar-fill.is-slate { background: var(--slate); }
+
+.viz-slidebar-num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* The zone bracket that sits between two bars (V4a) */
+
+.viz-zone-row {
+  position: relative;
+  height: 58px;
+  margin: 10px 0;
+}
+
+.viz-zone {
+  position: absolute;
+  top: 8px;
+  border-top: 2px dashed #8494A1;
+}
+
+.viz-zone::before,
+.viz-zone::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  width: 0;
+  height: 10px;
+  border-left: 2px solid #8494A1;
+}
+
+.viz-zone::before { left: 0; }
+.viz-zone::after { right: 0; }
+
+.viz-zone-label {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--signal-teal);
+}
+
+/* Value printed outside a too-short fill (7%, 10% or less) */
+
+.viz-slidebar-track {
+  position: relative;
+}
+
+.viz-slidebar-num.is-out {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-navy);
+}
+
+/* Long in-bar phrases swap to a short form on mobile */
+
+.viz-slidebar-num .num-short {
+  display: none;
+}
+
+/* A value that fits in its bar on desktop but not on mobile:
+   render both variants, show one per breakpoint */
+
+.viz-slidebar-num.only-narrow {
+  display: none;
+}
+
+/* V4b - the five checks, list style with a left rule */
+
+.viz-checks {
+  border-left: 2px solid var(--line);
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.viz-check-term {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink-navy);
+  margin-bottom: 2px;
+}
+
+.viz-check-q {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--slate);
+}
+
+/* V5a - two-column compare with verdict pills */
+
+.viz-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.viz-col {
+  border-left: 3px solid var(--signal-teal);
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.viz-col.is-unready {
+  border-left-color: var(--slate);
+}
+
+.viz-col-head {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--signal-teal);
+  margin-bottom: 10px;
+}
+
+.viz-col.is-unready .viz-col-head {
+  color: var(--slate);
+}
+
+.viz-col-body {
+  margin: 0 0 16px;
+  font-size: 0.92rem;
+  color: var(--graphite);
+}
+
+.viz-verdict {
+  display: inline-block;
+  margin-top: auto;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--ink-navy);
+  background: var(--teal-tint);
+  border-radius: 4px;
+  padding: 10px 18px;
+}
+
+.viz-col.is-unready .viz-verdict {
+  background: #E7EBEE;
+}
+
+.viz-divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 26px 0;
+}
+
+/* V5b - trigger chip cascade and outcome pills */
+
+.viz-cascade-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.viz-chip-wide {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+  margin-bottom: 10px;
+}
+
+.viz-chip-etc {
+  font-style: italic;
+  color: var(--slate);
+  font-weight: 500;
+}
+
+.viz-cascade-fade {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.viz-cascade-fade span {
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+
+.viz-cascade-fade.f1 span { height: 16px; opacity: 0.55; }
+.viz-cascade-fade.f2 span { height: 10px; opacity: 0.35; }
+.viz-cascade-fade.f3 span { height: 6px; opacity: 0.2; }
+
+.viz-pills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.viz-pill {
+  text-align: center;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+}
+
+.viz-pill.is-ready {
+  background: var(--teal-tint);
+  border: 1px solid var(--signal-teal);
+}
+
+.viz-pill.is-not {
+  background: #E7EBEE;
+  border: 1px solid var(--line);
+}
+
+.viz-pill .pill-verdict {
+  color: var(--signal-teal);
+  white-space: nowrap;
+}
+
+.viz-pill.is-not .pill-verdict {
+  color: var(--ink-navy);
+}
+
+/* V3a - label-left bar rows and quoted group titles */
+
+.viz-labelrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.viz-rowlabel {
+  width: 92px;
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-navy);
+}
+
+.viz-labelrow .viz-slidebar-track {
+  flex: 1;
+  height: 30px;
+}
+
+.viz-quote-title {
+  margin: 0 0 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+}
+
+/* V3b - scatter plot labels over the SVG */
+
+.viz-plot {
+  position: relative;
+}
+
+.viz-plot-label {
+  position: absolute;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.viz-plot-label.is-champions {
+  top: 2%;
+  right: 4%;
+  color: var(--signal-teal);
+}
+
+.viz-plot-label.is-rest {
+  top: 56%;
+  left: 3%;
+  color: var(--slate);
+}
+
+/* V2a - white inner chart card */
+
+.viz-chartcard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 18px 18px 12px;
+}
+
+/* Shared figure source line */
+
+.viz-source {
+  margin: 24px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--slate);
+}
+
+/* Trigger chip (V5b cascade) */
+
+.viz-chip {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+}
+
+/* V3a - bar groups */
+
+.viz-group {
+  margin-bottom: 32px;
+}
+
+.viz-group:last-of-type {
+  margin-bottom: 0;
+}
+
+/* V3b / V2a - inline SVG line charts, shared chrome */
+
+.viz-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.viz-axis-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 0 4px;
+  font-size: 0.82rem;
+  color: var(--slate);
+}
+
+.viz-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 16px;
+}
+
+.viz-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--graphite);
+}
+
+.viz-legend-swatch {
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.viz-legend-swatch.is-teal {
+  background: var(--signal-teal);
+}
+
+.viz-legend-swatch.is-slate {
+  background: var(--slate);
+}
+
+/* Visual-specific responsive tier (spec-mandated 700px breakpoint,
+   distinct from the site's 900px layout/nav breakpoint) */
+
+@media (max-width: 700px) {
+  .viz-compare {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .viz-pills {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .viz-slidebar-num .num-full {
+    display: none;
+  }
+
+  .viz-slidebar-num .num-short {
+    display: inline;
+  }
+
+  .viz-rowlabel {
+    width: 78px;
+    font-size: 0.8rem;
+  }
+
+  .viz-slidebar-num.only-wide {
+    display: none;
+  }
+
+  .viz-slidebar-num.only-narrow {
+    display: inline;
+  }
+}
+
+/* ---------------------------------------------------------
    Responsive
 --------------------------------------------------------- */
 
@@ -1024,6 +1671,57 @@ footer {
 
   .pull-quote blockquote {
     font-size: 1.5rem;
+  }
+
+  .article-section {
+    padding: 64px 0;
+  }
+
+  .article-wrap h1 {
+    font-size: 1.9rem;
+  }
+
+  .article-meta {
+    margin-bottom: 32px;
+  }
+
+  .article-pull-quote {
+    padding: 32px 0;
+  }
+
+  .article-pull-quote blockquote {
+    font-size: 1.25rem;
+  }
+
+  .viz {
+    padding: 20px;
+    margin: 36px 0;
+  }
+
+  .viz-headline {
+    font-size: 1.22rem;
+  }
+
+  .viz-sub {
+    margin-bottom: 22px;
+  }
+
+  .viz-slidebar-track {
+    height: 32px;
+  }
+
+  .viz-slidebar-num {
+    font-size: 0.95rem;
+  }
+
+  .viz-zone-row {
+    height: 74px;
+  }
+
+  .viz-zone-label {
+    white-space: normal;
+    text-align: center;
+    width: 170px;
   }
 
   .nav-toggle {

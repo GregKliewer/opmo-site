@@ -627,27 +627,70 @@ header {
    Associate cards (Associates page)
 --------------------------------------------------------- */
 
-.associate-tagline {
+/* Associate network groups (Execution / Advisory).
+   Reuses the record-grid convention: a 2px navy top rule as a structural
+   marker rather than a nested box. */
+.assoc-group {
+  border-top: 2px solid var(--ink-navy);
+  padding-top: 22px;
+  margin-top: 56px;
+}
+
+.assoc-group-label {
+  display: block;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   color: var(--ink-navy);
-  margin: 6px 0 12px;
+  margin-bottom: 18px;
+}
+
+/* The pair grid reuses .card-grid.four, which already collapses to a single
+   column at max-width:900px — only the heading-to-grid top margin is reset. */
+.card-grid.four.assoc-pair {
+  margin-top: 0;
+  gap: 20px;
+}
+
+.role-card.associate-card h3 {
+  font-size: 1.12rem;
+  margin-bottom: 6px;
+}
+
+.associate-card .role-sub {
+  font-size: 0.72rem;
+  margin-bottom: 8px;
+}
+
+/* Body paragraphs only — the tagline/note/contact paragraphs keep their own
+   sizes below, so they are excluded rather than fighting on specificity. */
+.role-card.associate-card p:not(.associate-tagline):not(.associate-note):not(.associate-contact) {
+  font-size: 0.9rem;
+}
+
+/* Scoped under .associate-card so these beat `.role-card p` (0,1,1) on
+   specificity — unscoped, their size and color never applied. */
+.associate-card .associate-tagline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink-navy);
+  margin: 4px 0 10px;
 }
 
 .associate-label {
   display: block;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--slate);
-  margin: 18px 0 10px;
+  margin: 14px 0 8px;
 }
 
 .associate-focus {
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   padding: 0;
   list-style: none;
 }
@@ -655,9 +698,9 @@ header {
 .associate-focus li {
   position: relative;
   padding-left: 18px;
-  font-size: 0.92rem;
+  font-size: 0.85rem;
   color: var(--graphite);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .associate-focus li:last-child {
@@ -675,16 +718,16 @@ header {
   background: var(--signal-teal);
 }
 
-.associate-note {
-  font-size: 0.88rem;
+.associate-card .associate-note {
+  font-size: 0.82rem;
   color: var(--slate);
   border-left: 2px solid var(--line);
   padding-left: 14px;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
 }
 
-.associate-contact {
-  font-size: 0.85rem;
+.associate-card .associate-contact {
+  font-size: 0.8rem;
   color: var(--slate);
   margin: 0;
 }
@@ -792,7 +835,7 @@ header {
 
 .associate-photo {
   width: 100%;
-  aspect-ratio: 1.9 / 1;
+  aspect-ratio: 2.3 / 1;
   overflow: hidden;
   background: var(--ink-navy);
 }
@@ -807,7 +850,7 @@ header {
 }
 
 .associate-body {
-  padding: 28px 32px 32px;
+  padding: 22px 24px 24px;
 }
 
 /* Battle card expander (Track record) */

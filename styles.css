@@ -1663,6 +1663,203 @@ footer {
   background: var(--slate);
 }
 
+/* V6a - two boxed panels: the visible half of a reorg against the half
+   nobody touches. The "changed" panel sits in white so it reads forward
+   off the cool-white figure; the "did not" panel stays cool-white and
+   recedes, which is the point the visual is making. */
+
+.viz-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.viz-panel {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--signal-teal);
+  border-radius: 6px;
+  padding: 22px 22px 24px;
+  background: #fff;
+}
+
+.viz-panel.is-static {
+  background: var(--cool-white);
+  border-top-color: var(--slate);
+}
+
+.viz-panel-head {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal-teal);
+  margin-bottom: 16px;
+}
+
+.viz-panel.is-static .viz-panel-head {
+  color: var(--slate);
+}
+
+/* Scoped under .viz so these beat the .article-body ul/li rules the
+   figure sits inside, which would otherwise re-add list indent and
+   per-item margin on top of the flex gap. */
+
+.viz .viz-panel-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.viz .viz-panel-list li {
+  position: relative;
+  margin-bottom: 0;
+  padding-left: 18px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--graphite);
+}
+
+.viz-panel-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--signal-teal);
+}
+
+.viz-panel.is-static .viz-panel-list li::before {
+  background: var(--slate);
+}
+
+/* V6b - the four structural questions, as numbered cards.
+   Two columns rather than the spec's four: the article measure is 720px,
+   so four columns would leave ~146px each and the questions are full
+   sentences. Same call the shipped V4b made against the same constraint. */
+
+.viz-qgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.viz-qcard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--signal-teal);
+  border-radius: 6px;
+  padding: 20px 22px 22px;
+}
+
+.viz-qnum {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--signal-teal);
+  margin-bottom: 10px;
+}
+
+/* A span, not an h3: these are card labels inside a figure, not document
+   sections. Matches shipped V4b's .viz-check-term and keeps the four cards
+   out of the page's heading outline. */
+
+.viz-qterm {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+  margin: 0 0 8px;
+}
+
+.viz .viz-qtext {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--slate);
+}
+
+.viz .viz-note {
+  margin: 24px 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+}
+
+/* V6c - decision rights written down for agents, blank for the humans.
+   Reuses V6a's .viz-split / .viz-panel shell. */
+
+.viz-rights {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.viz-right-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 26px;
+}
+
+.viz-numchip {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  /* Navy on tint, not teal on tint: teal text on #E4F0EF is 3.59:1 and
+     fails AA. Matches the hero tag pill's resolution of the same clash. */
+  color: var(--ink-navy);
+  background: var(--teal-tint);
+}
+
+.viz-panel.is-static .viz-numchip {
+  background: #E7EBEE;
+}
+
+.viz-right-text {
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--graphite);
+}
+
+.viz-blank {
+  flex: 1 1 auto;
+  min-width: 0;
+  border-bottom: 1px dashed #B6C2CB;
+  height: 11px;
+}
+
+.viz .viz-panel-foot {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--slate);
+}
+
+.viz .viz-closing {
+  margin: 24px 0 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--ink-navy);
+}
+
 /* Visual-specific responsive tier (spec-mandated 700px breakpoint,
    distinct from the site's 900px layout/nav breakpoint) */
 
@@ -1670,6 +1867,20 @@ footer {
   .viz-compare {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .viz-split {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .viz-qgrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .viz .viz-closing {
+    font-size: 1.05rem;
   }
 
   .viz-pills {

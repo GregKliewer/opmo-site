@@ -30,6 +30,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Anchor jumps honour a reduced-motion preference too, not just the
+   carousel animation further down. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   margin: 0;
   background: #fff;
@@ -45,6 +53,8 @@ h1, h2, h3 {
   color: var(--ink-navy);
   margin: 0;
   line-height: 1.15;
+  /* Keeps a heading from breaking with one orphaned word on the last line. */
+  text-wrap: balance;
 }
 
 img {
@@ -56,6 +66,13 @@ a {
   color: var(--signal-teal);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* --signal-teal (#187a73) at 25%. A selection tint sits behind text, so it
+   takes the text-safe teal rather than the decorative brand hex. Reads
+   correctly on both the white page and the navy bands. */
+::selection {
+  background: rgba(24, 122, 115, 0.25);
 }
 
 /* ---------------------------------------------------------
@@ -2193,30 +2210,4 @@ footer {
     grid-template-columns: 1fr;
     gap: 0;
   }
-}
-/* --- Anchor navigation polish --- */
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* Keep anchor targets clear of the sticky nav.
-   Adjust to match your header height. */
-[id] {
-  scroll-margin-top: 5rem;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-/* Stop headings breaking with one orphaned word */
-h1, h2, h3 {
-  text-wrap: balance;
-}
-
-::selection {
-  background: rgba(45, 212, 191, 0.25);
 }

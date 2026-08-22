@@ -1049,6 +1049,78 @@ header {
   color: var(--signal-teal);
 }
 
+/* Contact form — sits on the navy contact band. Inputs are white-filled so
+   typed text keeps the graphite/white body contrast rather than relying on a
+   tinted field on navy. The focus ring needs no rule of its own: the
+   .section-contact :focus-visible inversion at the top of this file draws it
+   white, and outline-offset lands it on the navy ground just outside each
+   white field. */
+
+.contact-form {
+  max-width: 640px;
+  margin: 44px auto 0;
+  text-align: left;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.form-field label .optional {
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: #c9d3d9;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--graphite);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 12px 14px;
+}
+
+.form-field textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Honeypot. display:none keeps it out of the tab order and the accessibility
+   tree; the markup also carries tabindex="-1" and aria-hidden so it stays
+   harmless to keyboard and screen-reader users if this stylesheet ever fails
+   to load. Formspree drops any submission that arrives with it filled in. */
+.form-gotcha {
+  display: none;
+}
+
+.contact-form .btn {
+  border: none;
+  cursor: pointer;
+}
+
 /* ---------------------------------------------------------
    Footer
 --------------------------------------------------------- */
@@ -2115,5 +2187,10 @@ footer {
   .section-contact .contact-link {
     display: block;
     margin: 0 0 16px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 }

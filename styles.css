@@ -1,19 +1,25 @@
 /* ---------------------------------------------------------
-   OpMo Advisory — base
+   OpMo Advisory — Institutional system (see DESIGN_SYSTEM.md)
 --------------------------------------------------------- */
 
 :root {
   --ink-navy: #1B2A3A;
-  --signal-teal: #1F8A82;
+  /* Brand teal is #1F8A82 (matches the logo mark), but that value is only
+     4.19:1 against white in either text/bg direction — under WCAG AA's
+     4.5:1. Every use of this token here is text or a text-adjacent fill,
+     so it's set 4% darker (5.16:1) instead. Purely decorative, non-text
+     brand assets (the logo SVGs, hero SVG graphic) still use #1F8A82. */
+  --signal-teal: #187a73;
+  --teal-tint: #E4F0EF;
   --cool-white: #F7F9FA;
   --graphite: #2B2E31;
   --slate: #5B6B79;
+  --line: #DDE3E5;
 
-  --font-display: 'Space Grotesk', sans-serif;
+  --font-display: 'Fraunces', serif;
   --font-body: 'Inter', sans-serif;
 
-  --max-width: 1080px;
-  --radius: 6px;
+  --max: 1160px;
 }
 
 * {
@@ -26,42 +32,19 @@ html {
 
 body {
   margin: 0;
-  background: var(--cool-white);
+  background: #fff;
   color: var(--graphite);
   font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--ink-navy);
-  margin: 0 0 0.5em;
+  margin: 0;
   line-height: 1.15;
-}
-
-h2 {
-  font-size: 1.9rem;
-}
-
-p {
-  margin: 0 0 1em;
-  letter-spacing: -0.018em;
-}
-
-.role-card p,
-.record-item p,
-.engagement-list li,
-.hero-sub,
-.contact-inner p {
-  letter-spacing: -0.018em;
-}
-
-a {
-  color: var(--signal-teal);
-  text-decoration: none;
-  transition: color 0.15s ease;
 }
 
 img {
@@ -69,65 +52,69 @@ img {
   display: block;
 }
 
+a {
+  color: var(--signal-teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   Keyboard focus
+
+   :focus-visible only, so pointer users see no change: the ring is drawn
+   for keyboard and assistive-tech focus. outline sits outside the box and
+   is not part of layout, so nothing reflows and no spacing shifts.
+--------------------------------------------------------- */
+
+:focus-visible {
+  outline: 3px solid var(--signal-teal);
+  outline-offset: 3px;
+}
+
+/* The contact band and any other navy ground drops the teal ring to about
+   1.6:1, so invert to white there. */
+.section-contact :focus-visible {
+  outline-color: #fff;
+}
+
 .wrap {
-  max-width: var(--max-width);
+  max-width: var(--max);
   margin: 0 auto;
-  padding: 0 24px;
-}
-
-.wrap-narrow {
-  max-width: 720px;
-}
-
-.section {
-  padding: 72px 0;
-  scroll-margin-top: 88px;
-}
-
-.section-alt {
-  background: #EEF2F3;
+  padding: 0 32px;
 }
 
 /* ---------------------------------------------------------
    Header / nav
 --------------------------------------------------------- */
 
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgba(247, 249, 250, 0.92);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid #E1E7E9;
+header {
+  border-bottom: 1px solid var(--line);
+  position: relative;
 }
 
 .header-inner {
+  padding: 20px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  flex-wrap: wrap;
 }
 
 .brand-logo {
-  height: 44px;
-  width: auto;
+  height: 36px;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  gap: 32px;
 }
 
 .site-nav a {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 500;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--ink-navy);
+  text-decoration: none;
   white-space: nowrap;
 }
 
@@ -137,31 +124,43 @@ img {
 
 .nav-cta {
   color: #fff !important;
-  background: var(--signal-teal);
-  padding: 10px 20px;
-  border-radius: var(--radius);
-  font-size: 1rem !important;
-  transition: background 0.15s ease;
+  background: var(--ink-navy);
+  padding: 9px 20px;
+  border-radius: 3px;
 }
 
 .nav-cta:hover {
-  background: #196f68;
-  color: #fff !important;
+  background: var(--signal-teal);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink-navy);
+  margin: 4px 0;
 }
 
 /* ---------------------------------------------------------
-   Buttons
+   Buttons / links
 --------------------------------------------------------- */
 
 .btn {
   display: inline-block;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 14px 30px;
-  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 14px 28px;
+  border-radius: 3px;
   text-decoration: none;
-  transition: background 0.15s ease;
 }
 
 .btn-primary {
@@ -170,7 +169,17 @@ img {
 }
 
 .btn-primary:hover {
-  background: #196f68;
+  background: var(--ink-navy);
+}
+
+.btn-outline {
+  border: 1px solid var(--ink-navy);
+  color: var(--ink-navy);
+}
+
+.btn-outline:hover {
+  background: var(--ink-navy);
+  color: #fff;
 }
 
 /* ---------------------------------------------------------
@@ -178,174 +187,751 @@ img {
 --------------------------------------------------------- */
 
 .hero {
-  background: var(--ink-navy);
-  padding: 38px 0 88px;
+  padding: 96px 0 80px;
 }
 
 .hero-inner {
-  max-width: 780px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
 }
 
-.hero-logo {
-  height: 121px;
-  width: auto;
-  margin-bottom: 26px;
-}
-
-.hero .btn-primary {
-  font-size: 1.15rem;
-  padding: 18px 40px;
-}
-
-.hero h1 {
-  color: #fff;
-  font-size: 2.4rem;
-  letter-spacing: -0.01em;
+.tag {
+  display: inline-block;
+  background: var(--teal-tint);
+  color: var(--ink-navy);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
   margin-bottom: 28px;
 }
 
+.hero h1 {
+  font-size: 3.1rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 26px;
+  max-width: 720px;
+}
+
 .hero-sub {
-  color: #C9D3D9;
-  font-size: 1.125rem;
-  max-width: 620px;
-  margin-bottom: 40px;
+  font-size: 1.1rem;
+  color: var(--slate);
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+
+.hero-visual {
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  background: var(--ink-navy);
+}
+
+.hero-visual svg {
+  width: 100%;
+  height: 100%;
 }
 
 /* ---------------------------------------------------------
-   What I do
+   Stat band
 --------------------------------------------------------- */
 
-.section-lead {
-  font-size: 1.15rem;
-  max-width: 620px;
-  color: var(--slate);
-  margin-bottom: 40px;
+.stat-band {
+  background: var(--ink-navy);
 }
 
-.role-grid {
+.stat-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.stat {
+  padding: 44px 32px;
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat b {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 2.4rem;
+  color: #fff;
+}
+
+.stat span {
+  color: #9FB0BB;
+  font-size: 0.88rem;
+}
+
+/* ---------------------------------------------------------
+   Section rhythm
+--------------------------------------------------------- */
+
+.section {
+  padding: 100px 0;
+}
+
+.section-alt {
+  background: var(--cool-white);
+}
+
+.section-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.section h2 {
+  font-size: 2.2rem;
+  max-width: 600px;
+}
+
+.section-lead {
+  font-size: 1.08rem;
+  color: var(--slate);
+  max-width: 560px;
+  margin-top: 18px;
+}
+
+/* ---------------------------------------------------------
+   Card grid (role cards, diagnostic deliverable cards)
+--------------------------------------------------------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
 }
 
 .role-card {
   background: #fff;
-  border: 1px solid #E1E7E9;
-  border-top: 3px solid var(--signal-teal);
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: 0 1px 3px rgba(27, 42, 58, 0.05);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.role-card:hover {
-  box-shadow: 0 6px 16px rgba(27, 42, 58, 0.08);
-  transform: translateY(-2px);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px;
 }
 
 .role-card h3 {
-  font-size: 1.15rem;
-  margin-bottom: 0.6em;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
 }
 
 .role-sub {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--slate);
+  font-size: 0.78rem;
+  color: var(--signal-teal);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .role-card p {
-  color: var(--graphite);
   margin: 0;
+  color: var(--graphite);
+  font-size: 0.98rem;
 }
 
-.role-grid + .fit-test-card {
-  margin-top: 28px;
+.role-card p a {
+  color: var(--signal-teal);
+}
+
+.role-card.has-icon {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.role-icon {
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  border-radius: 14px;
+  background: var(--teal-tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.role-icon svg {
+  width: 48px;
+  height: 48px;
+  fill: none;
+  stroke: var(--signal-teal);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.role-icon-body {
+  min-width: 0;
 }
 
 /* ---------------------------------------------------------
-   How it works
+   Engagement tiers
 --------------------------------------------------------- */
 
-.engagement-list {
-  list-style: none;
-  margin: 0 0 1em;
-  padding: 0;
+.tier-grid {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.tier-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 36px 30px;
+}
+
+.tier-card.featured {
+  border-color: var(--signal-teal);
+  box-shadow: 0 4px 24px rgba(31, 138, 130, 0.12);
+}
+
+.tier-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--signal-teal);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.tier-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.tier-days {
+  color: var(--slate);
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 18px;
+}
+
+.tier-card p {
+  margin: 0;
+  color: var(--graphite);
+  font-size: 0.95rem;
+}
+
+/* Experimental single-slide carousel variant of the tier grid (diagnostic page) */
+.tier-carousel {
+  display: flex;
+  align-items: center;
   gap: 20px;
-  max-width: 760px;
+  margin-top: 56px;
 }
 
-.engagement-list li {
-  position: relative;
-  padding-left: 28px;
+.tier-track {
+  flex: 1;
+  min-width: 0;
 }
 
-.engagement-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 10px;
-  height: 10px;
-  background: var(--signal-teal);
+.tier-slide {
+  display: none;
+  gap: 32px;
+  align-items: center;
+}
+
+.tier-slide.is-active {
+  display: flex;
+  animation: tier-slide-in-right 0.5s ease;
+}
+
+.tier-slide.is-active[data-direction="prev"] {
+  animation-name: tier-slide-in-left;
+}
+
+@keyframes tier-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes tier-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tier-slide.is-active {
+    animation: none;
+  }
+}
+
+.tier-slide-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.tier-slide-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.tier-arrow {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-/* ---------------------------------------------------------
-   Fit test
---------------------------------------------------------- */
+.tier-arrow:hover {
+  background: var(--ink-navy);
+  color: #fff;
+  border-color: var(--ink-navy);
+}
 
-#fit-test p {
+.tier-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tier-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: var(--line);
+  cursor: pointer;
+  padding: 0;
+}
+
+.tier-dot.is-active {
+  background: var(--signal-teal);
+}
+
+.terms-list {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.terms-list div {
+  font-size: 0.95rem;
+  color: var(--graphite);
+}
+
+.terms-list strong {
+  color: var(--ink-navy);
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-display);
+  font-weight: 500;
   font-size: 1.05rem;
 }
 
-.fit-test-card {
-  background: #fff;
-  border-left: 4px solid var(--signal-teal);
-  border-radius: var(--radius);
-  box-shadow: 0 1px 3px rgba(27, 42, 58, 0.05);
-  padding: 32px 36px;
-}
-
-.fit-test-card p:last-child {
-  margin-bottom: 0;
+.card-grid.four {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 /* ---------------------------------------------------------
-   Track record
+   Principal card (Associates page, sits above the associate grid)
+--------------------------------------------------------- */
+
+.principal-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 28px 32px;
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.principal-photo {
+  width: 132px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+  filter: grayscale(1);
+}
+
+.principal-body {
+  min-width: 0;
+}
+
+.principal-eyebrow {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 10px;
+}
+
+.principal-body p {
+  margin: 0 0 14px;
+  font-size: 1.02rem;
+  color: var(--graphite);
+  max-width: 620px;
+}
+
+.principal-link {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-decoration: none;
+  color: var(--ink-navy);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.principal-link::after {
+  content: "\2192";
+  color: var(--signal-teal);
+  transition: transform 0.15s;
+}
+
+.principal-link:hover::after {
+  transform: translateX(3px);
+}
+
+@media (max-width: 700px) {
+  .principal-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+/* ---------------------------------------------------------
+   Associate cards (Associates page)
+--------------------------------------------------------- */
+
+/* Associate network groups (Execution / Advisory).
+   Reuses the record-grid convention: a 2px navy top rule as a structural
+   marker rather than a nested box. */
+.assoc-group {
+  border-top: 2px solid var(--ink-navy);
+  padding-top: 22px;
+  margin-top: 56px;
+}
+
+/* Now an h2 (it is the heading for each associate group; the h3 associate
+   cards below it were otherwise hanging straight off the h1). Scoped to
+   .assoc-group so it outranks `.section h2`, and line-height / margin /
+   max-width are pinned so it renders exactly as the span did. */
+.assoc-group .assoc-group-label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--ink-navy);
+  margin: 0 0 18px;
+  max-width: none;
+}
+
+/* The pair grid reuses .card-grid.four, which already collapses to a single
+   column at max-width:900px — only the heading-to-grid top margin is reset. */
+.card-grid.four.assoc-pair {
+  margin-top: 0;
+  gap: 20px;
+}
+
+.role-card.associate-card h3 {
+  font-size: 1.12rem;
+  margin-bottom: 6px;
+}
+
+.associate-card .role-sub {
+  font-size: 0.72rem;
+  margin-bottom: 8px;
+}
+
+/* Body paragraphs only — the tagline/note/contact paragraphs keep their own
+   sizes below, so they are excluded rather than fighting on specificity. */
+.role-card.associate-card p:not(.associate-tagline):not(.associate-note):not(.associate-contact) {
+  font-size: 0.9rem;
+}
+
+/* Scoped under .associate-card so these beat `.role-card p` (0,1,1) on
+   specificity — unscoped, their size and color never applied. */
+.associate-card .associate-tagline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink-navy);
+  margin: 4px 0 10px;
+}
+
+.associate-label {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 14px 0 8px;
+}
+
+.associate-focus {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.associate-focus li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  color: var(--graphite);
+  margin-bottom: 6px;
+}
+
+.associate-focus li:last-child {
+  margin-bottom: 0;
+}
+
+.associate-focus li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--signal-teal);
+}
+
+.associate-card .associate-note {
+  font-size: 0.82rem;
+  color: var(--slate);
+  border-left: 2px solid var(--line);
+  padding-left: 14px;
+  margin: 0 0 12px;
+}
+
+.associate-card .associate-contact {
+  font-size: 0.8rem;
+  color: var(--slate);
+  margin: 0;
+}
+
+.note {
+  margin-top: 32px;
+  color: var(--slate);
+  font-size: 0.96rem;
+  max-width: 680px;
+}
+
+/* ---------------------------------------------------------
+   Fit card (navy callout)
+--------------------------------------------------------- */
+
+.fit-card {
+  background: var(--ink-navy);
+  border-radius: 8px;
+  padding: 56px;
+  color: #fff;
+}
+
+.fit-card h2 {
+  color: #fff;
+  font-size: 1.9rem;
+  margin-bottom: 20px;
+}
+
+.fit-card p {
+  color: #C9D3D9;
+  font-size: 1.05rem;
+}
+
+.fit-card em {
+  color: #fff;
+  font-style: normal;
+  display: block;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+/* ---------------------------------------------------------
+   Record / deliverable grid (top-border marker style)
 --------------------------------------------------------- */
 
 .record-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
+  margin-top: 56px;
+}
+
+.record-wave {
+  display: block;
+  color: var(--signal-teal);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.record-item {
+  border-top: 2px solid var(--ink-navy);
+  padding-top: 20px;
 }
 
 .record-item h3 {
   font-size: 1.15rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 10px;
-  margin-bottom: 0.5em;
 }
 
 .record-dates {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.85rem;
+  display: block;
   color: var(--slate);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  margin-top: 4px;
+  margin-bottom: 12px;
 }
 
 .record-item p {
   margin: 0;
+  font-size: 0.95rem;
+}
+
+/* numbered deliverable variant reuses .record-item layout with a num badge */
+.record-item .num {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--signal-teal);
+  font-size: 1.05rem;
+  margin-right: 8px;
+}
+
+/* Associate photo (Associates page) */
+.role-card.associate-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.associate-photo {
+  width: 100%;
+  aspect-ratio: 2.3 / 1;
+  overflow: hidden;
+  background: var(--ink-navy);
+}
+
+.associate-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  filter: grayscale(100%);
+  display: block;
+}
+
+.associate-body {
+  padding: 22px 24px 24px;
+}
+
+/* Battle card expander (Track record) */
+.battle-card {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.battle-card summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--signal-teal);
+}
+
+.battle-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.battle-card summary::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid var(--signal-teal);
+  border-bottom: 1.5px solid var(--signal-teal);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.battle-card[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.battle-card[open] summary {
+  margin-bottom: 14px;
+}
+
+.battle-card p {
+  margin: 0 0 12px;
+  font-size: 0.92rem;
+  color: var(--graphite);
+}
+
+.battle-card p:last-child {
+  margin-bottom: 0;
+}
+
+.battle-card p strong {
+  color: var(--ink-navy);
 }
 
 /* ---------------------------------------------------------
@@ -353,71 +939,85 @@ img {
 --------------------------------------------------------- */
 
 .pull-quote {
-  background: var(--ink-navy);
-  padding: 80px 0;
+  padding: 110px 0;
+  text-align: center;
 }
 
 .pull-quote blockquote {
-  margin: 0;
+  margin: 0 auto;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 1.6rem;
+  font-style: italic;
+  font-size: 2.2rem;
   line-height: 1.4;
-  color: #fff;
-  border-left: 4px solid var(--signal-teal);
-  padding-left: 28px;
+  color: var(--ink-navy);
+  max-width: 780px;
 }
 
 /* ---------------------------------------------------------
    About
 --------------------------------------------------------- */
 
-.about-inner {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+.about-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 56px;
+  align-items: center;
 }
 
 .about-photo {
-  width: 160px;
-  height: 200px;
+  border-radius: 6px;
   object-fit: cover;
-  border-radius: var(--radius);
-  flex-shrink: 0;
-  box-shadow: 0 6px 20px rgba(27, 42, 58, 0.14);
+  aspect-ratio: 4 / 5;
+  filter: grayscale(1);
 }
 
-.about-copy {
-  min-width: 0;
+.about-copy p {
+  font-size: 1.08rem;
+  max-width: 560px;
 }
 
-.about-heading-row {
-  display: flex;
+.assoc-aside {
+  margin-top: 28px;
+  padding-left: 20px;
+  border-left: 2px solid var(--line);
+  max-width: 480px;
+}
+
+.assoc-aside .eyebrow {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+
+.assoc-aside p {
+  margin: 0 0 10px;
+  font-size: 0.98rem;
+}
+
+.assoc-aside a {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-decoration: none;
+  color: var(--ink-navy);
+  display: inline-flex;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 24px;
+  gap: 6px;
 }
 
-.about-mark {
-  border-radius: var(--radius);
-  flex-shrink: 0;
+.assoc-aside a::after {
+  content: "\2192";
+  color: var(--signal-teal);
+  transition: transform 0.15s;
 }
 
-.about-heading-row h2 {
-  margin: 0;
-}
-
-@media (min-width: 640px) {
-  .about-inner {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-
-  .about-photo {
-    width: 275px;
-    height: 344px;
-  }
+.assoc-aside a:hover::after {
+  transform: translateX(3px);
 }
 
 /* ---------------------------------------------------------
@@ -425,103 +1025,1095 @@ img {
 --------------------------------------------------------- */
 
 .section-contact {
+  background: var(--ink-navy);
   text-align: center;
-  padding-bottom: 96px;
 }
 
-.contact-inner {
-  max-width: 500px;
+.section-contact h2 {
+  color: #fff;
+  font-size: 2.4rem;
+  margin-bottom: 28px;
 }
 
 .contact-link {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--ink-navy);
-  margin-bottom: 12px;
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 16px 24px;
 }
 
 .contact-link:hover {
   color: var(--signal-teal);
 }
 
-.contact-inner .btn {
-  margin-top: 24px;
-}
-
 /* ---------------------------------------------------------
    Footer
 --------------------------------------------------------- */
 
-.site-footer {
-  background: var(--ink-navy);
+footer {
   padding: 32px 0;
+  border-top: 1px solid var(--line);
 }
 
 .footer-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
   flex-wrap: wrap;
+  gap: 16px;
 }
 
 .footer-logo {
   height: 20px;
-  width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.85;
+  opacity: 0.7;
 }
 
 .footer-inner p {
   margin: 0;
-  color: #9FB0BB;
+  color: var(--slate);
   font-size: 0.85rem;
+}
+
+/* ---------------------------------------------------------
+   Publications index
+--------------------------------------------------------- */
+
+.publications-list {
+  display: grid;
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.publications-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s;
+}
+
+.publications-card:hover {
+  border-color: var(--signal-teal);
+}
+
+.publications-meta {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--signal-teal);
+  margin-bottom: 10px;
+}
+
+.publications-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.publications-card p {
+  margin: 0;
+  color: var(--graphite);
+  font-size: 0.98rem;
+}
+
+/* ---------------------------------------------------------
+   Article (Publications piece pages)
+--------------------------------------------------------- */
+
+.article-section {
+  padding: 96px 0 100px;
+}
+
+.article-wrap {
+  max-width: 720px;
+}
+
+.article-wrap h1 {
+  font-size: 2.4rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.article-meta {
+  color: var(--slate);
+  font-size: 0.9rem;
+  margin: 0 0 48px;
+}
+
+.article-body {
+  font-size: 1rem;
+}
+
+.article-body h2 {
+  font-size: 1.6rem;
+  margin: 48px 0 20px;
+}
+
+.article-body h3 {
+  font-size: 1.2rem;
+  margin: 36px 0 14px;
+}
+
+.article-body p {
+  margin: 0 0 22px;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0 0 22px;
+  padding-left: 22px;
+}
+
+.article-body li {
+  margin-bottom: 8px;
+}
+
+.article-pull-quote {
+  padding: 48px 0;
+  text-align: center;
+}
+
+.article-pull-quote blockquote {
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  color: var(--ink-navy);
+}
+
+.article-provenance {
+  margin: 56px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--slate);
+  font-size: 0.9rem;
+}
+
+.article-provenance a {
+  color: var(--signal-teal);
+}
+
+.article-nav {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.92rem;
+}
+
+.article-nav a {
+  color: var(--ink-navy);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.article-nav a:hover {
+  color: var(--signal-teal);
+}
+
+.article-nav-index {
+  color: var(--signal-teal) !important;
+}
+
+/* ---------------------------------------------------------
+   Visuals (Publications piece pages, native HTML/CSS/SVG)
+--------------------------------------------------------- */
+
+.viz {
+  margin: 48px 0;
+  padding: 28px 32px 24px;
+  background: var(--cool-white);
+  border: 1px solid var(--line);
+  border-top: 4px solid #1F8A82;
+  border-radius: 6px;
+}
+
+/* Slide chrome (matches the LinkedIn visual language: kicker, two-tone
+   Fraunces headline, slate sub). Headline text comes verbatim from the
+   original published graphics. */
+
+.viz-kicker {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 14px;
+}
+
+.viz-headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  color: var(--ink-navy);
+  margin: 0 0 8px;
+}
+
+.viz-headline .hl-teal {
+  color: var(--signal-teal);
+}
+
+.viz-sub {
+  font-size: 0.9rem;
+  color: var(--slate);
+  margin: 0 0 28px;
+}
+
+/* Slide-style bars: uppercase label above, value inside the fill */
+
+.viz-bar-toplabel {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-navy);
+  margin-bottom: 8px;
+}
+
+.viz-slidebar-track {
+  height: 36px;
+  background: #E2E8EB;
+  border-radius: 4px;
+}
+
+.viz-slidebar-fill {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  min-width: 0;
+}
+
+.viz-slidebar-fill.is-navy { background: var(--ink-navy); }
+.viz-slidebar-fill.is-teal { background: var(--signal-teal); }
+.viz-slidebar-fill.is-slate { background: var(--slate); }
+
+.viz-slidebar-num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* The zone bracket that sits between two bars (V4a) */
+
+.viz-zone-row {
+  position: relative;
+  height: 58px;
+  margin: 10px 0;
+}
+
+.viz-zone {
+  position: absolute;
+  top: 8px;
+  border-top: 2px dashed #8494A1;
+}
+
+.viz-zone::before,
+.viz-zone::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  width: 0;
+  height: 10px;
+  border-left: 2px solid #8494A1;
+}
+
+.viz-zone::before { left: 0; }
+.viz-zone::after { right: 0; }
+
+.viz-zone-label {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--signal-teal);
+}
+
+/* Value printed outside a too-short fill (7%, 10% or less) */
+
+.viz-slidebar-track {
+  position: relative;
+}
+
+.viz-slidebar-num.is-out {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-navy);
+}
+
+/* Long in-bar phrases swap to a short form on mobile */
+
+.viz-slidebar-num .num-short {
+  display: none;
+}
+
+/* A value that fits in its bar on desktop but not on mobile:
+   render both variants, show one per breakpoint */
+
+.viz-slidebar-num.only-narrow {
+  display: none;
+}
+
+/* V4b - the five checks, list style with a left rule */
+
+.viz-checks {
+  border-left: 2px solid var(--line);
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.viz-check-term {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink-navy);
+  margin-bottom: 2px;
+}
+
+.viz-check-q {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--slate);
+}
+
+/* V5a - two-column compare with verdict pills */
+
+.viz-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.viz-col {
+  border-left: 3px solid var(--signal-teal);
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.viz-col.is-unready {
+  border-left-color: var(--slate);
+}
+
+.viz-col-head {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--signal-teal);
+  margin-bottom: 10px;
+}
+
+.viz-col.is-unready .viz-col-head {
+  color: var(--slate);
+}
+
+.viz-col-body {
+  margin: 0 0 16px;
+  font-size: 0.92rem;
+  color: var(--graphite);
+}
+
+.viz-verdict {
+  display: inline-block;
+  margin-top: auto;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--ink-navy);
+  background: var(--teal-tint);
+  border-radius: 4px;
+  padding: 10px 18px;
+}
+
+.viz-col.is-unready .viz-verdict {
+  background: #E7EBEE;
+}
+
+.viz-divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 26px 0;
+}
+
+/* V5b - trigger chip cascade and outcome pills */
+
+.viz-cascade-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.viz-chip-wide {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+  margin-bottom: 10px;
+}
+
+.viz-chip-etc {
+  font-style: italic;
+  color: var(--slate);
+  font-weight: 500;
+}
+
+.viz-cascade-fade {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.viz-cascade-fade span {
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+
+.viz-cascade-fade.f1 span { height: 16px; opacity: 0.55; }
+.viz-cascade-fade.f2 span { height: 10px; opacity: 0.35; }
+.viz-cascade-fade.f3 span { height: 6px; opacity: 0.2; }
+
+.viz-pills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.viz-pill {
+  text-align: center;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+}
+
+.viz-pill.is-ready {
+  background: var(--teal-tint);
+  border: 1px solid var(--signal-teal);
+}
+
+.viz-pill.is-not {
+  background: #E7EBEE;
+  border: 1px solid var(--line);
+}
+
+.viz-pill .pill-verdict {
+  color: var(--signal-teal);
+  white-space: nowrap;
+}
+
+.viz-pill.is-not .pill-verdict {
+  color: var(--ink-navy);
+}
+
+/* V3a - label-left bar rows and quoted group titles */
+
+.viz-labelrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.viz-rowlabel {
+  width: 92px;
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-navy);
+}
+
+.viz-labelrow .viz-slidebar-track {
+  flex: 1;
+  height: 30px;
+}
+
+.viz-quote-title {
+  margin: 0 0 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+}
+
+/* V3b - scatter plot labels over the SVG */
+
+.viz-plot {
+  position: relative;
+}
+
+.viz-plot-label {
+  position: absolute;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.viz-plot-label.is-champions {
+  top: 2%;
+  right: 4%;
+  color: var(--signal-teal);
+}
+
+.viz-plot-label.is-rest {
+  top: 56%;
+  left: 3%;
+  color: var(--slate);
+}
+
+/* V2a - white inner chart card */
+
+.viz-chartcard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 18px 18px 12px;
+}
+
+/* Shared figure source line */
+
+.viz-source {
+  margin: 24px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--slate);
+}
+
+/* Trigger chip (V5b cascade) */
+
+.viz-chip {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+}
+
+/* V3a - bar groups */
+
+.viz-group {
+  margin-bottom: 32px;
+}
+
+.viz-group:last-of-type {
+  margin-bottom: 0;
+}
+
+/* V3b / V2a - inline SVG line charts, shared chrome */
+
+.viz-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.viz-axis-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 0 4px;
+  font-size: 0.82rem;
+  color: var(--slate);
+}
+
+.viz-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 16px;
+}
+
+.viz-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--graphite);
+}
+
+.viz-legend-swatch {
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.viz-legend-swatch.is-teal {
+  background: var(--signal-teal);
+}
+
+.viz-legend-swatch.is-slate {
+  background: var(--slate);
+}
+
+/* V6a - two boxed panels: the visible half of a reorg against the half
+   nobody touches. The "changed" panel sits in white so it reads forward
+   off the cool-white figure; the "did not" panel stays cool-white and
+   recedes, which is the point the visual is making. */
+
+.viz-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.viz-panel {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--signal-teal);
+  border-radius: 6px;
+  padding: 22px 22px 24px;
+  background: #fff;
+}
+
+.viz-panel.is-static {
+  background: var(--cool-white);
+  border-top-color: var(--slate);
+}
+
+.viz-panel-head {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal-teal);
+  margin-bottom: 16px;
+}
+
+.viz-panel.is-static .viz-panel-head {
+  color: var(--slate);
+}
+
+/* Scoped under .viz so these beat the .article-body ul/li rules the
+   figure sits inside, which would otherwise re-add list indent and
+   per-item margin on top of the flex gap. */
+
+.viz .viz-panel-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.viz .viz-panel-list li {
+  position: relative;
+  margin-bottom: 0;
+  padding-left: 18px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--graphite);
+}
+
+.viz-panel-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--signal-teal);
+}
+
+.viz-panel.is-static .viz-panel-list li::before {
+  background: var(--slate);
+}
+
+/* V6b - the four structural questions, as numbered cards.
+   Two columns rather than the spec's four: the article measure is 720px,
+   so four columns would leave ~146px each and the questions are full
+   sentences. Same call the shipped V4b made against the same constraint. */
+
+.viz-qgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.viz-qcard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--signal-teal);
+  border-radius: 6px;
+  padding: 20px 22px 22px;
+}
+
+.viz-qnum {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--signal-teal);
+  margin-bottom: 10px;
+}
+
+/* A span, not an h3: these are card labels inside a figure, not document
+   sections. Matches shipped V4b's .viz-check-term and keeps the four cards
+   out of the page's heading outline. */
+
+.viz-qterm {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+  margin: 0 0 8px;
+}
+
+.viz .viz-qtext {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--slate);
+}
+
+.viz .viz-note {
+  margin: 24px 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+}
+
+/* V6c - decision rights written down for agents, blank for the humans.
+   Reuses V6a's .viz-split / .viz-panel shell. */
+
+.viz-rights {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.viz-right-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 26px;
+}
+
+.viz-numchip {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  /* Navy on tint, not teal on tint: teal text on #E4F0EF is 3.59:1 and
+     fails AA. Matches the hero tag pill's resolution of the same clash. */
+  color: var(--ink-navy);
+  background: var(--teal-tint);
+}
+
+.viz-panel.is-static .viz-numchip {
+  background: #E7EBEE;
+}
+
+.viz-right-text {
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--graphite);
+}
+
+.viz-blank {
+  flex: 1 1 auto;
+  min-width: 0;
+  border-bottom: 1px dashed #B6C2CB;
+  height: 11px;
+}
+
+.viz .viz-panel-foot {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--slate);
+}
+
+.viz .viz-closing {
+  margin: 24px 0 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--ink-navy);
+}
+
+/* Visual-specific responsive tier (spec-mandated 700px breakpoint,
+   distinct from the site's 900px layout/nav breakpoint) */
+
+@media (max-width: 700px) {
+  .viz-compare {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .viz-split {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .viz-qgrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .viz .viz-closing {
+    font-size: 1.05rem;
+  }
+
+  .viz-pills {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .viz-slidebar-num .num-full {
+    display: none;
+  }
+
+  .viz-slidebar-num .num-short {
+    display: inline;
+  }
+
+  .viz-rowlabel {
+    width: 78px;
+    font-size: 0.8rem;
+  }
+
+  .viz-slidebar-num.only-wide {
+    display: none;
+  }
+
+  .viz-slidebar-num.only-narrow {
+    display: inline;
+  }
 }
 
 /* ---------------------------------------------------------
    Responsive
 --------------------------------------------------------- */
 
-@media (min-width: 640px) {
+@media (max-width: 900px) {
+  .hero {
+    padding: 64px 0 48px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
   .hero h1 {
-    font-size: 3rem;
-  }
-}
-
-@media (min-width: 760px) {
-  .role-grid {
-    grid-template-columns: repeat(3, 1fr);
+    font-size: 2.3rem;
   }
 
+  .hero-visual {
+    display: none;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .stat:last-child {
+    border-bottom: none;
+  }
+
+  .card-grid,
+  .card-grid.four,
+  .tier-grid,
   .record-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 639px) {
-  .site-nav {
-    gap: 14px;
+    grid-template-columns: 1fr;
   }
 
-  .site-nav a {
-    font-size: 0.85rem;
+  .tier-carousel {
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .tier-arrow {
+    margin-top: 74px;
+  }
+
+  .tier-slide.is-active {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .tier-slide-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .terms-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .fit-card {
+    padding: 32px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    max-width: 240px;
   }
 
   .section {
-    padding: 56px 0;
+    padding: 64px 0;
   }
 
-  .hero {
-    padding: 51px 0 56px;
-  }
-
-  .hero-logo {
-    height: 86px;
-    margin-bottom: 14px;
+  .pull-quote {
+    padding: 64px 0;
   }
 
   .pull-quote blockquote {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+  }
+
+  .article-section {
+    padding: 64px 0;
+  }
+
+  .article-wrap h1 {
+    font-size: 1.9rem;
+  }
+
+  .article-meta {
+    margin-bottom: 32px;
+  }
+
+  .article-pull-quote {
+    padding: 32px 0;
+  }
+
+  .article-pull-quote blockquote {
+    font-size: 1.25rem;
+  }
+
+  .viz {
+    padding: 20px;
+    margin: 36px 0;
+  }
+
+  .viz-headline {
+    font-size: 1.22rem;
+  }
+
+  .viz-sub {
+    margin-bottom: 22px;
+  }
+
+  .viz-slidebar-track {
+    height: 32px;
+  }
+
+  .viz-slidebar-num {
+    font-size: 0.95rem;
+  }
+
+  .viz-zone-row {
+    height: 74px;
+  }
+
+  .viz-zone-label {
+    white-space: normal;
+    text-align: center;
+    width: 170px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0 32px 8px;
+    z-index: 20;
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .site-nav a {
+    width: 100%;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-cta {
+    display: inline-block;
+    margin-top: 8px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .section-contact .contact-link {
+    display: block;
+    margin: 0 0 16px;
   }
 }

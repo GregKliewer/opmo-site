@@ -1046,10 +1046,16 @@ header {
   text-align: center;
 }
 
+/* .section h2 caps the heading at 600px for line length, which leaves the
+   box pinned to the left of the 1160px wrap. Every other section is
+   left-aligned so that reads correctly, but this one centres its text — and
+   centring inside a left-pinned box put the heading ~250px left of the
+   section's true centre. Centre the box itself; the cap still applies. */
 .section-contact h2 {
   color: #fff;
   font-size: 2.4rem;
   margin-bottom: 28px;
+  margin-inline: auto;
 }
 
 .contact-link {

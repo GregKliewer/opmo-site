@@ -71,5 +71,5 @@ The inline comments in this file explain non-obvious decisions (contrast ratios,
 
 - Work happens on short-lived topic branches merged into `main`.
 - `mockups/` holds the four original design directions plus screenshots — reference only, never live pages, and they intentionally diverge from the built site.
-- Branch `direction-3-editorial-build` is a complete, preserved alternate build of a rejected direction. Don't delete it.
+- `direction-3-editorial-build` is a complete, preserved alternate build of a rejected direction (forked 2026-07-27, last built 2026-07-30 — the day Direction 2 was locked). It exists **only on `origin`**, deliberately not checked out locally. Don't delete the remote branch; if you need to look at it, `git fetch origin` and read it from `origin/direction-3-editorial-build` rather than creating a local copy.
 - `notes/handoffs/` carries session handoff docs, including decisions, dead ends already tried, and the site owner's stated working preferences for design work (make the expert call and show a rendered artifact rather than asking open-ended design questions). Worth reading before a large visual change.

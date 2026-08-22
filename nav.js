@@ -3,15 +3,26 @@ document.addEventListener('DOMContentLoaded', function () {
   var nav = document.getElementById('site-nav');
   if (!toggle || !nav) return;
 
-  toggle.addEventListener('click', function () {
-    var open = nav.classList.toggle('open');
+  // The toggle's only content is three unlabelled bars, so it has no
+  // accessible name of its own. Set the ARIA contract here rather than
+  // relying on the markup alone, and keep the label describing the action
+  // the button will perform next.
+  function setExpanded(open) {
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  }
+
+  toggle.setAttribute('aria-controls', 'site-nav');
+  setExpanded(nav.classList.contains('open'));
+
+  toggle.addEventListener('click', function () {
+    setExpanded(nav.classList.toggle('open'));
   });
 
   nav.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () {
       nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
+      setExpanded(false);
     });
   });
 });

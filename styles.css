@@ -58,6 +58,25 @@ a {
   text-underline-offset: 3px;
 }
 
+/* ---------------------------------------------------------
+   Keyboard focus
+
+   :focus-visible only, so pointer users see no change: the ring is drawn
+   for keyboard and assistive-tech focus. outline sits outside the box and
+   is not part of layout, so nothing reflows and no spacing shifts.
+--------------------------------------------------------- */
+
+:focus-visible {
+  outline: 3px solid var(--signal-teal);
+  outline-offset: 3px;
+}
+
+/* The contact band and any other navy ground drops the teal ring to about
+   1.6:1, so invert to white there. */
+.section-contact :focus-visible {
+  outline-color: #fff;
+}
+
 .wrap {
   max-width: var(--max);
   margin: 0 auto;
@@ -636,13 +655,19 @@ header {
   margin-top: 56px;
 }
 
-.assoc-group-label {
+/* Now an h2 (it is the heading for each associate group; the h3 associate
+   cards below it were otherwise hanging straight off the h1). Scoped to
+   .assoc-group so it outranks `.section h2`, and line-height / margin /
+   max-width are pinned so it renders exactly as the span did. */
+.assoc-group .assoc-group-label {
   display: block;
   font-family: var(--font-display);
   font-weight: 500;
   font-size: 1.15rem;
+  line-height: 1.65;
   color: var(--ink-navy);
-  margin-bottom: 18px;
+  margin: 0 0 18px;
+  max-width: none;
 }
 
 /* The pair grid reuses .card-grid.four, which already collapses to a single

@@ -2117,3 +2117,29 @@ footer {
     margin: 0 0 16px;
   }
 }
+/* --- Anchor navigation polish --- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Keep anchor targets clear of the sticky nav.
+   Adjust to match your header height. */
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Stop headings breaking with one orphaned word */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: rgba(45, 212, 191, 0.25);
+}

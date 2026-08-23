@@ -22,22 +22,26 @@ Cloudflare Workers static assets (`wrangler.jsonc`, `assets.directory: "."`). Th
 
 ## Architecture
 
-Ten standalone HTML documents, each a complete page with no shared includes:
+Standalone HTML documents, each a complete page with no shared includes:
 
 - Root: `index.html` (the main scrolling page), `diagnostic.html`, `associates.html`, `publications.html`, `thanks.html` (Formspree redirect target)
-- `publications/*.html` — five long-form article pages
+- `publications/*.html` — the long-form article pages
 
-Everything shares one stylesheet (`styles.css`, ~2200 lines) and one script (`nav.js`). `diagnostic-carousel.js` loads only on `diagnostic.html`.
+Everything shares one stylesheet (`styles.css`, ~2450 lines) and one script (`nav.js`). `diagnostic-carousel.js` loads only on `diagnostic.html`.
 
-**Because there is no templating, the following are hand-duplicated across all ten files** and must be edited in every one:
+**Because there is no templating, the following are hand-duplicated across every page** and must be edited in every one:
 
 - The entire `<head>` block (fonts, favicons, stylesheet link)
 - `<header>` / `.site-nav` markup and `<footer>`
 - Link prefixes differ by depth: root pages use `index.html#about`, articles use `../index.html#about`. `index.html` itself uses bare `#about` fragments. Nav label copy has drifted between pages before — diff the nav block across files rather than assuming they match.
 
-**Cache busting**: every page links `styles.css?v=NN` (currently `v=28`). When you change `styles.css`, bump the number in **all ten** files in the same commit — a partial bump serves mixed CSS versions.
+**Cache busting**: every page links `styles.css?v=NN`. When you change `styles.css`, bump the number in **every** page that links it, in the same commit — a partial bump serves mixed CSS versions. Check the current value and the full file list with:
 
-**Adding a page** means: the page itself, a nav entry in the other nine files, a `<link rel="canonical">`, and a `<url>` entry in `sitemap.xml`.
+```bash
+grep -l 'styles.css?v=' *.html publications/*.html
+```
+
+**Adding a page** means: the page itself, a nav entry in every other page, a `<link rel="canonical">`, and a `<url>` entry in `sitemap.xml`.
 
 ### styles.css
 

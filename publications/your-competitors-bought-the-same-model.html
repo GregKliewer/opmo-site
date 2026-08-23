@@ -194,11 +194,11 @@
 
         <h2>The four levers, in order</h2>
 
-        <p>The architecture in Ng’s illustration is not exotic. He describes four design patterns, and together they are the stack: Reflection, where the system critiques and revises its own output before you see it. Tool Use, where it calls real functions, search, code execution, your APIs, instead of guessing. Planning, where it decomposes a task into steps and replans when one fails. Multi-Agent Collaboration, where specialized agents divide the labor, one writing, one reviewing, one testing.</p>
+        <p>The architecture in Ng’s illustration is not exotic. He describes four design patterns, and together they are the stack: Reflection, where the system critiques and revises its own output before you see it. Tool Use, where it calls real functions, search, code execution, your APIs, instead of guessing. Planning, where it decomposes a task into steps and replans when one fails. Multi-Agent Collaboration, where specialized agents divide the labour, one writing, one reviewing, one testing.</p>
 
         <p>Here is the part that matters for anyone holding a platform budget: these four are a maturity sequence, not a feature catalog. Reflection and Tool Use are production-reliable today. Reflection in particular is close to free, one additional critique pass in the call chain, and it is quick to implement for the gain it delivers. Planning and Multi-Agent are more powerful and meaningfully less predictable. Ng himself says he finds it hard to predict in advance what a planning agent will do. Their outputs are harder to anticipate, which means they need governance infrastructure, step-level logging, human override points, audit trails between agents, before broad deployment, not after the first incident.</p>
 
-        <figure class="viz" aria-label="The four agentic design patterns as a rising stair, governance cost increasing left to right. One, Reflection: critiques its own output, reliable today. Two, Tool Use: calls real functions, reliable today. Three, Planning: decomposes and replans, governance first. Four, Multi-Agent: agents divide the labor, governance first. Skip a rung and you get incidents.">
+        <figure class="viz" aria-label="The four agentic design patterns as a rising stair, governance cost increasing left to right. One, Reflection: critiques its own output, reliable today. Two, Tool Use: calls real functions, reliable today. Three, Planning: decomposes and replans, governance first. Four, Multi-Agent: agents divide the labour, governance first. Skip a rung and you get incidents.">
           <span class="viz-kicker">The four agentic design patterns</span>
           <p class="viz-headline">A maturity sequence. <span class="hl-teal">Not a shopping list.</span></p>
           <p class="viz-sub">Each rung builds the operational muscle the next rung requires.</p>
@@ -224,7 +224,7 @@
             <div class="viz-stair-card is-gated">
               <span class="viz-stair-num">04</span>
               <span class="viz-stair-term">Multi-Agent</span>
-              <p class="viz-stair-desc">Agents divide the labor</p>
+              <p class="viz-stair-desc">Agents divide the labour</p>
               <span class="viz-stair-status">Governance first</span>
             </div>
           </div>
@@ -244,7 +244,7 @@
 
         <p>There is one more twist worth naming, because it answers the obvious objection. Someone will point out that the models got dramatically better between 2024 and 2026, and they did. But look at how: the labs absorbed the agentic lessons into training itself. Today’s reasoning models run yesterday’s reflection and planning loops internally. The architecture dividend did not disappear; part of it moved inside the model, which is exactly why swapping among frontier peers now buys so little, and the rest of it still sits in the harness you build. Either way, the lever was never the label on the model.</p>
 
-        <p>And notice what this does to the competitive question from the opening. The model is a commodity; the architecture is not. The wrapper you build is specific to your workflows, your controls, your data, your value streams. It compounds, because each pattern you operationalize makes the next one cheaper to adopt. Your competitor cannot buy your architecture with a credit card. The open-weight surge everyone is currently blogging about makes the same point from the other direction: when a downloadable, permissively licensed model sits within a point of the proprietary frontier, the model layer has stopped being anyone’s moat, and the whole open-versus-closed debate is an argument about which commodity to standardize on. That asymmetry, not the model shortlist and not the license on it, is where a durable difference lives. Everyone is about to have the same build speed on paper; almost nobody differentiates there.</p>
+        <p>And notice what this does to the competitive question from the opening. The model is a commodity; the architecture is not. The wrapper you build is specific to your workflows, your controls, your data, your value streams. It compounds, because each pattern you operationalize makes the next one cheaper to adopt. Your competitor cannot buy your architecture with a credit card. The open-weight surge everyone is currently blogging about makes the same point from the other direction: when a downloadable, permissively licensed model sits within a point of the proprietary frontier, the model layer has stopped being anyone’s moat, and the whole open-versus-closed debate is an argument about which commodity to standardize on. That asymmetry, not the model shortlist and not the licence on it, is where a durable difference lives. Everyone is about to have the same build speed on paper; almost nobody differentiates there.</p>
 
         <h2>Where this does not apply</h2>
 

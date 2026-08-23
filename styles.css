@@ -1980,6 +1980,204 @@ footer {
   color: var(--ink-navy);
 }
 
+/* V7a - buy against build. Reuses V6a's .viz-split shell with no new
+   rules; the static panel leads this time, so what anyone can buy is the
+   one that recedes. Inverse of V6a's ordering, same components. */
+
+/* V7b - HumanEval bars. The value sits beside the track rather than
+   inside the fill, the way the other bar figures do it: the three
+   numbers are the whole argument of this figure and have to read as one
+   column, which an in-bar number can't do when the fills run 48% to 95%. */
+
+.viz-barrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.viz-barrow .viz-slidebar-track {
+  flex: 1;
+  height: 30px;
+}
+
+.viz-barvalue {
+  flex: none;
+  width: 76px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--slate);
+}
+
+/* The source graphic steps the first two values apart in tone, light grey
+   over mid grey. Light grey lands at 2.95:1 on the cool-white figure
+   ground - under AA even at this size - and these numbers are the payload,
+   so the tonal step moved into the bar fills and both values take slate
+   at 5.2:1. Same trade the --signal-teal token makes against the brand hex. */
+
+.viz-barvalue.is-teal {
+  color: var(--signal-teal);
+}
+
+.viz-slidebar-fill.is-mute {
+  background: #C7D0D6;
+}
+
+/* V7c - convergence spread, two panels on the V6a shell. The dot strip
+   and its span bracket are one inline SVG per panel because the positions
+   are the data (six models inside 1.3 points against four harnesses across
+   9.5), and they only stay comparable in a shared coordinate space. */
+
+.viz-panel-note {
+  margin: 0 0 18px;
+  font-size: 0.88rem;
+  color: var(--slate);
+}
+
+/* .viz-panel-head's 16px is sized for a list opening right under it.
+   A caption line follows here instead, so pull it back. */
+
+.viz-panel-head + .viz-panel-note {
+  margin-top: -10px;
+}
+
+.viz-spread {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.viz-spread-value {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--signal-teal);
+}
+
+.viz-panel.is-static .viz-spread-value {
+  color: var(--slate);
+}
+
+/* V7d - the four patterns as a rising stair. V6b's comment ruled four
+   columns out at this measure because its cards held full sentences;
+   these hold two- and three-word fragments, and the left-to-right rise
+   is the argument itself (governance cost), so it earns the columns here.
+   Bottoms align and tops step up: the rise is min-height per card rather
+   than padding, so it stays monotonic whatever the copy wraps to. */
+
+.viz-stair {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  align-items: end;
+}
+
+.viz-stair-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--signal-teal);
+  border-radius: 6px;
+  padding: 16px 14px 18px;
+}
+
+.viz-stair-card:nth-child(1) { min-height: 176px; }
+.viz-stair-card:nth-child(2) { min-height: 194px; }
+.viz-stair-card:nth-child(3) { min-height: 212px; }
+.viz-stair-card:nth-child(4) { min-height: 230px; }
+
+.viz-stair-card.is-gated {
+  background: var(--cool-white);
+  border-top-color: var(--slate);
+}
+
+.viz-stair-num {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--signal-teal);
+  margin-bottom: 12px;
+}
+
+/* 3.15:1 on the cool-white card. Under AA's 4.5:1 for body text, over the
+   3:1 that applies at this size (24px), which is the bar it has to clear.
+   The grey is doing work the darker tone would undo: these two rungs are
+   the not-yet ones, and the pattern name below carries the meaning. */
+
+.viz-stair-card.is-gated .viz-stair-num {
+  color: #7F8F9C;
+}
+
+/* A span, not an h3, for the same reason .viz-qterm is one: card labels
+   inside a figure, kept out of the page's heading outline. */
+
+.viz-stair-term {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink-navy);
+  margin-bottom: 5px;
+}
+
+.viz .viz-stair-desc {
+  margin: 0 0 14px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--slate);
+}
+
+/* Pinned to the card bottom, so the four verdicts line up across a row
+   whose cards are deliberately different heights. */
+
+.viz-stair-status {
+  display: block;
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--signal-teal);
+}
+
+.viz-stair-card.is-gated .viz-stair-status {
+  color: var(--slate);
+}
+
+/* Closing line with an aside opposite it, where .viz-note alone would
+   leave the aside stranded on its own row. */
+
+.viz-footrow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.viz .viz-footrow .viz-note {
+  margin: 0;
+}
+
+.viz-foot-aside {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--slate);
+  text-align: right;
+}
+
+/* Phrase that stops being true once a row stacks into a column. Same
+   two-variant swap .viz-slidebar-num already uses for its long values. */
+
+.viz-only-narrow {
+  display: none;
+}
+
 /* Visual-specific responsive tier (spec-mandated 700px breakpoint,
    distinct from the site's 900px layout/nav breakpoint) */
 
@@ -2026,6 +2224,44 @@ footer {
   }
 
   .viz-slidebar-num.only-narrow {
+    display: inline;
+  }
+
+  .viz-barvalue {
+    width: 62px;
+    font-size: 1.25rem;
+  }
+
+  .viz-stair {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .viz-stair-card:nth-child(1),
+  .viz-stair-card:nth-child(2),
+  .viz-stair-card:nth-child(3),
+  .viz-stair-card:nth-child(4) {
+    min-height: 0;
+  }
+
+  .viz-stair-status {
+    margin-top: 0;
+  }
+
+  .viz-footrow {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .viz-foot-aside {
+    text-align: left;
+  }
+
+  .viz-only-wide {
+    display: none;
+  }
+
+  .viz-only-narrow {
     display: inline;
   }
 }

@@ -1183,7 +1183,9 @@ footer {
 }
 
 .publications-card {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
   text-decoration: none;
   color: inherit;
   transition: border-color 0.15s;
@@ -1191,6 +1193,42 @@ footer {
 
 .publications-card:hover {
   border-color: var(--signal-teal);
+}
+
+/* Same tinted-tile treatment as .role-icon on diagnostic.html, one size down:
+   the publications cards are full-width rows rather than grid cells, so an
+   88px tile next to a single line of meta text reads as top-heavy. */
+.publications-icon {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  background: var(--teal-tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s;
+}
+
+.publications-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: var(--signal-teal);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The whole card is the anchor, so the tile has to move with the border on
+   hover — otherwise the icon reads as a static ornament sitting outside the
+   link. --signal-teal at 16%, a shade deeper than the flat --teal-tint. */
+.publications-card:hover .publications-icon {
+  background: rgba(24, 122, 115, 0.16);
+}
+
+.publications-body {
+  min-width: 0;
 }
 
 .publications-meta {
@@ -2305,6 +2343,26 @@ footer {
   .tier-grid,
   .record-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* The icon stays on the left at phone widths, but it is competing for a
+     326px card. Trimming the tile and the card's own 32px padding buys the
+     text column back ~50px, which is the difference between a three-line and
+     a five-line headline. */
+  .publications-card {
+    gap: 14px;
+    padding: 24px 22px;
+  }
+
+  .publications-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+  }
+
+  .publications-icon svg {
+    width: 30px;
+    height: 30px;
   }
 
   .tier-carousel {

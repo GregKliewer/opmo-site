@@ -1185,7 +1185,7 @@ footer {
 .publications-card {
   display: flex;
   align-items: flex-start;
-  gap: 24px;
+  gap: 28px;
   text-decoration: none;
   color: inherit;
   transition: border-color 0.15s;
@@ -1195,14 +1195,14 @@ footer {
   border-color: var(--signal-teal);
 }
 
-/* Same tinted-tile treatment as .role-icon on diagnostic.html, one size down:
-   the publications cards are full-width rows rather than grid cells, so an
-   88px tile next to a single line of meta text reads as top-heavy. */
+/* Same tinted-tile treatment as .role-icon on diagnostic.html, sized up to
+   anchor a full card of text rather than one paragraph (owner review on
+   PR #14 asked for double the original 72px). */
 .publications-icon {
   flex-shrink: 0;
-  width: 72px;
-  height: 72px;
-  border-radius: 12px;
+  width: 144px;
+  height: 144px;
+  border-radius: 18px;
   background: var(--teal-tint);
   display: flex;
   align-items: center;
@@ -1211,8 +1211,8 @@ footer {
 }
 
 .publications-icon svg {
-  width: 40px;
-  height: 40px;
+  width: 84px;
+  height: 84px;
   fill: none;
   stroke: var(--signal-teal);
   stroke-width: 1.6;
@@ -2345,24 +2345,24 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  /* The icon stays on the left at phone widths, but it is competing for a
-     326px card. Trimming the tile and the card's own 32px padding buys the
-     text column back ~50px, which is the difference between a three-line and
-     a five-line headline. */
+  /* A 144px tile beside a ~326px card would leave the text a ~130px
+     column, so at phone widths the icon sits above the text instead of
+     losing half its size. */
   .publications-card {
-    gap: 14px;
-    padding: 24px 22px;
+    flex-direction: column;
+    gap: 18px;
+    padding: 26px 24px;
   }
 
   .publications-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 10px;
+    width: 104px;
+    height: 104px;
+    border-radius: 14px;
   }
 
   .publications-icon svg {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
   }
 
   .tier-carousel {

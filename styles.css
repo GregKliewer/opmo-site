@@ -1183,7 +1183,9 @@ footer {
 }
 
 .publications-card {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
   text-decoration: none;
   color: inherit;
   transition: border-color 0.15s;
@@ -1191,6 +1193,42 @@ footer {
 
 .publications-card:hover {
   border-color: var(--signal-teal);
+}
+
+/* Same tinted-tile treatment as .role-icon on diagnostic.html, sized up to
+   anchor a full card of text rather than one paragraph (owner review on
+   PR #14 asked for double the original 72px). */
+.publications-icon {
+  flex-shrink: 0;
+  width: 144px;
+  height: 144px;
+  border-radius: 18px;
+  background: var(--teal-tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s;
+}
+
+.publications-icon svg {
+  width: 84px;
+  height: 84px;
+  fill: none;
+  stroke: var(--signal-teal);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The whole card is the anchor, so the tile has to move with the border on
+   hover — otherwise the icon reads as a static ornament sitting outside the
+   link. --signal-teal at 16%, a shade deeper than the flat --teal-tint. */
+.publications-card:hover .publications-icon {
+  background: rgba(24, 122, 115, 0.16);
+}
+
+.publications-body {
+  min-width: 0;
 }
 
 .publications-meta {
@@ -2305,6 +2343,26 @@ footer {
   .tier-grid,
   .record-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* A 144px tile beside a ~326px card would leave the text a ~130px
+     column, so at phone widths the icon sits above the text instead of
+     losing half its size. */
+  .publications-card {
+    flex-direction: column;
+    gap: 18px;
+    padding: 26px 24px;
+  }
+
+  .publications-icon {
+    width: 104px;
+    height: 104px;
+    border-radius: 14px;
+  }
+
+  .publications-icon svg {
+    width: 60px;
+    height: 60px;
   }
 
   .tier-carousel {

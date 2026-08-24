@@ -74,46 +74,82 @@
         <a href="index.html#contact" class="btn btn-primary">Contact me</a>
       </div>
       <div class="hero-visual">
-        <!-- Ophiuchus. Star positions are the real RA/Dec of the figure's
-             named stars, projected linearly with east to the left. Alpha
-             Ophiuchi (Rasalhague, the head) is the one open marker.
+        <!-- Ophiuchus, flanked by the two halves of Serpens: Caput (the head) to
+             the west at right, Cauda (the tail) to the east at left. Star
+             positions are the real J2000 RA/Dec of each figure's named stars,
+             projected linearly with east to the left and fitted to the viewBox.
+             Ophiuchus is drawn at 75% of its earlier size to make room.
+
+             Ophiuchus reads as filled dots, Serpens as open ones. Alpha Ophiuchi
+             (Rasalhague) stays open and a size larger, so the head of the figure
+             still anchors the composition now that open also means Serpens.
+
+             nu Oph and nu Ser are both omitted: they sit in the strip where the
+             two figures abut, and any line drawn to either one crosses the other
+             constellation. Dropping them keeps the three figures legible.
+
              Brand teal #1F8A82 is used here rather than --signal-teal: this
-             graphic is decorative and carries no text, so the AA contrast
-             floor that governs the token does not apply. See DESIGN_SYSTEM.md. -->
+             graphic is decorative and carries no text, so the AA contrast floor
+             that governs the token does not apply. See DESIGN_SYSTEM.md. -->
         <svg aria-hidden="true" focusable="false" viewBox="0 0 400 400">
           <g stroke="#1F8A82" stroke-width="1" opacity="0.6">
-            <!-- head to shoulders -->
-            <line x1="136" y1="30" x2="220" y2="59"/>
-            <line x1="136" y1="30" x2="117" y2="102"/>
-            <!-- eastern flank: beta - gamma - nu - eta -->
-            <line x1="117" y1="102" x2="107" y2="119"/>
-            <line x1="107" y1="119" x2="82" y2="232"/>
-            <line x1="82" y1="232" x2="192" y2="286"/>
-            <!-- western flank: kappa - lambda - delta - epsilon - zeta - eta -->
-            <line x1="220" y1="59" x2="281" y2="126"/>
-            <line x1="281" y1="126" x2="318" y2="177"/>
-            <line x1="318" y1="177" x2="309" y2="186"/>
-            <line x1="309" y1="186" x2="267" y2="239"/>
-            <line x1="267" y1="239" x2="192" y2="286"/>
-            <!-- leg: eta - xi - theta -->
-            <line x1="192" y1="286" x2="168" y2="335"/>
-            <line x1="168" y1="335" x2="165" y2="370"/>
+            <!-- Ophiuchus: head, shoulders, both flanks, and the leg -->
+            <line x1="167.2" y1="97.2" x2="230.1" y2="118.7"/>
+            <line x1="167.2" y1="97.2" x2="152.8" y2="151.2"/>
+            <line x1="152.8" y1="151.2" x2="145.3" y2="163.7"/>
+            <line x1="145.3" y1="163.7" x2="208.6" y2="288.2"/>
+            <line x1="230.1" y1="118.7" x2="275.3" y2="168.6"/>
+            <line x1="275.3" y1="168.6" x2="303.2" y2="206.9"/>
+            <line x1="303.2" y1="206.9" x2="296.5" y2="213.7"/>
+            <line x1="296.5" y1="213.7" x2="264.7" y2="253.3"/>
+            <line x1="264.7" y1="253.3" x2="208.6" y2="288.2"/>
+            <line x1="208.6" y1="288.2" x2="190.7" y2="324.6"/>
+            <line x1="190.7" y1="324.6" x2="189" y2="350.8"/>
+            <!-- Serpens Caput: the head group, then the neck down to mu -->
+            <line x1="358.5" y1="49.2" x2="346.5" y2="59.5"/>
+            <line x1="346.5" y1="59.5" x2="350.8" y2="77.9"/>
+            <line x1="350.8" y1="77.9" x2="333.5" y2="76.2"/>
+            <line x1="350.8" y1="77.9" x2="370" y2="110.8"/>
+            <line x1="370" y1="110.8" x2="354" y2="138.6"/>
+            <line x1="354" y1="138.6" x2="343" y2="151.8"/>
+            <line x1="343" y1="151.8" x2="345" y2="205.2"/>
+            <!-- Serpens Cauda: the tail rising north-east to Alya -->
+            <line x1="162.7" y1="286" x2="156.3" y2="268.9"/>
+            <line x1="156.3" y1="268.9" x2="124.1" y2="206.9"/>
+            <line x1="124.1" y1="206.9" x2="88.9" y2="201.6"/>
+            <line x1="88.9" y1="201.6" x2="30" y2="153.6"/>
           </g>
+          <!-- Ophiuchus: filled markers -->
           <g fill="#1F8A82">
-            <circle cx="220" cy="59" r="5"/>   <!-- kappa Oph -->
-            <circle cx="117" cy="102" r="5"/>  <!-- beta Oph, Cebalrai -->
-            <circle cx="107" cy="119" r="5"/>  <!-- gamma Oph -->
-            <circle cx="281" cy="126" r="5"/>  <!-- lambda Oph, Marfik -->
-            <circle cx="318" cy="177" r="5"/>  <!-- delta Oph, Yed Prior -->
-            <circle cx="309" cy="186" r="5"/>  <!-- epsilon Oph, Yed Posterior -->
-            <circle cx="82" cy="232" r="5"/>   <!-- nu Oph -->
-            <circle cx="267" cy="239" r="5"/>  <!-- zeta Oph -->
-            <circle cx="192" cy="286" r="5"/>  <!-- eta Oph, Sabik -->
-            <circle cx="168" cy="335" r="5"/>  <!-- xi Oph -->
-            <circle cx="165" cy="370" r="5"/>  <!-- theta Oph -->
+            <circle cx="230.1" cy="118.7" r="4"/>  <!-- kappa Oph -->
+            <circle cx="152.8" cy="151.2" r="4"/>  <!-- beta Oph, Cebalrai -->
+            <circle cx="145.3" cy="163.7" r="4"/>  <!-- gamma Oph -->
+            <circle cx="275.3" cy="168.6" r="4"/>  <!-- lambda Oph, Marfik -->
+            <circle cx="303.2" cy="206.9" r="4"/>  <!-- delta Oph, Yed Prior -->
+            <circle cx="296.5" cy="213.7" r="4"/>  <!-- epsilon Oph, Yed Posterior -->
+            <circle cx="264.7" cy="253.3" r="4"/>  <!-- zeta Oph -->
+            <circle cx="208.6" cy="288.2" r="4"/>  <!-- eta Oph, Sabik -->
+            <circle cx="190.7" cy="324.6" r="4"/>  <!-- xi Oph -->
+            <circle cx="189" cy="350.8" r="4"/>  <!-- theta Oph -->
           </g>
-          <!-- alpha Oph (Rasalhague): open marker, teal ring, cool-white centre -->
-          <circle cx="136" cy="30" r="6" fill="#F7F9FA" stroke="#1F8A82" stroke-width="2"/>
+          <!-- Serpens, both halves: open markers, teal ring, cool-white centre -->
+          <g fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5">
+            <circle cx="358.5" cy="49.2" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- iota Ser (Caput) -->
+            <circle cx="346.5" cy="59.5" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- kappa Ser (Caput) -->
+            <circle cx="350.8" cy="77.9" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- beta Ser (Caput) -->
+            <circle cx="333.5" cy="76.2" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- gamma Ser (Caput) -->
+            <circle cx="370" cy="110.8" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- delta Ser (Caput) -->
+            <circle cx="354" cy="138.6" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- alpha Ser (Caput), Unukalhai -->
+            <circle cx="343" cy="151.8" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- epsilon Ser (Caput) -->
+            <circle cx="345" cy="205.2" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- mu Ser (Caput) -->
+            <circle cx="162.7" cy="286" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- xi Ser (Cauda) -->
+            <circle cx="156.3" cy="268.9" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- omicron Ser (Cauda) -->
+            <circle cx="124.1" cy="206.9" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- zeta Ser (Cauda) -->
+            <circle cx="88.9" cy="201.6" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- eta Ser (Cauda) -->
+            <circle cx="30" cy="153.6" r="4" fill="#F7F9FA" stroke="#1F8A82" stroke-width="1.5"/>  <!-- theta Ser (Cauda), Alya -->
+          </g>
+          <!-- alpha Oph (Rasalhague): open, and a size larger than the rest -->
+          <circle cx="167.2" cy="97.2" r="5.5" fill="#F7F9FA" stroke="#1F8A82" stroke-width="2"/>
         </svg>
       </div>
     </div>

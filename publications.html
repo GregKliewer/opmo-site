@@ -73,26 +73,31 @@
       </div>
       <div class="hero-visual">
         <svg aria-hidden="true" focusable="false" viewBox="0 0 400 400">
+          <!-- Lyra, "the Lyre". Star positions are the real asterism (RA/Dec
+               projected, east to the left); dot radii track apparent magnitude,
+               so Vega is the largest. Gamma Lyrae (Sulafat) is drawn as the
+               open dot, matching the accent treatment used elsewhere. -->
           <g stroke="#1F8A82" stroke-width="1" opacity="0.6">
-            <line x1="118" y1="200" x2="252" y2="86"/>
-            <line x1="118" y1="200" x2="286" y2="150"/>
-            <line x1="118" y1="200" x2="298" y2="216"/>
-            <line x1="118" y1="200" x2="272" y2="286"/>
-            <line x1="118" y1="200" x2="222" y2="330"/>
-            <line x1="252" y1="86" x2="336" y2="60"/>
-            <line x1="298" y1="216" x2="352" y2="252"/>
+            <!-- head of the lyre: Epsilon - Vega - Zeta -->
+            <line x1="229" y1="60" x2="289" y2="96"/>
+            <line x1="289" y1="96" x2="226" y2="143"/>
+            <line x1="226" y1="143" x2="229" y2="60"/>
+            <!-- body: the Zeta - Delta - Gamma - Beta parallelogram -->
+            <line x1="226" y1="143" x2="147" y2="171"/>
+            <line x1="147" y1="171" x2="111" y2="340"/>
+            <line x1="111" y1="340" x2="183" y2="313"/>
+            <line x1="183" y1="313" x2="226" y2="143"/>
           </g>
           <g fill="#1F8A82">
-            <circle cx="252" cy="86" r="6"/>
-            <circle cx="286" cy="150" r="7"/>
-            <circle cx="298" cy="216" r="7"/>
-            <circle cx="272" cy="286" r="6"/>
-            <circle cx="222" cy="330" r="5"/>
-            <circle cx="336" cy="60" r="4"/>
-            <circle cx="352" cy="252" r="4"/>
+            <circle cx="289" cy="96" r="9"/>   <!-- Alpha Lyrae (Vega) -->
+            <circle cx="229" cy="60" r="6"/>   <!-- Epsilon Lyrae -->
+            <circle cx="226" cy="143" r="5"/>  <!-- Zeta Lyrae -->
+            <circle cx="147" cy="171" r="5.5"/><!-- Delta Lyrae -->
+            <circle cx="183" cy="313" r="6.5"/><!-- Beta Lyrae (Sheliak) -->
           </g>
-          <circle cx="118" cy="200" r="9" fill="none" stroke="#1F8A82" stroke-width="3"/>
-          <circle cx="118" cy="200" r="7.5" fill="#F7F9FA"/>
+          <!-- Gamma Lyrae (Sulafat) -->
+          <circle cx="111" cy="340" r="8" fill="none" stroke="#1F8A82" stroke-width="3"/>
+          <circle cx="111" cy="340" r="6.5" fill="#F7F9FA"/>
         </svg>
       </div>
     </div>

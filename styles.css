@@ -375,9 +375,9 @@ header {
 
 .role-icon {
   flex-shrink: 0;
-  width: 88px;
-  height: 88px;
-  border-radius: 14px;
+  width: 132px;
+  height: 132px;
+  border-radius: 18px;
   background: var(--teal-tint);
   display: flex;
   align-items: center;
@@ -385,8 +385,8 @@ header {
 }
 
 .role-icon svg {
-  width: 48px;
-  height: 48px;
+  width: 72px;
+  height: 72px;
   fill: none;
   stroke: var(--signal-teal);
   stroke-width: 1.6;
@@ -2343,6 +2343,20 @@ footer {
   .tier-grid,
   .record-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Same squeeze as .publications-icon below: a 132px tile beside a
+     ~326px card leaves the text a ~180px column, so at phone widths the
+     tile drops to the publications mobile size (104/60) instead. */
+  .role-icon {
+    width: 104px;
+    height: 104px;
+    border-radius: 14px;
+  }
+
+  .role-icon svg {
+    width: 60px;
+    height: 60px;
   }
 
   /* A 144px tile beside a ~326px card would leave the text a ~130px

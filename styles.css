@@ -1319,6 +1319,31 @@ footer {
   color: var(--ink-navy);
 }
 
+/* The Benediction hymn block (Playbook piece). The LinkedIn original set
+   the verse in a code block for want of anything better; here it takes the
+   site's navy-band treatment instead, Fraunces italic on ink navy, so it
+   reads as liturgy rather than terminal output. */
+
+.article-hymn {
+  margin: 32px 0;
+  padding: 28px 32px;
+  background: var(--ink-navy);
+  border-radius: 6px;
+}
+
+.article-hymn p {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.article-hymn p:last-child {
+  margin-bottom: 0;
+}
+
 .article-provenance {
   margin: 56px 0 0;
   padding-top: 24px;
@@ -2216,6 +2241,202 @@ footer {
   display: none;
 }
 
+/* V8a - the invoice. Reuses .viz-panel as the white card shell; the line
+   items are a list, not a table, because the "amount column" is a status
+   word and the rows have to wrap freely on phones. */
+
+.viz-invoice {
+  margin-top: 24px;
+  padding: 20px 22px 22px;
+}
+
+.viz-invoice-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+  margin-bottom: 4px;
+}
+
+.viz-invoice-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--signal-teal);
+}
+
+.viz-invoice-desc {
+  font-size: 0.88rem;
+  color: var(--slate);
+}
+
+/* Scoped under .viz for the same reason .viz-panel-list is: the figure
+   sits inside .article-body, whose ul/li rules would re-add indent. */
+
+.viz .viz-invoice-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.viz .viz-invoice-lines li {
+  margin: 0;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.viz .viz-invoice-lines li:last-child {
+  border-bottom: none;
+  padding-bottom: 6px;
+}
+
+.viz-invoice-toprow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+
+.viz-invoice-num {
+  flex: none;
+  width: 22px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--signal-teal);
+}
+
+.viz-invoice-term {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--ink-navy);
+}
+
+/* Slate, not the source graphic's light grey: the statuses are the
+   argument of the figure and light grey fails AA on white. Same trade
+   .viz-barvalue documents above. */
+
+.viz-invoice-status {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.viz .viz-invoice-detail {
+  margin: 4px 0 0;
+  padding-left: 34px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--slate);
+}
+
+.viz-invoice-total {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding-top: 16px;
+  border-top: 2px solid var(--ink-navy);
+}
+
+.viz-invoice-total-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+}
+
+.viz-invoice-total-value {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--signal-teal);
+}
+
+/* V8b - where the queue goes, two panels on the V6a shell. The waffle and
+   the person rows are inline SVG (a pattern fill for the pile-up, a <use>
+   glyph for the people): the counts are texture, not data, so they scale
+   as drawings rather than reflowing as elements. */
+
+.viz-headline + .viz-split {
+  margin-top: 24px;
+}
+
+.viz-panel-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--signal-teal);
+  margin: 0 0 4px;
+}
+
+.viz-panel.is-static .viz-panel-title {
+  color: var(--slate);
+}
+
+.viz-mini-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 18px 0 10px;
+}
+
+.viz-waffle {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.viz-queue-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.viz-queue-label {
+  flex: none;
+  width: 100px;
+  font-size: 0.85rem;
+  color: var(--graphite);
+}
+
+/* Decorative, aria-hidden squares; the light teal is exempt from the
+   text-contrast bar the same way the waffle grey is. */
+
+.viz-cells {
+  display: flex;
+  gap: 5px;
+}
+
+.viz-cells span {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  background: rgba(24, 122, 115, 0.55);
+}
+
+.viz-people {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.viz .viz-panel-cap {
+  margin: 12px 0 0;
+  font-size: 0.88rem;
+  color: var(--slate);
+}
+
 /* Visual-specific responsive tier (spec-mandated 700px breakpoint,
    distinct from the site's 900px layout/nav breakpoint) */
 
@@ -2452,6 +2673,10 @@ footer {
 
   .article-pull-quote blockquote {
     font-size: 1.25rem;
+  }
+
+  .article-hymn {
+    padding: 22px 24px;
   }
 
   .viz {

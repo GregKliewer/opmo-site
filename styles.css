@@ -307,14 +307,6 @@ header {
   font-size: 2.2rem;
 }
 
-/* Subtitle under the band's H2: lighter and larger than .band-lead, so
-   the two supporting lines read in order rather than as a pair. */
-.investment-band .band-sub {
-  margin: 20px 0 0;
-  color: #DCE5EA;
-  font-size: 1.25rem;
-}
-
 .investment-chips {
   list-style: none;
   margin: 28px 0 0;
@@ -2936,10 +2928,6 @@ footer {
 
   .investment-band h2 {
     font-size: 1.75rem;
-  }
-
-  .investment-band .band-sub {
-    font-size: 1.1rem;
   }
 
   .band-cards {

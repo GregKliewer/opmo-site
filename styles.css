@@ -458,6 +458,13 @@ header {
   margin-top: 18px;
 }
 
+/* A lead that runs the full content column instead of the 560px measure,
+   so it squares off against the card grid beneath it rather than leaving
+   a ragged right margin above it. */
+.section-lead.is-full {
+  max-width: none;
+}
+
 /* Section with a figure beside its copy. Both columns are type here, so
    they align at the top rather than centring on each other. */
 .section-split {

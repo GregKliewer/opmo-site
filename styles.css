@@ -432,6 +432,27 @@ header {
   margin-top: 18px;
 }
 
+/* Section with a figure beside its copy. Same proportions as the hero
+   split, so the two read as the same kind of layout. */
+.section-split {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.section-visual {
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--ink-navy);
+}
+
+.section-visual svg {
+  width: 100%;
+  height: 100%;
+}
+
 /* Prose block: a column of running body copy inside a standard section
    (the why-an-outsider section, the engagement-section H3 blocks, the
    ninth-dimension block on the diagnostic page). */
@@ -2828,6 +2849,16 @@ footer {
   }
 
   .hero-visual {
+    display: none;
+  }
+
+  /* Same call as the hero's: the figure is decorative, and a phone is
+     better served by the copy starting higher. */
+  .section-split {
+    grid-template-columns: 1fr;
+  }
+
+  .section-visual {
     display: none;
   }
 

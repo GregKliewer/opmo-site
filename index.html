@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=42">
+<link rel="stylesheet" href="styles.css?v=43">
 </head>
 <body>
 
@@ -127,12 +127,50 @@
   </section>
 
   <section id="what-i-do" class="section section-alt">
-    <div class="wrap">
-      <span class="section-label">What I do</span>
-      <h2>I own funded transformations that must not stall, from first restructure to handover.</h2>
-      <div class="section-prose">
-        <p>Fractional or interim, embedded with your leadership team, I run the operating-model change itself: the team structures, the decision rights, the ways of working. I make the unpopular calls, train the operator who inherits the result, and leave with the resistance.</p>
-        <p class="prose-callout">When I leave, your long-term operator is enabled to run the new ways of working, and unencumbered by the weight of decisions that shifted roles, responsibilities, and power within the organization.</p>
+    <div class="wrap section-split">
+      <div class="section-visual">
+        <!-- The section's argument as a figure, in the same idiom as the
+             hero constellations: nodes and lines, no labels, decorative.
+             The path climbs from the first restructure through the
+             changes that carry the model, each node larger as more of the
+             organization moves. The last connected node is the handover.
+             The open node above it, on the one broken line, is me leaving:
+             off the path, carrying nothing forward. Open-node-as-departure
+             is the same device the hero uses for 27 Tauri.
+
+             Brand teal #1F8A82 rather than --signal-teal: decorative, no
+             text, so the AA floor on the token doesn't apply. See
+             DESIGN_SYSTEM.md. -->
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 400 300">
+          <g stroke="#1F8A82" stroke-width="1" opacity="0.6">
+            <line x1="42" y1="252" x2="104" y2="223"/>
+            <line x1="104" y1="223" x2="168" y2="186"/>
+            <line x1="168" y1="186" x2="232" y2="152"/>
+            <line x1="232" y1="152" x2="296" y2="108"/>
+            <line x1="296" y1="108" x2="344" y2="74"/>
+          </g>
+          <!-- The exit: broken, and the only line that leaves the path. -->
+          <line x1="344" y1="74" x2="366" y2="34" stroke="#1F8A82"
+                stroke-width="1" opacity="0.45" stroke-dasharray="3 4"/>
+          <g fill="#1F8A82">
+            <circle cx="42" cy="252" r="3.4"/>
+            <circle cx="104" cy="223" r="3.9"/>
+            <circle cx="168" cy="186" r="4.4"/>
+            <circle cx="232" cy="152" r="4.9"/>
+            <circle cx="296" cy="108" r="5.4"/>
+            <circle cx="344" cy="74" r="6"/>
+          </g>
+          <circle cx="366" cy="34" r="7" fill="none" stroke="#1F8A82" stroke-width="2.5"/>
+          <circle cx="366" cy="34" r="5.75" fill="#1B2A3A"/>
+        </svg>
+      </div>
+      <div>
+        <span class="section-label">What I do</span>
+        <h2>I own funded transformations that must not stall, from first restructure to handover.</h2>
+        <div class="section-prose">
+          <p>Fractional or interim, embedded with your leadership team, I run the operating-model change itself: the team structures, the decision rights, the ways of working. I make the unpopular calls, train the operator who inherits the result, and leave with the resistance.</p>
+          <p class="prose-callout">When I leave, your long-term operator is enabled to run the new ways of working, and unencumbered by the weight of decisions that shifted roles, responsibilities, and power within the organization.</p>
+        </div>
       </div>
     </div>
   </section>

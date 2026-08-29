@@ -488,8 +488,12 @@ header {
      start-alignment puts the rule flush with the h2's box top, which sits
      8px above the top of its first capital: half-leading, plus the gap
      from Fraunces' ascent down to cap height, at 2.2rem/1.15. Measured,
-     not guessed, so it tracks the h2 type scale rather than the eye. */
-  padding: 8px 0 0;
+     not guessed, so it tracks the h2 type scale rather than the eye.
+     On top of that 8px, the ladder is dropped a further 1.5 lines of the
+     headline beside it (2.2rem/1.15 = 40.5px a line, so 61px) so the
+     first navy rule lands inside the headline block rather than level
+     with its top. */
+  padding: 69px 0 0;
 }
 
 .step-ladder li {

@@ -323,6 +323,66 @@ header {
   margin-top: 18px;
 }
 
+/* Prose block: a column of running body copy inside a standard section
+   (the why-an-outsider section, the engagement-section H3 blocks, the
+   ninth-dimension block on the diagnostic page). */
+.section-prose {
+  max-width: 680px;
+  margin-top: 40px;
+}
+
+.section-prose h3 {
+  font-size: 1.3rem;
+  margin-bottom: 14px;
+}
+
+.section-prose p {
+  margin: 0 0 22px;
+  font-size: 1.02rem;
+}
+
+.section-prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* A single line set apart from the surrounding prose. Display face and
+   navy, but roman and left-aligned, so it reads as emphasis rather than
+   competing with the page's one large centered pull quote. */
+.section-prose .prose-callout {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.45;
+  color: var(--ink-navy);
+  margin: 36px 0;
+}
+
+/* Quiet quotation: an outside voice with an attribution line. Deliberately
+   smaller and left-ruled so it never reads as the page's large centered
+   pull-quote treatment, which stays unique. */
+.quote-quiet {
+  margin: 48px 0 0;
+  padding-left: 26px;
+  border-left: 3px solid var(--signal-teal);
+}
+
+.quote-quiet blockquote {
+  margin: 0;
+}
+
+.quote-quiet blockquote p {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--ink-navy);
+}
+
+.quote-quiet figcaption {
+  font-size: 0.88rem;
+  color: var(--slate);
+}
+
 /* ---------------------------------------------------------
    Card grid (role cards, diagnostic deliverable cards)
 --------------------------------------------------------- */
@@ -407,6 +467,12 @@ header {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-top: 56px;
+}
+
+/* Two-seat variant: with the advisory tier gone the grid carries two
+   cards, so it takes two columns rather than leaving an empty third. */
+.tier-grid.two {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .tier-card {
@@ -2562,6 +2628,7 @@ footer {
   .card-grid,
   .card-grid.four,
   .tier-grid,
+  .tier-grid.two,
   .record-grid {
     grid-template-columns: 1fr;
   }

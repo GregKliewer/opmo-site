@@ -310,7 +310,7 @@ header {
 
 .investment-chips {
   list-style: none;
-  margin: 32px 0 0;
+  margin: 28px 0 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -326,6 +326,20 @@ header {
   margin-bottom: 0;
 }
 
+/* The highlighted example: filled in the AI panel's own ground, so the
+   chip and the panel below read as one thread. It sits first in the row
+   and shares the panel's left edge; the panel's stem closes the link. */
+.investment-chips .chip-break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.investment-chips .tag-ai {
+  background: var(--teal-tint);
+  border-color: var(--teal-tint);
+  color: var(--ink-navy);
+}
+
 .investment-band .band-lead {
   margin: 28px 0 0;
   max-width: 640px;
@@ -335,11 +349,24 @@ header {
 
 /* The highlighted special case, lifted off the navy on a light ground. */
 .ai-panel {
-  margin-top: 40px;
+  position: relative;
+  margin-top: 44px;
   max-width: 680px;
   background: var(--teal-tint);
   border-radius: 6px;
   padding: 32px 36px;
+}
+
+/* Stem up to the tinted chip above. Both sit at the wrap's left edge,
+   so this lands under that chip at any width. */
+.ai-panel::before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: 28px;
+  width: 2px;
+  height: 24px;
+  background: var(--teal-tint);
 }
 
 /* Navy rather than teal: teal on --teal-tint is 4.42:1, under AA. */
@@ -492,33 +519,6 @@ header {
   margin: 22px 0;
 }
 
-/* Quiet quotation: an outside voice with an attribution line. Deliberately
-   smaller and left-ruled so it never reads as the page's large centered
-   pull-quote treatment, which stays unique. */
-.quote-quiet {
-  margin: 48px 0 0;
-  padding-left: 26px;
-  border-left: 3px solid var(--signal-teal);
-}
-
-.quote-quiet blockquote {
-  margin: 0;
-}
-
-.quote-quiet blockquote p {
-  margin: 0 0 12px;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  color: var(--ink-navy);
-}
-
-.quote-quiet figcaption {
-  font-size: 0.88rem;
-  color: var(--slate);
-}
-
 /* ---------------------------------------------------------
    Card grid (role cards, diagnostic deliverable cards)
 --------------------------------------------------------- */
@@ -566,6 +566,39 @@ header {
 /* Two-column variant (the two reasons in the why-an-outsider section). */
 .card-grid.two {
   grid-template-columns: repeat(2, 1fr);
+}
+
+/* Failure sequence (why an outsider). Each card carries a short meter
+   whose fill shortens across the three: the section's argument is that
+   the same effort returns less at each step until the program stalls,
+   so the sequence should read as depletion rather than as three equal
+   points. Decorative and aria-hidden; the copy carries the meaning. */
+.step-meter {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--line);
+  margin-bottom: 24px;
+}
+
+.step-meter i {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--signal-teal);
+}
+
+.step-grid .role-card:nth-child(1) .step-meter i {
+  width: 72%;
+}
+
+.step-grid .role-card:nth-child(2) .step-meter i {
+  width: 34%;
+}
+
+/* Stalled: a stub rather than nothing, so it still reads as a meter. */
+.step-grid .role-card:nth-child(3) .step-meter i {
+  width: 7%;
 }
 
 /* Emphasis on a single card in a grid. The teal border is the same
@@ -627,11 +660,34 @@ header {
 
 /* Two-seat variant: with the advisory tier gone the grid carries two
    cards, so it takes two columns rather than leaving an empty third. */
-.tier-grid.two {
-  grid-template-columns: repeat(2, 1fr);
-  /* Top-align, so the shorter card doesn't stretch to its neighbour
-     and carry a large empty bottom. */
+/* Top-align, so a shorter card doesn't stretch to its tallest
+   neighbour and carry a large empty bottom. */
+.tier-grid {
   align-items: start;
+}
+
+/* The seat that isn't sold. Dashed, and drained of the teal the real
+   seats carry, so it reads as an absence in the ladder rather than as
+   a third thing you could buy. */
+.tier-card.tier-muted {
+  background: none;
+  border-style: dashed;
+}
+
+.tier-card.tier-muted h3,
+.tier-card.tier-muted .tier-badge,
+.tier-card.tier-muted .tier-days,
+.tier-card.tier-muted p {
+  color: var(--slate);
+}
+
+/* Where the other cards state a commitment of days, this one states its
+   absence, so it is set as a stamp rather than as a quiet caption. */
+.tier-card.tier-muted .tier-days {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 600;
 }
 
 .tier-card {
@@ -1194,6 +1250,20 @@ header {
   line-height: 1.4;
   color: var(--ink-navy);
   max-width: 780px;
+}
+
+/* Carried inside a section rather than standing as its own band: the
+   section already supplies the space below it. */
+.section .pull-quote {
+  /* figure's own UA margin would pull it off the page's centre line. */
+  margin: 0;
+  padding: 72px 0 0;
+}
+
+.pull-quote figcaption {
+  margin-top: 20px;
+  color: var(--slate);
+  font-size: 0.92rem;
 }
 
 /* ---------------------------------------------------------
@@ -2788,7 +2858,6 @@ footer {
   .card-grid.two,
   .card-grid.four,
   .tier-grid,
-  .tier-grid.two,
   .record-grid {
     grid-template-columns: 1fr;
   }

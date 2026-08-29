@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=38">
+<link rel="stylesheet" href="styles.css?v=39">
 </head>
 <body>
 
@@ -147,18 +147,21 @@
       <div class="section-prose">
         <p>If you were hired as the change mandate, you don&rsquo;t need the first. You are the legitimacy. So you turn the firm down, and you&rsquo;re right to. But then it&rsquo;s tempting to conclude that you don&rsquo;t need outside help at all. That&rsquo;s the part that can cost you.</p>
       </div>
-      <div class="card-grid">
+      <div class="card-grid step-grid">
         <article class="role-card">
+          <span class="step-meter" aria-hidden="true"><i></i></span>
           <span class="role-sub">01</span>
           <h3>The loss lands.</h3>
           <p>Transformation imposes loss. Moved reporting lines, removed discretion, changed roles, exits. Every one of those decisions has a loser who knows exactly who made it. And everyone who remains is needed to deliver in the new ways of working. Every ounce of resentment they carry forward fuels resistance to changes essential for success.</p>
         </article>
         <article class="role-card">
+          <span class="step-meter" aria-hidden="true"><i></i></span>
           <span class="role-sub">02</span>
           <h3>The trades begin.</h3>
           <p>For those who lead the transformation in front of operating the thing themselves, tradeoffs start around month nine. A restructure softened. A role change deferred. A conversation not had. None of it gets written down as a decision to slow the transformation, but the effects are unavoidable.</p>
         </article>
         <article class="role-card">
+          <span class="step-meter" aria-hidden="true"><i></i></span>
           <span class="role-sub">03</span>
           <h3>The swap changes nothing.</h3>
           <p>Two to four quarters later the program has under-delivered, the organization decides it has a talent problem, and swaps the leader. The replacement inherits the same relational economics and lands in the same place on the same timeline. This is when stalling turns into regression and failure.</p>
@@ -167,19 +170,20 @@
       <div class="section-prose">
         <p class="prose-callout">And everyone is surprised and disappointed that the second leader fails just like the first.</p>
         <p>I have been both of those positions, making those same trades. Not as a failure of nerve - I&rsquo;d make some of them again, because the relationships were real and I needed them to ship anything at all - but due entirely to the position I was placed in. A no-win situation. Which is the point. The incentive is structural. It does not care how good the leader is, and it did not care how good I was.</p>
-        <figure class="quote-quiet">
-          <blockquote>
-            <p>&ldquo;These things should never be run by an internal person, because all of the goodwill you have gets burned, and more.&rdquo;</p>
-          </blockquote>
-          <figcaption>An executive who has run enterprise transformation twice.</figcaption>
-        </figure>
       </div>
+      <!-- Sits outside .section-prose so it centres on the page, not on
+           the 680px prose column. -->
+      <figure class="pull-quote">
+        <blockquote>&ldquo;These things should never be run by an internal person, because all of the goodwill you have gets burned, and more.&rdquo;</blockquote>
+        <figcaption>An executive who has run enterprise transformation twice.</figcaption>
+      </figure>
     </div>
   </section>
 
   <section class="investment-band">
     <div class="wrap">
       <h2>This isn&rsquo;t only about AI. It&rsquo;s any investment big enough to change how you operate.</h2>
+      <p class="band-lead">Any investment sold on speed or efficiency lands on the operating model first, and if changes are made there to guarantee returns, meets the same resistance during transformation.</p>
       <ul class="investment-chips">
         <li><span class="tag">A product-model transition</span></li>
         <li><span class="tag">A platform or portfolio consolidation</span></li>
@@ -187,8 +191,12 @@
         <li><span class="tag">A cloud repatriation</span></li>
         <li><span class="tag">An M&amp;A integration</span></li>
         <li><span class="tag">A regulatory mandate</span></li>
+        <!-- Forces the AI chip onto its own final row, so it always sits
+             at the wrap's left edge directly above the panel and the
+             panel's stem rises into it at any viewport width. -->
+        <li class="chip-break" aria-hidden="true"></li>
+        <li><span class="tag tag-ai">AI-native adoption</span></li>
       </ul>
-      <p class="band-lead">Any investment sold on speed or efficiency lands on the operating model first, and meets the same resistance when it lands.</p>
       <div class="ai-panel">
         <span class="eyebrow">Right now, the volume is AI</span>
         <p>AI adoption is by far the largest wave of this change moving through organizations today. It&rsquo;s also where most of my development and R&amp;D time goes: honing the systems that transform teams and operating models to absorb AI tooling to maximum effect.</p>
@@ -200,7 +208,7 @@
   <section id="what-i-do" class="section">
     <div class="wrap">
       <span class="section-label">What I do</span>
-      <h2>I take one fractional engagement at a time. You get an executive's attention, not a bench.</h2>
+      <h2>I take one fractional engagement at a time. You get an executive&rsquo;s attention fully focussed on transformation, not an operator balancing the costs of transformation against the currency needed to operate once it&rsquo;s over.</h2>
       <div class="card-grid">
         <article class="role-card">
           <span class="role-sub">Platform Engineering</span>
@@ -229,7 +237,15 @@
       <span class="section-label">How the engagement works</span>
       <h2>Two seats. The difference is how much of the loss I take.</h2>
       <p class="section-lead">A flat monthly access fee for a capped seat, not a day rate. No timesheets: you&rsquo;re buying a standing seat and availability, not metered hours.</p>
-      <div class="tier-grid two">
+      <div class="tier-grid">
+        <!-- Shown, not sold: the ladder's bottom rung, marked absent. The
+             aside below the cards carries the reasoning. -->
+        <div class="tier-card tier-muted">
+          <span class="tier-badge">Advisory Seat</span>
+          <h3>Transformation advice</h3>
+          <span class="tier-days">Not offered</span>
+          <p>A seat at the governance table and judgment on call, without workstream ownership.</p>
+        </div>
         <div class="tier-card">
           <span class="tier-badge">Embedded Lead</span>
           <h3>A named workstream</h3>
@@ -251,7 +267,7 @@
       <div class="feature-panel">
         <h3>The seat exists to be vacated.</h3>
         <p>Every mandate names the condition that ends it, in writing, before the work starts. What the operator has to be able to do without me. What has to be running. What evidence counts.</p>
-        <p class="panel-line">You judge whether it&rsquo;s been met. I don&rsquo;t.</p>
+        <p class="panel-line">You judge when it&rsquo;s been met. I don&rsquo;t.</p>
         <p>I don&rsquo;t get to be the one who decides I&rsquo;m still needed.</p>
         <p>The term runs as long as the transformation does, and the big ones run for many quarters into years. The exit test doesn&rsquo;t cap that and isn&rsquo;t meant to. What it fixes is narrower: nobody in the room is paid to say the work isn&rsquo;t finished yet.</p>
       </div>
@@ -326,13 +342,7 @@
     </div>
   </section>
 
-  <section class="pull-quote">
-    <div class="wrap">
-      <blockquote>&ldquo;AI doesn't transform organizations. It amplifies the operating model it lands on.&rdquo;</blockquote>
-    </div>
-  </section>
-
-  <section id="about" class="section section-alt">
+  <section id="about" class="section">
     <div class="wrap">
       <div class="about-grid">
         <img src="assets/OpMo_About_Headshot.jpg" alt="Greg Kliewer, principal of OpMo Advisory" class="about-photo" width="320" height="400">

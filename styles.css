@@ -326,14 +326,8 @@ header {
   margin-bottom: 0;
 }
 
-/* The highlighted example: filled in the AI panel's own ground, so the
-   chip and the panel below read as one thread. It sits first in the row
-   and shares the panel's left edge; the panel's stem closes the link. */
-.investment-chips .chip-break {
-  flex-basis: 100%;
-  height: 0;
-}
-
+/* The highlighted example, filled in the AI panel's own ground so the
+   chip and the panel read as the same thread. */
 .investment-chips .tag-ai {
   background: var(--teal-tint);
   border-color: var(--teal-tint);
@@ -349,24 +343,11 @@ header {
 
 /* The highlighted special case, lifted off the navy on a light ground. */
 .ai-panel {
-  position: relative;
   margin-top: 44px;
   max-width: 680px;
   background: var(--teal-tint);
   border-radius: 6px;
   padding: 32px 36px;
-}
-
-/* Stem up to the tinted chip above. Both sit at the wrap's left edge,
-   so this lands under that chip at any width. */
-.ai-panel::before {
-  content: "";
-  position: absolute;
-  top: -24px;
-  left: 28px;
-  width: 2px;
-  height: 24px;
-  background: var(--teal-tint);
 }
 
 /* Navy rather than teal: teal on --teal-tint is 4.42:1, under AA. */
@@ -459,50 +440,30 @@ header {
   margin: 36px 0;
 }
 
-/* Quieter aside inside a section: same slate voice as .note, with a
-   hairline rule so it reads as set apart from the body flow. */
-.section-aside {
-  margin-top: 40px;
-  max-width: 680px;
-  padding-left: 24px;
-  border-left: 3px solid var(--line);
-}
-
-.section-aside h3 {
-  font-size: 1.15rem;
-  margin-bottom: 12px;
-}
-
-.section-aside p {
-  margin: 0 0 14px;
-  color: var(--slate);
-  font-size: 0.96rem;
-}
-
-.section-aside p:last-child {
-  margin-bottom: 0;
-}
-
 /* Feature panel: the one block in a section that carries more weight
    than the prose around it. Tinted rather than navy on purpose, so it
    never sits navy-on-navy against the fit-test card below it. */
+/* Sized like the fit-test card further down the page: the full content
+   width rather than the prose column, so the section's closing promise
+   and the page's closing test read as the same kind of object. Tinted
+   rather than navy, so the two never sit navy-on-navy. */
 .feature-panel {
-  margin-top: 40px;
-  max-width: 680px;
+  margin-top: 48px;
   background: var(--teal-tint);
   border-left: 4px solid var(--signal-teal);
-  border-radius: 6px;
-  padding: 36px 40px;
+  border-radius: 8px;
+  padding: 48px 56px;
 }
 
 .feature-panel h3 {
-  font-size: 1.35rem;
-  margin-bottom: 16px;
+  font-size: 1.9rem;
+  margin-bottom: 20px;
 }
 
 .feature-panel p {
   margin: 0 0 18px;
-  font-size: 1.02rem;
+  max-width: 680px;
+  font-size: 1.05rem;
 }
 
 .feature-panel p:last-child {
@@ -601,19 +562,14 @@ header {
   width: 7%;
 }
 
-/* Emphasis on a single card in a grid. The teal border is the same
-   mechanism .tier-card.featured uses; the ground stays white because
+/* Emphasis on a single card in a grid. The ground stays white because
    --teal-tint drops the teal eyebrow to 4.42:1, under AA. Used on
-   exactly two cards site-wide: absorption, and the AI-Native mandate. */
-.role-card.accent {
+   exactly two cards site-wide: absorption, and the Transformation Lead
+   seat. */
+.role-card.accent,
+.tier-card.accent {
   border-color: var(--signal-teal);
   border-width: 2px;
-}
-
-/* Status marker inside a role card (sits under the h3, the way
-   .tier-days does in a tier card). */
-.role-card .tier-badge {
-  margin-bottom: 12px;
 }
 
 .role-card.has-icon {
@@ -660,12 +616,6 @@ header {
 
 /* Two-seat variant: with the advisory tier gone the grid carries two
    cards, so it takes two columns rather than leaving an empty third. */
-/* Top-align, so a shorter card doesn't stretch to its tallest
-   neighbour and carry a large empty bottom. */
-.tier-grid {
-  align-items: start;
-}
-
 /* The seat that isn't sold. Dashed, and drained of the teal the real
    seats carry, so it reads as an absence in the ladder rather than as
    a third thing you could buy. */
@@ -728,6 +678,11 @@ header {
   margin: 0;
   color: var(--graphite);
   font-size: 0.95rem;
+}
+
+/* A card carrying more than one paragraph needs the break between them. */
+.tier-card p + p {
+  margin-top: 14px;
 }
 
 /* Experimental single-slide carousel variant of the tier grid (diagnostic page) */
@@ -2876,6 +2831,10 @@ footer {
 
   .feature-panel {
     padding: 28px 26px;
+  }
+
+  .feature-panel h3 {
+    font-size: 1.5rem;
   }
 
   .feature-panel .panel-line {

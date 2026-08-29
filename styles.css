@@ -349,6 +349,8 @@ header {
 }
 
 .band-panel {
+  display: flex;
+  flex-direction: column;
   border-radius: 6px;
   padding: 32px 36px;
 }
@@ -384,7 +386,11 @@ header {
   font-size: 1rem;
 }
 
+/* Pushed to the foot of the card, so the two links line up across the
+   pair however long the copy above them runs. */
 .band-panel a {
+  margin-top: auto;
+  align-self: flex-start;
   color: var(--ink-navy);
   font-weight: 500;
   font-size: 0.95rem;
@@ -619,6 +625,17 @@ header {
    the same effort returns less at each step until the program stalls,
    so the sequence should read as depletion rather than as three equal
    points. Decorative and aria-hidden; the copy carries the meaning. */
+/* Names what the meter is measuring, quietly. */
+.step-meter-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+
 .step-meter {
   display: block;
   height: 3px;
@@ -701,6 +718,16 @@ header {
 
 /* Two-seat variant: with the advisory tier gone the grid carries two
    cards, so it takes two columns rather than leaving an empty third. */
+/* Spans the two seats that are actually sold, leaving the absent one
+   outside the comparison it draws. */
+.tier-subhead {
+  grid-column: 2 / 4;
+  margin: 0 0 4px;
+  text-align: center;
+  color: var(--slate);
+  font-size: 0.95rem;
+}
+
 /* The seat that isn't sold. Dashed, and drained of the teal the real
    seats carry, so it reads as an absence in the ladder rather than as
    a third thing you could buy. */
@@ -2912,6 +2939,18 @@ footer {
 
   .stat:last-child {
     border-bottom: none;
+  }
+
+  /* One column, so the subhead spans it and follows the absent seat
+     rather than heading the whole stack. */
+  .tier-subhead {
+    grid-column: 1;
+    text-align: left;
+    margin: 4px 0 0;
+  }
+
+  .tier-card.tier-muted {
+    order: -1;
   }
 
   .card-grid,

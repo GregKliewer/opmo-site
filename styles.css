@@ -484,12 +484,17 @@ header {
 .step-ladder {
   list-style: none;
   margin: 0;
-  /* Optically level the first navy rule with the headline beside it. Grid
-     start-alignment puts the rule flush with the h2's box top, which sits
-     8px above the top of its first capital: half-leading, plus the gap
-     from Fraunces' ascent down to cap height, at 2.2rem/1.15. Measured,
-     not guessed, so it tracks the h2 type scale rather than the eye. */
-  padding: 8px 0 0;
+  /* The ladder hangs from the bottom of the row rather than the top, so
+     its last line of detail sits level with the last line of the prose
+     beside it. Overriding the section's align-items: start is what does
+     it; the offset is whatever the height difference happens to be, so
+     it survives a copy edit on either side. Padding is zeroed (not just
+     the ol's default indent) because any of it would add to the ladder's
+     height and eat into that difference. If the ladder ever grows taller
+     than the prose column it defines the row and this degrades to plain
+     top alignment. */
+  align-self: end;
+  padding: 0;
 }
 
 .step-ladder li {
@@ -1168,11 +1173,13 @@ header {
   margin: 0;
 }
 
+/* Sole instance is the closing line under the ninth dimension on the
+   diagnostic page, which runs the full content width alongside the
+   prose block above it rather than the narrower reading column. */
 .note {
   margin-top: 32px;
   color: var(--slate);
   font-size: 0.96rem;
-  max-width: 680px;
 }
 
 /* ---------------------------------------------------------
@@ -2960,11 +2967,11 @@ footer {
   }
 
   /* The ladder is copy, not decoration, so it stays on a phone. It
-     follows the section's own paragraphs there rather than leading, so
-     the cap-height offset it carries beside the headline is dropped. */
+     follows the section's own paragraphs there rather than leading, and
+     the single-column grid gives it a row of its own, so the bottom
+     alignment it takes beside the prose has nothing left to align to. */
   .step-ladder {
     order: 2;
-    padding-top: 0;
   }
 
   .step-ladder h3 {

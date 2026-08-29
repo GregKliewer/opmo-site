@@ -27,6 +27,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// The track record moved off the homepage onto why-opmo.html. These run on
+// every page, so when the section isn't here, send the reader to the page
+// that has it rather than silently doing nothing: #track-record was a nav
+// anchor and #battle-card is a documented deep link, so published links to
+// both predate the move. Root-absolute, since the repo root is the document
+// root and articles sit one directory down.
+var MOVED_HASHES = ['#track-record', '#battle-card'];
+
 function openBattleCards() {
   var section = document.getElementById('track-record');
   if (!section) return;
@@ -37,9 +45,13 @@ function openBattleCards() {
 }
 
 function checkBattleCardHash() {
-  if (window.location.hash === '#battle-card') {
-    openBattleCards();
+  var hash = window.location.hash;
+  if (MOVED_HASHES.indexOf(hash) === -1) return;
+  if (document.getElementById('track-record')) {
+    if (hash === '#battle-card') openBattleCards();
+    return;
   }
+  window.location.replace('/why-opmo.html' + hash);
 }
 
 document.addEventListener('DOMContentLoaded', checkBattleCardHash);

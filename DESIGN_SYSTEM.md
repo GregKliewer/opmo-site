@@ -26,7 +26,14 @@ Same underlying brand hex values as the original site (`OpMo_Website_Brief.md`);
 
 **Note on the hero tag pill:** the mockup sets teal text on the teal-tint background (3.59:1 — fails AA). Built version uses ink-navy text on teal-tint instead (12.52:1) — same pill treatment, accessible label color.
 
-**Section fill rhythm** (matches the mockup's actual alternation, not a strict every-other rule): hero → white, stat-band → navy, what-i-do → white, how-it-works → cool-white, fit-test → white (contains a navy card), track-record → cool-white, pull-quote → white, about → cool-white, contact → navy, footer → white.
+**Section fill rhythm** — not a strict every-other rule. The governing constraint is that no two adjacent `.section` blocks share a ground. The hero is exempt: it is its own band, always on white, and the first section below it may continue on white (`diagnostic.html` and `why-opmo.html` both do). Recorded per page, since the site is no longer one scrolling page:
+
+- `index.html`: hero → white, stat-band → navy, what-i-do → cool-white, investment-band → navy, how-it-works → cool-white, fit-test → white (contains a navy card), about → cool-white, contact → navy, footer → white.
+- `why-opmo.html`: hero → white, why-an-outsider → white (it carries the page's one pull-quote, and the pull-quote stays on white), track-record → cool-white, footer → white.
+- `diagnostic.html`: hero → white, overview → white, where-it-leads → cool-white.
+- `associates.html`, `publications.html`: hero → white, single section → cool-white.
+
+This replaces the single homepage sequence recorded here through 2026-08-29, which described a page that still carried the track record and the why-an-outsider argument. Both moved to `why-opmo.html`.
 
 ## Typography
 

@@ -72,26 +72,44 @@
         <a href="index.html#contact" class="btn btn-primary">Contact me</a>
       </div>
       <div class="hero-visual">
+        <!-- Auriga, the Charioteer. Plotted from the real J2000 RA/Dec of the
+             five stars of the pentagon: x = -RA * cos(37.99 deg), the
+             compression at the figure's mean declination, y = -Dec, so east is
+             to the left and north is up. No rotation: the natural bounding box
+             is 0.71:1, close enough to square that the figure is letterboxed
+             into the panel the way Lyra is, rather than turned. Star radius
+             tracks visual magnitude, so Capella reads as the brightest.
+
+             Only the pentagon is drawn. The Haedi, the small triangle of
+             epsilon, zeta and eta Aurigae, are omitted: five nodes is one per
+             person on the page, and "the Kids" is the wrong note for a network
+             of senior operators.
+
+             Elnath is the lone open node. It is the one star here that Auriga
+             does not own: the 1930 IAU boundaries assigned it to Taurus, which
+             is the home page figure, so the pentagon closes only by borrowing a
+             star from the practice's own constellation.
+
+             Brand teal #1F8A82 rather than --signal-teal: this graphic is
+             decorative and carries no text, so the AA contrast floor that
+             governs the token does not apply. See DESIGN_SYSTEM.md. -->
         <svg aria-hidden="true" focusable="false" viewBox="0 0 400 400">
           <g stroke="#1F8A82" stroke-width="1" opacity="0.6">
-            <line x1="200" y1="200" x2="110" y2="120"/>
-            <line x1="200" y1="200" x2="300" y2="100"/>
-            <line x1="200" y1="200" x2="95" y2="280"/>
-            <line x1="200" y1="200" x2="310" y2="300"/>
+            <line x1="239.7" y1="50.0" x2="94.0" y2="68.1"/>    <!-- Capella - Menkalinan -->
+            <line x1="94.0" y1="68.1" x2="93.4" y2="201.6"/>    <!-- Menkalinan - Mahasim -->
+            <line x1="93.4" y1="201.6" x2="207.0" y2="350.0"/>  <!-- Mahasim - Elnath -->
+            <line x1="207.0" y1="350.0" x2="306.6" y2="271.4"/> <!-- Elnath - Hassaleh -->
+            <line x1="306.6" y1="271.4" x2="239.7" y2="50.0"/>  <!-- Hassaleh - Capella -->
           </g>
-          <g fill="none" stroke="#1F8A82" stroke-width="2.5">
-            <circle cx="110" cy="120" r="8"/>
-            <circle cx="300" cy="100" r="8"/>
-            <circle cx="95" cy="280" r="8"/>
-            <circle cx="310" cy="300" r="8"/>
+          <g fill="#1F8A82">
+            <circle cx="239.7" cy="50.0" r="9"/>     <!-- Alpha Aurigae (Capella), mag 0.08 -->
+            <circle cx="94.0" cy="68.1" r="6.5"/>    <!-- Beta Aurigae (Menkalinan), mag 1.90 -->
+            <circle cx="93.4" cy="201.6" r="5.5"/>   <!-- Theta Aurigae (Mahasim), mag 2.62 -->
+            <circle cx="306.6" cy="271.4" r="5.5"/>  <!-- Iota Aurigae (Hassaleh), mag 2.69 -->
           </g>
-          <g fill="#F7F9FA">
-            <circle cx="110" cy="120" r="6.5"/>
-            <circle cx="300" cy="100" r="6.5"/>
-            <circle cx="95" cy="280" r="6.5"/>
-            <circle cx="310" cy="300" r="6.5"/>
-          </g>
-          <circle cx="200" cy="200" r="9" fill="#1F8A82"/>
+          <!-- Beta Tauri (Elnath), mag 1.65: the corner Auriga borrows from Taurus -->
+          <circle cx="207.0" cy="350.0" r="8" fill="none" stroke="#1F8A82" stroke-width="3"/>
+          <circle cx="207.0" cy="350.0" r="6.5" fill="#F7F9FA"/>
         </svg>
       </div>
     </div>

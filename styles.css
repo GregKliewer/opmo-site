@@ -1173,11 +1173,13 @@ header {
   margin: 0;
 }
 
+/* Sole instance is the closing line under the ninth dimension on the
+   diagnostic page, which runs the full content width alongside the
+   prose block above it rather than the narrower reading column. */
 .note {
   margin-top: 32px;
   color: var(--slate);
   font-size: 0.96rem;
-  max-width: 680px;
 }
 
 /* ---------------------------------------------------------

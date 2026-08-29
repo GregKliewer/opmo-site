@@ -439,6 +439,9 @@ header {
   grid-template-columns: 1fr 1.15fr;
   gap: 56px;
   align-items: start;
+  /* The eyebrow sits above both columns, so the ladder's first rule and
+     the headline start on the same line. */
+  margin-top: 30px;
 }
 
 /* Own / Train / Leave. Each step is a full-width rule, a teal number set

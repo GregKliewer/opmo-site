@@ -267,9 +267,37 @@ header {
   grid-template-columns: repeat(3, 1fr);
 }
 
+/* Each stat is an anchor into the section that substantiates it, so the
+   whole tile is the target rather than a link buried in the caption.
+   Deliberately identical to the old static tile at rest: the band is a
+   display element and a persistent affordance on all three would read as
+   chrome. The cue arrives on hover and focus. */
 .stat {
+  display: block;
   padding: 44px 32px;
   border-right: 1px solid rgba(255, 255, 255, 0.14);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.stat:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Teal is only 2.83:1 on navy, so the hover cue is the caption lifting to
+   white (6.53:1 to 14.59:1) plus an underline, not a colour change. */
+.stat:hover span,
+.stat:focus-visible span {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Same inversion the contact band uses: the teal ring set globally is too
+   dark to read against this navy ground. */
+.stat-band :focus-visible {
+  outline-color: #fff;
+  outline-offset: -3px;
 }
 
 .stat:last-child {

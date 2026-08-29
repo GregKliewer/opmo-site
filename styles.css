@@ -290,6 +290,113 @@ header {
 }
 
 /* ---------------------------------------------------------
+   Investment band
+
+   Navy full-bleed, modelled on .stat-band, so it reads as a deliberate
+   page element rather than another prose section and leaves the
+   white / .section-alt alternation either side of it undisturbed.
+--------------------------------------------------------- */
+
+.investment-band {
+  background: var(--ink-navy);
+  padding: 80px 0;
+}
+
+.investment-band h2 {
+  color: #fff;
+  font-size: 2.2rem;
+}
+
+.investment-chips {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* .tag reversed for the navy ground: the teal-tint fill would vanish
+   here, so the chip becomes an outline instead. */
+.investment-chips .tag {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #DCE5EA;
+  margin-bottom: 0;
+}
+
+/* The highlighted example, filled in the AI panel's own ground so the
+   chip and the panel read as the same thread. */
+.investment-chips .tag-ai {
+  background: var(--teal-tint);
+  border-color: var(--teal-tint);
+  color: var(--ink-navy);
+}
+
+.investment-band .band-lead {
+  margin: 28px 0 0;
+  color: #C9D3D9;
+  font-size: 1.08rem;
+}
+
+/* Two light panels lifted off the navy: the wave the practice is built
+   around, and the way in. Equal heights come from the grid. */
+.band-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 44px;
+}
+
+.band-panel {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  padding: 32px 36px;
+}
+
+.band-panel.is-ai {
+  background: var(--teal-tint);
+}
+
+/* The pair's contrast: white against the tint, and a teal label against
+   the AI panel's navy one. Teal clears AA on white but not on the tint,
+   which is why only this panel's label carries it. */
+.band-panel.is-qualify {
+  background: #fff;
+}
+
+.band-panel .eyebrow {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-navy);
+  margin-bottom: 12px;
+}
+
+.band-panel.is-qualify .eyebrow {
+  color: var(--signal-teal);
+}
+
+.band-panel p {
+  margin: 0 0 16px;
+  color: var(--graphite);
+  font-size: 1rem;
+}
+
+/* Pushed to the foot of the card, so the two links line up across the
+   pair however long the copy above them runs. */
+.band-panel a {
+  margin-top: auto;
+  align-self: flex-start;
+  color: var(--ink-navy);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* ---------------------------------------------------------
    Section rhythm
 --------------------------------------------------------- */
 
@@ -321,6 +428,147 @@ header {
   color: var(--slate);
   max-width: 560px;
   margin-top: 18px;
+}
+
+/* Section with a figure beside its copy. Both columns are type here, so
+   they align at the top rather than centring on each other. */
+.section-split {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 56px;
+  align-items: start;
+  /* The eyebrow sits above both columns, so the ladder's first rule and
+     the headline start on the same line. */
+  margin-top: 30px;
+}
+
+/* Own / Train / Leave. Each step is a full-width rule, a teal number set
+   on the word's baseline, the word in the display face, and one line of
+   detail beneath. */
+.step-ladder {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.step-ladder li {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  align-items: baseline;
+  border-top: 2px solid var(--ink-navy);
+  padding: 26px 0 30px;
+}
+
+.step-ladder li:last-child {
+  padding-bottom: 0;
+}
+
+/* The one step the practice is built around: teal rule, teal italic. */
+.step-ladder li:last-child {
+  border-top-color: var(--signal-teal);
+}
+
+.step-ladder-num {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--signal-teal);
+}
+
+.step-ladder h3 {
+  font-weight: 600;
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.step-ladder li:last-child h3 {
+  color: var(--signal-teal);
+  font-style: italic;
+}
+
+.step-ladder p {
+  grid-column: 2;
+  margin: 12px 0 0;
+  color: var(--slate);
+  font-size: 1rem;
+}
+
+/* Prose block: a column of running body copy inside a standard section
+   (the why-an-outsider section, the engagement-section H3 blocks, the
+   ninth-dimension block on the diagnostic page). */
+.section-prose {
+  max-width: 680px;
+  margin-top: 40px;
+}
+
+.section-prose h3 {
+  font-size: 1.3rem;
+  margin-bottom: 14px;
+}
+
+.section-prose p {
+  margin: 0 0 22px;
+  font-size: 1.02rem;
+}
+
+.section-prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* Full content width, matching the fit-test card rather than the
+   narrower reading column. */
+.section-prose.wide {
+  max-width: none;
+}
+
+/* A single line set apart from the surrounding prose. Display face and
+   navy, but roman and left-aligned, so it reads as emphasis rather than
+   competing with the page's one large centered pull quote. */
+.section-prose .prose-callout {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.45;
+  color: var(--ink-navy);
+  margin: 36px 0;
+}
+
+/* Feature panel: the one block in a section that carries more weight
+   than the prose around it. Tinted rather than navy on purpose, so it
+   never sits navy-on-navy against the fit-test card below it. */
+/* Sized like the fit-test card further down the page: the full content
+   width rather than the prose column, so the section's closing promise
+   and the page's closing test read as the same kind of object. Tinted
+   rather than navy, so the two never sit navy-on-navy. */
+.feature-panel {
+  margin-top: 48px;
+  background: var(--teal-tint);
+  border-left: 4px solid var(--signal-teal);
+  border-radius: 8px;
+  padding: 48px 56px;
+}
+
+.feature-panel h3 {
+  font-size: 1.9rem;
+  margin-bottom: 20px;
+}
+
+.feature-panel p {
+  margin: 0 0 18px;
+  font-size: 1.05rem;
+}
+
+.feature-panel p:last-child {
+  margin-bottom: 0;
+}
+
+/* The line the panel exists to carry. Display face and navy, but
+   left-aligned and smaller than the page's centered pull quote. */
+.feature-panel .panel-line {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.35;
+  color: var(--ink-navy);
+  margin: 22px 0;
 }
 
 /* ---------------------------------------------------------
@@ -367,6 +615,65 @@ header {
   color: var(--signal-teal);
 }
 
+/* Two-column variant (the two reasons in the why-an-outsider section). */
+.card-grid.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Failure sequence (why an outsider). Each card carries a short meter
+   whose fill shortens across the three: the section's argument is that
+   the same effort returns less at each step until the program stalls,
+   so the sequence should read as depletion rather than as three equal
+   points. Decorative and aria-hidden; the copy carries the meaning. */
+/* Names what the meter is measuring, quietly. */
+.step-meter-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+
+.step-meter {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--line);
+  margin-bottom: 24px;
+}
+
+.step-meter i {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--signal-teal);
+}
+
+.step-grid .role-card:nth-child(1) .step-meter i {
+  width: 72%;
+}
+
+.step-grid .role-card:nth-child(2) .step-meter i {
+  width: 34%;
+}
+
+/* Stalled: a stub rather than nothing, so it still reads as a meter. */
+.step-grid .role-card:nth-child(3) .step-meter i {
+  width: 7%;
+}
+
+/* Emphasis on a single card in a grid. The ground stays white because
+   --teal-tint drops the teal eyebrow to 4.42:1, under AA. Used on
+   exactly two cards site-wide: absorption, and the Transformation Lead
+   seat. */
+.role-card.accent,
+.tier-card.accent {
+  border-color: var(--signal-teal);
+  border-width: 2px;
+}
+
 .role-card.has-icon {
   display: flex;
   align-items: flex-start;
@@ -409,6 +716,42 @@ header {
   margin-top: 56px;
 }
 
+/* Two-seat variant: with the advisory tier gone the grid carries two
+   cards, so it takes two columns rather than leaving an empty third. */
+/* Spans the two seats that are actually sold, leaving the absent one
+   outside the comparison it draws. */
+.tier-subhead {
+  grid-column: 2 / 4;
+  margin: 0 0 4px;
+  text-align: center;
+  color: var(--slate);
+  font-size: 0.95rem;
+}
+
+/* The seat that isn't sold. Dashed, and drained of the teal the real
+   seats carry, so it reads as an absence in the ladder rather than as
+   a third thing you could buy. */
+.tier-card.tier-muted {
+  background: none;
+  border-style: dashed;
+}
+
+.tier-card.tier-muted h3,
+.tier-card.tier-muted .tier-badge,
+.tier-card.tier-muted .tier-days,
+.tier-card.tier-muted p {
+  color: var(--slate);
+}
+
+/* Where the other cards state a commitment of days, this one states its
+   absence, so it is set as a stamp rather than as a quiet caption. */
+.tier-card.tier-muted .tier-days {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
 .tier-card {
   background: #fff;
   border: 1px solid var(--line);
@@ -447,6 +790,11 @@ header {
   margin: 0;
   color: var(--graphite);
   font-size: 0.95rem;
+}
+
+/* A card carrying more than one paragraph needs the break between them. */
+.tier-card p + p {
+  margin-top: 14px;
 }
 
 /* Experimental single-slide carousel variant of the tier grid (diagnostic page) */
@@ -566,6 +914,11 @@ header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
+}
+
+.terms-list.four {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 }
 
 .terms-list div {
@@ -969,6 +1322,20 @@ header {
   line-height: 1.4;
   color: var(--ink-navy);
   max-width: 780px;
+}
+
+/* Carried inside a section rather than standing as its own band: the
+   section already supplies the space below it. */
+.section .pull-quote {
+  /* figure's own UA margin would pull it off the page's centre line. */
+  margin: 0;
+  padding: 72px 0 0;
+}
+
+.pull-quote figcaption {
+  margin-top: 20px;
+  color: var(--slate);
+  font-size: 0.92rem;
 }
 
 /* ---------------------------------------------------------
@@ -2546,6 +2913,21 @@ footer {
     display: none;
   }
 
+  .section-split {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* The ladder is copy, not decoration, so it stays on a phone. It
+     follows the section's own paragraphs there rather than leading. */
+  .step-ladder {
+    order: 2;
+  }
+
+  .step-ladder h3 {
+    font-size: 2.2rem;
+  }
+
   .stat-grid {
     grid-template-columns: 1fr;
   }
@@ -2559,11 +2941,53 @@ footer {
     border-bottom: none;
   }
 
+  /* One column, so the subhead spans it and follows the absent seat
+     rather than heading the whole stack. */
+  .tier-subhead {
+    grid-column: 1;
+    text-align: left;
+    margin: 4px 0 0;
+  }
+
+  .tier-card.tier-muted {
+    order: -1;
+  }
+
   .card-grid,
+  .card-grid.two,
   .card-grid.four,
   .tier-grid,
   .record-grid {
     grid-template-columns: 1fr;
+  }
+
+  .investment-band {
+    padding: 56px 0;
+  }
+
+  .investment-band h2 {
+    font-size: 1.75rem;
+  }
+
+  .band-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .band-panel {
+    padding: 26px 24px;
+  }
+
+  .feature-panel {
+    padding: 28px 26px;
+  }
+
+  .feature-panel h3 {
+    font-size: 1.5rem;
+  }
+
+  .feature-panel .panel-line {
+    font-size: 1.3rem;
   }
 
   /* Same squeeze as .publications-icon below: a 112px tile beside a
@@ -2626,7 +3050,8 @@ footer {
     height: 120px;
   }
 
-  .terms-list {
+  .terms-list,
+  .terms-list.four {
     grid-template-columns: 1fr;
     gap: 20px;
   }

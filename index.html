@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=47">
+<link rel="stylesheet" href="styles.css?v=49">
 </head>
 <body>
 
@@ -48,7 +48,7 @@
       <a href="#what-i-do">What I do</a>
       <a href="#how-it-works">How it works</a>
       <a href="diagnostic.html">The Diagnostic</a>
-      <a href="#track-record">Track record</a>
+      <a href="why-opmo.html">Why OpMo</a>
       <a href="associates.html">Associates</a>
       <a href="publications.html">Publications</a>
       <a href="#about">About</a>
@@ -118,10 +118,12 @@
 
   <section class="stat-band">
     <div class="wrap">
+      <!-- Each stat links to the section that substantiates it: the two
+           seat figures to the engagement terms, the waves to the record. -->
       <div class="stat-grid">
-        <div class="stat"><b>2&ndash;2.5</b><span>Days per week, capped by design</span></div>
-        <div class="stat"><b>3</b><span>Technology waves led as accountable executive</span></div>
-        <div class="stat"><b>1</b><span>Fractional seat held at a time</span></div>
+        <a class="stat" href="#how-it-works"><b>2&ndash;2.5</b><span>Days per week, capped by design</span></a>
+        <a class="stat" href="why-opmo.html#track-record"><b>3</b><span>Technology waves led as accountable executive</span></a>
+        <a class="stat" href="#how-it-works"><b>1</b><span>Fractional seat held at a time</span></a>
       </div>
     </div>
   </section>
@@ -191,63 +193,6 @@
     </div>
   </section>
 
-  <!-- No nav link for this section by design: it sits directly below the
-       hero, so an anchor would be redundant. The id exists so other pages
-       and posts can link to it. -->
-  <section id="why-an-outsider" class="section">
-    <div class="wrap">
-      <span class="section-label">Why an outsider</span>
-      <h2>There are two reasons to bring in an outsider, and they get confused constantly.</h2>
-      <div class="card-grid two">
-        <article class="role-card">
-          <span class="role-sub">Legitimacy</span>
-          <p>Board-level cover for a recommendation your team already formed. Large advisory firms are built to deliver this, and they deliver it well.</p>
-        </article>
-        <!-- The one this practice sells, so it carries the accent. -->
-        <article class="role-card accent">
-          <span class="role-sub">Absorption</span>
-          <p>Someone to hold the unpopular position, be the named source of the uncomfortable move, and leave with the resentment attached to them instead of to the people who stay.</p>
-        </article>
-      </div>
-      <div class="section-prose wide">
-        <p>If you were hired as the change mandate, you don&rsquo;t need the first. You are the legitimacy. So you turn the firm down, and you&rsquo;re right to. But then it&rsquo;s tempting to conclude that you don&rsquo;t need outside help at all. That&rsquo;s the part that can cost you.</p>
-      </div>
-      <div class="card-grid step-grid">
-        <article class="role-card">
-          <span class="step-meter-label">Momentum</span>
-          <span class="step-meter" aria-hidden="true"><i></i></span>
-          <span class="role-sub">01</span>
-          <h3>The loss lands.</h3>
-          <p>Transformation imposes loss. Moved reporting lines, removed discretion, changed roles, exits. Every one of those decisions has a loser who knows exactly who made it. And everyone who remains is needed to deliver in the new ways of working. Every ounce of resentment they carry forward fuels resistance to changes essential for success.</p>
-        </article>
-        <article class="role-card">
-          <span class="step-meter-label">Momentum</span>
-          <span class="step-meter" aria-hidden="true"><i></i></span>
-          <span class="role-sub">02</span>
-          <h3>The trades begin.</h3>
-          <p>For those who lead the transformation in front of operating the thing themselves, tradeoffs start around month nine. A restructure softened. A role change deferred. A conversation not had. None of it gets written down as a decision to slow the transformation, but the effects are unavoidable.</p>
-        </article>
-        <article class="role-card">
-          <span class="step-meter-label">Momentum</span>
-          <span class="step-meter" aria-hidden="true"><i></i></span>
-          <span class="role-sub">03</span>
-          <h3>The swap changes nothing.</h3>
-          <p>Two to four quarters later the program has under-delivered, the organization decides it has a talent problem, and swaps the leader. The replacement inherits the same relational economics and lands in the same place on the same timeline. This is when stalling turns into regression and failure.</p>
-        </article>
-      </div>
-      <div class="section-prose wide">
-        <p class="prose-callout">And everyone is surprised and disappointed that the second leader fails just like the first.</p>
-        <p>I have been both of those positions, making those same trades. Not as a failure of nerve - I&rsquo;d make some of them again, because the relationships were real and I needed them to ship anything at all - but due entirely to the position I was placed in. A no-win situation. Which is the point. The incentive is structural. It does not care how good the leader is, and it did not care how good I was.</p>
-      </div>
-      <!-- Sits outside .section-prose so it centres on the page, not on
-           the 680px prose column. -->
-      <figure class="pull-quote">
-        <blockquote>&ldquo;These things should never be run by an internal person, because all of the goodwill you have gets burned, and more.&rdquo;</blockquote>
-        <figcaption>A Canadian financial services executive who ran enterprise transformation, as the internal operator, twice in the last five years.</figcaption>
-      </figure>
-    </div>
-  </section>
-
   <section id="how-it-works" class="section section-alt">
     <div class="wrap">
       <span class="section-label">How the engagement works</span>
@@ -305,58 +250,7 @@
     </div>
   </section>
 
-  <section id="track-record" class="section section-alt">
-    <div class="wrap">
-      <span class="section-label">Track record</span>
-      <h2>Three technology waves in Canadian financial services.</h2>
-      <div class="record-grid">
-        <div>
-          <span class="record-wave">AI-First Microservices</span>
-          <div class="record-item">
-            <h3>TD &amp; CIBC</h3>
-            <span class="record-dates">2016&ndash;2019</span>
-            <p>Set enterprise API strategy and governance through the API-native wave: bank-wide API standards, an early external developer platform, and modernization of core services into microservices patterns.</p>
-            <details class="battle-card">
-              <summary>How, and how it was left</summary>
-              <p>CIBC's core modernization program was in stasis on arrival: churning on technical decisions between multiple options, each with its own stakeholder advocates. I clarified platform boundaries and decision rights, and held each owner accountable for unblocking their own platform decisions and moving forward on a roadmap for change.</p>
-              <p><strong>The proof it landed:</strong> program was unstuck, and projects moved through implementation to completion. Workload migrated to the API platform over time, and legacy XML appliance infrastructure serving SOAP services was decommissioned.</p>
-              <p><strong>How it was left:</strong> decisions cleared at the platform level, owners accountable for their own paths, and roadmap for change in place.</p>
-            </details>
-          </div>
-        </div>
-        <div>
-          <span class="record-wave">Product Model</span>
-          <div class="record-item">
-            <h3>Interac</h3>
-            <span class="record-dates">2021&ndash;2026</span>
-            <p>Built Interac's first enterprise-architecture practice, then led a 50+ person Platform-as-Product organization through a full transformation to a product operating model, in a mission-critical, regulated payments environment.</p>
-            <details class="battle-card">
-              <summary>How, and how it was left</summary>
-              <p>I scaled the company-wide project-to-product transformation into Technology &amp; Operations by establishing a Platform-as-Product delivery model: the platform team realigned to operate as a product team serving the internal product line teams as customers, with roles, cadences, and ways of working redefined to deliver in the new operating model.</p>
-              <p><strong>The proof it landed:</strong> internal customer NPS was minus 25 after the platform organization's first quarter, aggregated across three squads. Two quarters later it was plus 15. All three squads improved, and two finished in positive territory rated Good and Excellent on the internal survey.</p>
-              <p><strong>How it was left:</strong> a 50+ person platform organization running as a product organization, delivering more valuable platform features, faster, driving down product lead times, cycle times, and time-to-findings remediation across all supported product lines.</p>
-            </details>
-          </div>
-        </div>
-        <div>
-          <span class="record-wave">AI-Native</span>
-          <div class="record-item">
-            <h3>Independent practice</h3>
-            <span class="record-dates">now</span>
-            <p>AI-Native Transformation practice serving Canadian financial services. Doctrine and diagnostics for operating models designed to absorb AI.</p>
-            <details class="battle-card">
-              <summary>How, and how it was left</summary>
-              <p>After establishing the Platform Delivery and Engineering organization at Interac, I turned to the new challenge of incorporating cutting edge technology to optimize team delivery. We incorporated AI into the engineering SDLC, focussing on compressing discovery cycles, reinforcing weaknesses with agentic support, and tailoring client self-service with prompt-response interfaces.</p>
-              <p><strong>The proof it landed:</strong> discovery cycles were reduced by more than 50%, tailored skills for improving test coverage and verifying controls were positively received by engineers, and client feedback on pilot prompt-response interfaces was overwhelmingly positive.</p>
-              <p><strong>How it was left:</strong> AI accelerated SDLC emerging from pilot and ready for scaling to the engineering organization.</p>
-            </details>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="section">
+  <section id="about" class="section section-alt">
     <div class="wrap">
       <div class="about-grid">
         <img src="assets/OpMo_About_Headshot.jpg" alt="Greg Kliewer, principal of OpMo Advisory" class="about-photo" width="320" height="400">

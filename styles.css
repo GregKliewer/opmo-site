@@ -267,9 +267,37 @@ header {
   grid-template-columns: repeat(3, 1fr);
 }
 
+/* Each stat is an anchor into the section that substantiates it, so the
+   whole tile is the target rather than a link buried in the caption.
+   Deliberately identical to the old static tile at rest: the band is a
+   display element and a persistent affordance on all three would read as
+   chrome. The cue arrives on hover and focus. */
 .stat {
+  display: block;
   padding: 44px 32px;
   border-right: 1px solid rgba(255, 255, 255, 0.14);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.stat:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Teal is only 2.83:1 on navy, so the hover cue is the caption lifting to
+   white (6.53:1 to 14.59:1) plus an underline, not a colour change. */
+.stat:hover span,
+.stat:focus-visible span {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Same inversion the contact band uses: the teal ring set globally is too
+   dark to read against this navy ground. */
+.stat-band :focus-visible {
+  outline-color: #fff;
+  outline-offset: -3px;
 }
 
 .stat:last-child {
@@ -437,8 +465,9 @@ header {
   grid-template-columns: 1fr 1.15fr;
   gap: 56px;
   align-items: start;
-  /* The eyebrow sits above both columns, so the ladder's first rule and
-     the headline start on the same line. */
+  /* The eyebrow sits above both columns, so the two columns start
+     together; the ladder then takes a small optical offset of its own,
+     see .step-ladder below. */
   margin-top: 30px;
 }
 
@@ -448,7 +477,12 @@ header {
 .step-ladder {
   list-style: none;
   margin: 0;
-  padding: 0;
+  /* Optically level the first navy rule with the headline beside it. Grid
+     start-alignment puts the rule flush with the h2's box top, which sits
+     8px above the top of its first capital: half-leading, plus the gap
+     from Fraunces' ascent down to cap height, at 2.2rem/1.15. Measured,
+     not guessed, so it tracks the h2 type scale rather than the eye. */
+  padding: 8px 0 0;
 }
 
 .step-ladder li {
@@ -2919,9 +2953,11 @@ footer {
   }
 
   /* The ladder is copy, not decoration, so it stays on a phone. It
-     follows the section's own paragraphs there rather than leading. */
+     follows the section's own paragraphs there rather than leading, so
+     the cap-height offset it carries beside the headline is dropped. */
   .step-ladder {
     order: 2;
+    padding-top: 0;
   }
 
   .step-ladder h3 {

@@ -432,25 +432,64 @@ header {
   margin-top: 18px;
 }
 
-/* Section with a figure beside its copy. Same proportions as the hero
-   split, so the two read as the same kind of layout. */
+/* Section with a figure beside its copy. Both columns are type here, so
+   they align at the top rather than centring on each other. */
 .section-split {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 1fr 1.15fr;
   gap: 56px;
-  align-items: center;
+  align-items: start;
 }
 
-.section-visual {
-  aspect-ratio: 4 / 3;
-  border-radius: 6px;
-  overflow: hidden;
-  background: var(--ink-navy);
+/* Own / Train / Leave. Each step is a full-width rule, a teal number set
+   on the word's baseline, the word in the display face, and one line of
+   detail beneath. */
+.step-ladder {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.section-visual svg {
-  width: 100%;
-  height: 100%;
+.step-ladder li {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  align-items: baseline;
+  border-top: 2px solid var(--ink-navy);
+  padding: 26px 0 30px;
+}
+
+.step-ladder li:last-child {
+  padding-bottom: 0;
+}
+
+/* The one step the practice is built around: teal rule, teal italic. */
+.step-ladder li:last-child {
+  border-top-color: var(--signal-teal);
+}
+
+.step-ladder-num {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--signal-teal);
+}
+
+.step-ladder h3 {
+  font-weight: 600;
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.step-ladder li:last-child h3 {
+  color: var(--signal-teal);
+  font-style: italic;
+}
+
+.step-ladder p {
+  grid-column: 2;
+  margin: 12px 0 0;
+  color: var(--slate);
+  font-size: 1rem;
 }
 
 /* Prose block: a column of running body copy inside a standard section
@@ -2852,14 +2891,19 @@ footer {
     display: none;
   }
 
-  /* Same call as the hero's: the figure is decorative, and a phone is
-     better served by the copy starting higher. */
   .section-split {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
 
-  .section-visual {
-    display: none;
+  /* The ladder is copy, not decoration, so it stays on a phone. It
+     follows the section's own paragraphs there rather than leading. */
+  .step-ladder {
+    order: 2;
+  }
+
+  .step-ladder h3 {
+    font-size: 2.2rem;
   }
 
   .stat-grid {

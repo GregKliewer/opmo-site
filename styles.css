@@ -290,6 +290,82 @@ header {
 }
 
 /* ---------------------------------------------------------
+   Investment band
+
+   Navy full-bleed, modelled on .stat-band, so it reads as a deliberate
+   page element rather than another prose section and leaves the
+   white / .section-alt alternation either side of it undisturbed.
+--------------------------------------------------------- */
+
+.investment-band {
+  background: var(--ink-navy);
+  padding: 80px 0;
+}
+
+.investment-band h2 {
+  color: #fff;
+  font-size: 2.2rem;
+  max-width: 760px;
+}
+
+.investment-chips {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* .tag reversed for the navy ground: the teal-tint fill would vanish
+   here, so the chip becomes an outline instead. */
+.investment-chips .tag {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #DCE5EA;
+  margin-bottom: 0;
+}
+
+.investment-band .band-lead {
+  margin: 28px 0 0;
+  max-width: 640px;
+  color: #C9D3D9;
+  font-size: 1.08rem;
+}
+
+/* The highlighted special case, lifted off the navy on a light ground. */
+.ai-panel {
+  margin-top: 40px;
+  max-width: 680px;
+  background: var(--teal-tint);
+  border-radius: 6px;
+  padding: 32px 36px;
+}
+
+/* Navy rather than teal: teal on --teal-tint is 4.42:1, under AA. */
+.ai-panel .eyebrow {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-navy);
+  margin-bottom: 12px;
+}
+
+.ai-panel p {
+  margin: 0 0 16px;
+  color: var(--graphite);
+  font-size: 1rem;
+}
+
+.ai-panel a {
+  color: var(--ink-navy);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* ---------------------------------------------------------
    Section rhythm
 --------------------------------------------------------- */
 
@@ -354,6 +430,66 @@ header {
   line-height: 1.45;
   color: var(--ink-navy);
   margin: 36px 0;
+}
+
+/* Quieter aside inside a section: same slate voice as .note, with a
+   hairline rule so it reads as set apart from the body flow. */
+.section-aside {
+  margin-top: 40px;
+  max-width: 680px;
+  padding-left: 24px;
+  border-left: 3px solid var(--line);
+}
+
+.section-aside h3 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.section-aside p {
+  margin: 0 0 14px;
+  color: var(--slate);
+  font-size: 0.96rem;
+}
+
+.section-aside p:last-child {
+  margin-bottom: 0;
+}
+
+/* Feature panel: the one block in a section that carries more weight
+   than the prose around it. Tinted rather than navy on purpose, so it
+   never sits navy-on-navy against the fit-test card below it. */
+.feature-panel {
+  margin-top: 40px;
+  max-width: 680px;
+  background: var(--teal-tint);
+  border-left: 4px solid var(--signal-teal);
+  border-radius: 6px;
+  padding: 36px 40px;
+}
+
+.feature-panel h3 {
+  font-size: 1.35rem;
+  margin-bottom: 16px;
+}
+
+.feature-panel p {
+  margin: 0 0 18px;
+  font-size: 1.02rem;
+}
+
+.feature-panel p:last-child {
+  margin-bottom: 0;
+}
+
+/* The line the panel exists to carry. Display face and navy, but
+   left-aligned and smaller than the page's centered pull quote. */
+.feature-panel .panel-line {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.35;
+  color: var(--ink-navy);
+  margin: 22px 0;
 }
 
 /* Quiet quotation: an outside voice with an attribution line. Deliberately
@@ -427,6 +563,26 @@ header {
   color: var(--signal-teal);
 }
 
+/* Two-column variant (the two reasons in the why-an-outsider section). */
+.card-grid.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Emphasis on a single card in a grid. The teal border is the same
+   mechanism .tier-card.featured uses; the ground stays white because
+   --teal-tint drops the teal eyebrow to 4.42:1, under AA. Used on
+   exactly two cards site-wide: absorption, and the AI-Native mandate. */
+.role-card.accent {
+  border-color: var(--signal-teal);
+  border-width: 2px;
+}
+
+/* Status marker inside a role card (sits under the h3, the way
+   .tier-days does in a tier card). */
+.role-card .tier-badge {
+  margin-bottom: 12px;
+}
+
 .role-card.has-icon {
   display: flex;
   align-items: flex-start;
@@ -473,6 +629,9 @@ header {
    cards, so it takes two columns rather than leaving an empty third. */
 .tier-grid.two {
   grid-template-columns: repeat(2, 1fr);
+  /* Top-align, so the shorter card doesn't stretch to its neighbour
+     and carry a large empty bottom. */
+  align-items: start;
 }
 
 .tier-card {
@@ -2626,11 +2785,32 @@ footer {
   }
 
   .card-grid,
+  .card-grid.two,
   .card-grid.four,
   .tier-grid,
   .tier-grid.two,
   .record-grid {
     grid-template-columns: 1fr;
+  }
+
+  .investment-band {
+    padding: 56px 0;
+  }
+
+  .investment-band h2 {
+    font-size: 1.75rem;
+  }
+
+  .ai-panel {
+    padding: 26px 24px;
+  }
+
+  .feature-panel {
+    padding: 28px 26px;
+  }
+
+  .feature-panel .panel-line {
+    font-size: 1.3rem;
   }
 
   /* Same squeeze as .publications-icon below: a 112px tile beside a

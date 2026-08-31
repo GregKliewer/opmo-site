@@ -1734,6 +1734,22 @@ footer {
   color: var(--ink-navy);
 }
 
+/* Attribution under a quoted pull quote. The block itself is Fraunces
+   italic display; the cite drops back to Inter so the source reads as a
+   label rather than as more of the quote. */
+
+.article-pull-quote cite {
+  display: block;
+  margin-top: 16px;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
 /* The Benediction hymn block (Playbook piece). The LinkedIn original set
    the verse in a code block for want of anything better; here it takes the
    site's navy-band treatment instead, Fraunces italic on ink navy, so it
@@ -2852,6 +2868,107 @@ footer {
   color: var(--slate);
 }
 
+/* V9a / V9b - the three lifecycle stages drawn to scale. The whole
+   argument is a shape, so the three columns hold at every width instead of
+   stacking: a dumbbell that reflows into a list stops being a dumbbell.
+   The well is a fixed height and the mass inside it is the multiplier, so
+   the eye reads the mismatch before it reads a single label. */
+
+.viz-headline + .viz-stage {
+  margin-top: 26px;
+}
+
+.viz-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+}
+
+.viz-stage-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.viz-stage-num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--signal-teal);
+  margin-bottom: 10px;
+}
+
+.viz-stage-col.is-engine .viz-stage-num {
+  color: var(--ink-navy);
+}
+
+.viz-well {
+  height: 168px;
+  background: #E2E8EB;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.viz-mass {
+  background: var(--signal-teal);
+  border-radius: 4px;
+}
+
+.viz-mass.is-navy {
+  background: var(--ink-navy);
+}
+
+/* The "confident garbage" fill (V9b): the same 10x volume as the engine,
+   drawn as stripes rather than solid, so the figure can say the vacuum
+   filled without saying it filled with anything. Decorative like the
+   waffle grey above, so the lighter teal is exempt from the text bar. */
+
+.viz-mass.is-suspect {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(24, 122, 115, 0.5) 0 7px,
+    #E2E8EB 7px 14px
+  );
+  box-shadow: inset 0 0 0 1px rgba(24, 122, 115, 0.5);
+}
+
+.viz-stage-head {
+  display: block;
+  margin-top: 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-navy);
+}
+
+.viz .viz-stage-cap {
+  margin: 6px 0 14px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--slate);
+}
+
+/* margin-top:auto pins the series chips to a common baseline even though
+   the captions above them run to different lengths. */
+
+.viz-stage-tag {
+  align-self: flex-start;
+  margin-top: auto;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
 /* Visual-specific responsive tier (spec-mandated 700px breakpoint,
    distinct from the site's 900px layout/nav breakpoint) */
 
@@ -2937,6 +3054,42 @@ footer {
 
   .viz-only-narrow {
     display: inline;
+  }
+
+  /* The stage columns keep their three-up grid here (see V9a above) and
+     shed size instead, since collapsing them would destroy the shape the
+     figure exists to show. */
+
+  .viz-stage {
+    gap: 9px;
+  }
+
+  .viz-well {
+    height: 118px;
+  }
+
+  .viz-stage-num {
+    font-size: 1.45rem;
+  }
+
+  /* The uppercase stage names run to two or three lines at this width;
+     the min-height keeps the captions below them on a common baseline
+     instead of stepping. */
+
+  .viz-stage-head {
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    min-height: 3.9em;
+  }
+
+  .viz .viz-stage-cap {
+    font-size: 0.78rem;
+  }
+
+  .viz-stage-tag {
+    padding: 3px 9px;
+    font-size: 0.64rem;
+    letter-spacing: 0.04em;
   }
 }
 

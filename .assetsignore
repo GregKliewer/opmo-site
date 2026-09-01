@@ -1,0 +1,35 @@
+# Files kept in the repository but never served.
+#
+# The assets directory is the repository root (wrangler.jsonc,
+# assets.directory: "."), so by default every committed file is a public URL.
+# Wrangler skips anything matching a line here at upload time. Same syntax as
+# .gitignore.
+#
+# Two consequences worth knowing. Exclusion happens at upload, so a change
+# here does nothing until the next deploy — and a deploy is what removes an
+# already-published file from the live site. And this is not access control:
+# it keeps internal files off the public origin, but the gated rooms under
+# /firms/rates and /partners/terms are protected by Cloudflare Access, not by
+# this file.
+
+# Working notes and internal records.
+/notes/
+
+# The four original design directions and their source one-pagers. Reference
+# only — nothing live links into mockups/; the served copies of the logos and
+# headshot live in /assets/.
+/mockups/
+
+# Repository documentation.
+/CLAUDE.md
+/DESIGN_SYSTEM.md
+/OpMo_Website_Brief.md
+
+# Tooling and configuration.
+/.claude/
+/wrangler.jsonc
+/.gitignore
+/.assetsignore
+
+# Untracked, but present in the directory when Wrangler walks it.
+.DS_Store

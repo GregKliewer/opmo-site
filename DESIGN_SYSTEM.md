@@ -32,6 +32,10 @@ Same underlying brand hex values as the original site (`OpMo_Website_Brief.md`);
 - `why-opmo.html`: hero → white, why-an-outsider → white (it carries the page's one pull-quote, and the pull-quote stays on white), track-record → cool-white, footer → white.
 - `diagnostic.html`: hero → white, overview → white, where-it-leads → cool-white.
 - `associates.html`, `publications.html`: hero → white, single section → cool-white.
+- `firms/index.html`: hero → white, what-i-take-on → white, rates → cool-white, contracting → white, footer → white.
+- `partners/index.html`: hero → white, joint-pursuit → white, fit → cool-white, terms → white, footer → white.
+- `firms/rates/index.html`, `partners/terms/index.html` (gated): hero → white (`.hero.is-plain`, no constellation panel), first section → white, second → cool-white, third → white.
+- `index.html`'s audience fork band sits on white between the cool-white About section and the navy contact band, so the alternation either side of it is undisturbed.
 
 This replaces the single homepage sequence recorded here through 2026-08-29, which described a page that still carried the track record and the why-an-outsider argument. Both moved to `why-opmo.html`.
 
@@ -91,7 +95,15 @@ Headings: `font-weight: 500`, `color: var(--ink-navy)`, `line-height: 1.15`.
 
 **About photo**: grayscale (`filter: grayscale(1)`), per Brand Identity v3 (2026-08-10): photos of Greg are always grayscale. This supersedes the natural-color line that shipped with Direction 2's initial build. `border-radius: 6px`, `object-fit: cover`, 4:5 aspect ratio.
 
-**Hero visual** — a node/line SVG graphic (the motif Direction 3 explicitly dropped) sits in a navy rounded panel opposite the hero copy on desktop; hidden on mobile rather than stacked, since it's decorative.
+**Hero visual** — a node/line SVG graphic (the motif Direction 3 explicitly dropped) sits in a navy rounded panel opposite the hero copy on desktop; hidden on mobile rather than stacked, since it's decorative. Which constellation goes on which page, and the projection convention behind them, is recorded in `notes/hero-constellations.md`. The two gated pages are the exception: `.hero.is-plain` drops the panel entirely.
+
+**Gate teaser** (`.gate-card`) — the public step in front of a Cloudflare Access room, on `/firms` and `/partners`. White fill, hairline border, `border-radius: 6px`, and a `3px solid var(--signal-teal)` top rule. Deliberately *not* the featured card's shadow: a doorway is not the page's recommended option, and shadows stay reserved for the featured tier card.
+
+**Rates block** (`.rate-figure` / `.rate-cols` / `.rate-shapes`) — the published day rate range on `/firms`, per `OpMo_Site_Firms_Rates_Block_Mockup_v0.1.html`. The numeral takes Fraunces **500**, not the mockup's 600: the mockup is a standalone file on its own tokens, and display weight is 500 site-wide. The range renders from a single element — see `notes/published-rate-range.md`.
+
+**Audience fork** (`.fork-band`) — the quiet two-link band on the homepage. `h2` at 1.6rem, below section-heading rank on purpose: it is a signpost, not a pitch. Not in the main nav, per the routing spec.
+
+**Footer links** (`.footer-links`) — the two audience doors, navy and undecorated until hover, so the row reads as navigation without outweighing the copyright line beside it.
 
 ## Imagery guidelines
 
@@ -106,6 +118,6 @@ Fixed (was the "known gap" in every direction's mockup: `nav{display:none}` belo
 
 ## Constraints carried over from the brief
 
-- Any dollar figures anywhere on the site must be labeled CAD.
+- Any dollar figures anywhere on the site must be labeled CAD, inline and in the page's closing `.fine-print` line, gated pages included.
 - No new claims, client names, or case studies beyond existing source material.
 - Plain HTML/CSS/JS, no framework, no build step.

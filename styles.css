@@ -1587,6 +1587,30 @@ footer {
   font-size: 0.85rem;
 }
 
+/* The two audience doors. Footer only, per the routing spec: both lanes
+   arrive by a link pasted into an email, and the main nav is already at
+   seven items. Navy rather than the global teal link colour so the row
+   reads as navigation rather than as body links, and undecorated until
+   hover so it does not outweigh the copyright line beside it. */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-links a {
+  color: var(--ink-navy);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--signal-teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ---------------------------------------------------------
    Publications index
 --------------------------------------------------------- */
@@ -3094,6 +3118,276 @@ footer {
 }
 
 /* ---------------------------------------------------------
+   Audience fork (homepage band between About and Contact)
+
+   Lanes B and C reach their pages by a link pasted into an email; this
+   band is only for the cold arrival. It is deliberately quiet: no
+   imagery, no button, and nothing in the main nav. Sits on white between
+   the cool-white About section and the navy contact band, so the
+   section rhythm either side of it is undisturbed.
+--------------------------------------------------------- */
+
+.fork-band {
+  padding: 72px 0;
+}
+
+.fork-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* Not a .section, so the section h2 size does not apply. Set smaller
+   than a section heading on purpose: this is a signpost, not a pitch. */
+.fork-band h2 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.fork-band p {
+  margin: 0;
+  color: var(--slate);
+  max-width: 440px;
+}
+
+.fork-links a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 2px 20px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-navy);
+  font-weight: 500;
+  font-size: 1.02rem;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.fork-links a:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.fork-links a::after {
+  content: "\2192";
+  color: var(--signal-teal);
+  transition: transform 0.15s;
+}
+
+.fork-links a:hover {
+  color: var(--signal-teal);
+}
+
+.fork-links a:hover::after {
+  transform: translateX(3px);
+}
+
+/* ---------------------------------------------------------
+   Rates block (/firms)
+
+   Per OpMo_Site_Firms_Rates_Block_Mockup_v0.1.html. The numeral takes
+   Fraunces 500 rather than the mockup's 600, matching the stat-band
+   numbers: the mockup is a standalone file on its own tokens, and the
+   design system sets display weight at 500 site-wide.
+--------------------------------------------------------- */
+
+.rate-figure {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 14px;
+  margin-top: 36px;
+  padding: 26px 0 14px;
+  border-top: 2px solid var(--ink-navy);
+  border-bottom: 1px solid var(--line);
+}
+
+.rate-num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink-navy);
+}
+
+.rate-unit {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--slate);
+  padding-bottom: 8px;
+}
+
+.rate-meta {
+  margin: 14px 0 0;
+  font-size: 0.9rem;
+  color: var(--slate);
+}
+
+.rate-cols {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 56px;
+  align-items: start;
+  margin-top: 44px;
+}
+
+.rate-cols p {
+  margin: 0 0 20px;
+  font-size: 1.02rem;
+}
+
+.rate-cols p:last-child {
+  margin-bottom: 0;
+}
+
+/* A heading below section-h2 rank that labels a list rather than opening
+   an argument, so it is set in the body face like .section-label. */
+.minor-label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-navy);
+  margin: 0 0 16px;
+}
+
+.rate-shapes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rate-shapes li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 0;
+  font-size: 0.98rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.rate-shapes li:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.shape-what {
+  font-weight: 500;
+  color: var(--ink-navy);
+}
+
+.shape-where {
+  font-size: 0.88rem;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+/* The rate by engagement shape, on the gated page. Teal reads as the
+   value the card exists to carry without turning the card into a price
+   tag the way a navy numeral at heading size would. */
+.tier-price {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.55rem;
+  line-height: 1.2;
+  color: var(--signal-teal);
+  margin-bottom: 14px;
+}
+
+/* ---------------------------------------------------------
+   Gate teaser card
+
+   The public step in front of a Cloudflare Access room. Teal top rule
+   rather than the featured card's shadow: this is a doorway, not the
+   page's recommended option, and shadows are reserved (DESIGN_SYSTEM.md).
+--------------------------------------------------------- */
+
+/* When the card opens a section of its own (the /partners terms
+   section) there is nothing above it to be spaced away from. */
+.wrap > .gate-card:first-child {
+  margin-top: 0;
+}
+
+.gate-card {
+  margin-top: 52px;
+  padding: 32px 36px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--signal-teal);
+  border-radius: 6px;
+}
+
+.gate-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+}
+
+.gate-card p {
+  margin: 0;
+  font-size: 1.02rem;
+  max-width: 62ch;
+}
+
+.gate-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--signal-teal);
+  text-decoration: none;
+  border-bottom: 2px solid var(--signal-teal);
+  padding-bottom: 2px;
+}
+
+.gate-link:hover {
+  color: var(--ink-navy);
+  border-color: var(--ink-navy);
+}
+
+/* The dated, scope-bounded line every page carrying a number closes on,
+   gated pages included (routing spec section 6). */
+.fine-print {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+  color: var(--slate);
+}
+
+/* ---------------------------------------------------------
+   Plain hero (gated pages)
+
+   No constellation panel: the hero figures are a public-page
+   convention, and a reader who has just signed in came for the numbers.
+--------------------------------------------------------- */
+
+/* Nothing 400px tall on the right to balance the bottom padding
+   against, so it comes in. */
+.hero.is-plain {
+  padding-bottom: 48px;
+}
+
+.hero.is-plain .hero-inner {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.hero.is-plain h1 {
+  max-width: 820px;
+}
+
+.hero.is-plain .hero-sub {
+  max-width: 660px;
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
    Responsive
 --------------------------------------------------------- */
 
@@ -3336,6 +3630,24 @@ footer {
     white-space: normal;
     text-align: center;
     width: 170px;
+  }
+
+  .fork-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .fork-band {
+    padding: 56px 0;
+  }
+
+  .rate-cols {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .gate-card {
+    padding: 26px 24px;
   }
 
   .nav-toggle {

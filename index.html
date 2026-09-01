@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=54">
+<link rel="stylesheet" href="styles.css?v=55">
 </head>
 <body>
 
@@ -269,6 +269,26 @@
     </div>
   </section>
 
+  <!-- Audience fork. Lanes B and C (peer delivery practices, and firms
+       that place senior operators) reach their own pages by a direct link
+       pasted into an email; this band is the door for someone who arrives
+       cold. Deliberately quiet and deliberately not in the main nav, per
+       the routing spec: the client lane above it is the revenue audience
+       and the hero is doing that work. -->
+  <section class="fork-band">
+    <div class="wrap fork-inner">
+      <div class="fork-copy">
+        <span class="section-label">Another door</span>
+        <h2>Not here to hire a fractional lead?</h2>
+        <p>Two other kinds of people end up on this page, and there&rsquo;s a better door for each of you.</p>
+      </div>
+      <nav class="fork-links" aria-label="Other audiences">
+        <a href="/partners/">I run a delivery practice and we should talk about partnering</a>
+        <a href="/firms/">I place senior operators into engagements</a>
+      </nav>
+    </div>
+  </section>
+
   <section id="contact" class="section section-contact">
     <div class="wrap">
       <h2>Contact me.</h2>
@@ -315,6 +335,10 @@
 <footer>
   <div class="wrap footer-inner">
     <img src="assets/OpMo_Logo_Primary.svg" alt="OpMo Advisory" class="footer-logo">
+    <nav class="footer-links" aria-label="Other audiences">
+      <a href="/partners/">For delivery practices</a>
+      <a href="/firms/">For firms that place people</a>
+    </nav>
     <p>&copy; 2026 OpMo Advisory</p>
   </div>
 </footer>

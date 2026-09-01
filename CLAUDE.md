@@ -24,8 +24,12 @@ Cloudflare Workers static assets (`wrangler.jsonc`, `assets.directory: "."`). Th
 
 Standalone HTML documents, each a complete page with no shared includes:
 
-- Root: `index.html` (the main scrolling page), `diagnostic.html`, `associates.html`, `publications.html`, `thanks.html` (Formspree redirect target)
+- Root: `index.html` (the main scrolling page), `diagnostic.html`, `why-opmo.html`, `associates.html`, `publications.html`, `thanks.html` (Formspree redirect target)
 - `publications/*.html` — the long-form article pages
+- `firms/index.html`, `partners/index.html` — the two non-client audience doors, served at `/firms/` and `/partners/`
+- `firms/rates/index.html`, `partners/terms/index.html` — **gated**. Cloudflare Access sits in front of both paths at the edge (Zero Trust dashboard config, not in this repo). They are ordinary pages otherwise, but they carry `noindex`, a bare `<title>`, no Open Graph tags, a `Disallow` in `robots.txt`, and no `sitemap.xml` entry — so a pasted link previews nothing. Keep it that way. See `OpMo_Site_Audience_Routing_and_Access_Spec_v0.3.md`.
+
+**The four pages under `firms/` and `partners/` link root-absolutely** (`/styles.css?v=NN`, `/assets/…`, `/index.html#about`), unlike the rest of the site. They are served from directory URLs, where a relative prefix resolves differently depending on whether the visitor arrived with the trailing slash. `nav.js` already does the same.
 
 Everything shares one stylesheet (`styles.css`, ~2450 lines) and one script (`nav.js`). `diagnostic-carousel.js` loads only on `diagnostic.html`.
 
@@ -41,7 +45,9 @@ Everything shares one stylesheet (`styles.css`, ~2450 lines) and one script (`na
 grep -l 'styles.css?v=' *.html publications/*.html
 ```
 
-**Adding a page** means: the page itself, a nav entry in every other page, a `<link rel="canonical">`, and a `<url>` entry in `sitemap.xml`.
+**Adding a page** means: the page itself, a nav entry in every other page, a `<link rel="canonical">`, and a `<url>` entry in `sitemap.xml`. A *gated* page is the inverse: no nav entry, no canonical, no sitemap entry, and a `robots.txt` disallow.
+
+The `<footer>` now carries a `.footer-links` nav with the two audience doors, hand-duplicated like everything else. It uses root-absolute hrefs so the same block is identical at every depth.
 
 ### styles.css
 
@@ -68,7 +74,9 @@ The inline comments in this file explain non-obvious decisions (contrast ratios,
 
 ## Content constraints
 
-- Any dollar figure must be labeled CAD.
+- Any dollar figure must be labeled CAD, inline and in the page's closing `.fine-print` line.
+- The published day rate range on `/firms` renders from a single element and is reviewed quarterly — derivation and the one edit point are in `notes/published-rate-range.md`. Don't restate the figure elsewhere.
+- Hero constellation assignments and the projection convention behind them are in `notes/hero-constellations.md`.
 - No new claims, client names, or case studies beyond the existing source material (`OpMo_Website_Brief.md`, the one-pagers in `mockups/assets/`, and current site copy). Copy in the brief is final and approved — reuse it rather than rewriting.
 
 ## Repository conventions

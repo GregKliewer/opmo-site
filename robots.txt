@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# Gated rooms. Cloudflare Access sits in front of both paths at the edge,
+# so a crawler never reaches the pages; these lines and the noindex meta
+# on the pages themselves are belt and braces. Neither path is in
+# sitemap.xml. See OpMo_Site_Audience_Routing_and_Access_Spec_v0.3.md.
+Disallow: /partners/terms/
+Disallow: /firms/rates/
+
 Sitemap: https://opmoadvisory.com/sitemap.xml

@@ -6,7 +6,14 @@
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": ".",
+    // Cloudflare's default, pinned rather than assumed. /firms, /partners
+    // and /firms/rates resolve without a trailing slash under this setting,
+    // and the resume PDFs served from /firms/rates/cv/ print
+    // "opmoadvisory.com/firms/rates" in that bare form. Leave it explicit so
+    // a future change to the default cannot break a URL already in
+    // circulation on paper. Root pages keep resolving as /why-opmo.html.
+    "html_handling": "auto-trailing-slash"
   },
   "compatibility_flags": [
     "nodejs_compat"

@@ -18,7 +18,9 @@ Visual verification is by screenshot, not description — desktop 1440px and mob
 
 ## Deployment
 
-Cloudflare Workers static assets (`wrangler.jsonc`, `assets.directory: "."`). The **repository root is the document root**, so everything committed here is publicly served — including `mockups/`, `notes/`, `DESIGN_SYSTEM.md`, and `OpMo_Website_Brief.md`. Keep that in mind before committing anything you wouldn't publish.
+Cloudflare Workers static assets (`wrangler.jsonc`, `assets.directory: "."`). The **repository root is the document root**, so a committed file is a public URL by default. `.assetsignore` in the repo root is the exception list (`.gitignore` syntax) — Wrangler skips those paths at upload, which is what keeps `mockups/`, `notes/`, `.claude/`, `CLAUDE.md`, `DESIGN_SYSTEM.md`, and `OpMo_Website_Brief.md` off the live site.
+
+Anything new that shouldn't be published needs a line in `.assetsignore` **in the same commit that adds it**. Exclusion takes effect on the next deploy, and it is not access control — it keeps internal files off the origin, nothing more. The gated rooms rely on Cloudflare Access.
 
 ## Architecture
 

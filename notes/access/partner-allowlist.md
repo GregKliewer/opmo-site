@@ -1,15 +1,17 @@
 # Cloudflare Access — allowlist record
 
 > **Read this first.** The repository root is the Cloudflare document root
-> (`wrangler.jsonc`, `assets.directory: "."`), so **every file committed here
-> is publicly served**, including this one. Do not put personal email
-> addresses in this file. Keep it to firm names and a count; the addresses
-> live in the Zero Trust dashboard, which is the system of record.
+> (`wrangler.jsonc`, `assets.directory: "."`). `notes/` is now excluded from
+> upload by `.assetsignore`, so this file is no longer served — it was
+> publicly readable until that change was deployed.
 >
-> If a reviewable list of addresses is genuinely wanted in version control,
-> the fix is to stop serving `notes/` first — an `.assetsignore` in the
-> assets directory, or moving the folder out of the deployed root. That is a
-> deployment change and has not been made.
+> **The rule still stands: do not put personal email addresses in this file.**
+> Keep it to firm names and a count; the addresses live in the Zero Trust
+> dashboard, which remains the system of record. Exclusion is one line in one
+> file — a typo, a rename, or a future move of the assets directory
+> re-publishes this folder silently, and git history would carry the
+> addresses even after a later deletion. The protection is too thin to hold
+> personal data on its own.
 
 Spec: `OpMo_Site_Audience_Routing_and_Access_Spec_v0.3.md` §7. The dashboard
 configuration itself is not a code task and is not implemented in this repo.
